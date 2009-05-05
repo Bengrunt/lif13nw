@@ -60,7 +60,7 @@ public abstract class Joueur {
      * 
      * */
     public void appliquerCoup(int[] coup) { // appliquer le coup aux cooronnées x (coup[0]), y(coup[1]) de coup
-        // TODO
+        
         
     }
     
