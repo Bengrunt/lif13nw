@@ -123,13 +123,48 @@ public abstract class Bateau {
         }
         
     }
+
+   private int[] calculeCoordCaseBat( int numCase ) {
+       int[] coords = new int[2];
+       coords[0] = this.xCaseArriere + (numCase - 1) * this.deltaX;
+       coords[1] = this.yCaseArriere + (numCase - 1) * this.deltaY;
+
+       return coords;
+   }
+
     
-    
-    
+   public boolean estTouche( int[] coup ) {
+       boolean res = false;
+       int[] coords = new int[2];
+       int i = 1;
+       while( i <= this.tailleBateau ) {
+           coords = this.calculeCoordCaseBat(i);
+           if( ( coords[0] == coup[0] ) && ( coords[1] == coup[1] ) ) {
+               res = true;
+               break;
+           }
+           i++;
+       }
+
+       return res;
+   }
     
     public boolean estCoule() {
-        // TODO
-        return false;
+        int i = 1;
+        int casesTouchees = 0;
+        while( i <= this.tailleBateau ) {
+            if( this.touche[i] = true ) {
+                casesTouchees++;
+            }
+            i++;
+        }
+
+        if( casesTouchees == this.tailleBateau ) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
     
