@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Frédéric Armetta <farmetta@bat710.univ-lyon1.fr>
+ * @author Benjamin Guillon, Mamy Raminosoa
+ * @since 5/05/2009
+ * @version 12/05/2009
  */
 public class JoueurIA extends Joueur {
 

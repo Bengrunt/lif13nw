@@ -1,19 +1,14 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Frédéric Armetta <farmetta@bat710.univ-lyon1.fr>
+ * @author Benjamin Guillon, Mamy Raminosoa
+ * @since 5/05/2009
+ * @version 12/05/2009
  */
 public class JoueurHumain extends Joueur {
 
