@@ -11,12 +11,17 @@ public abstract class Bateau {
     protected int xCaseArriere,  yCaseArriere; // position de l'arrière du bateau
     protected int tailleBateau; // taille du bateau
     protected boolean[] touche; // état de la coque (touche[0] correspond à la case arrière)
-    int deltaX, deltaY; // orientation du bateau, par rapport à sa case arrière
+    protected int deltaX, deltaY; // orientation du bateau, par rapport à sa case arrière
+
+    //////////////////////////////// CONSTRUCTEURS: ////////////////////////////////////////////
 
     /*
-     * Constructeur de Bateau : créé un bateau placé aléatoirement dans l'environnement
-     * */
+     * Constructeur de Bateau : crée un bateau placé aléatoirement dans l'environnement.
+     * @param _tailleBateau Taille du bateau.
+     * @param lstBateau Liste de bateaux du joueur.
+     */
     public Bateau(int _tailleBateau, ArrayList<Bateau> lstBateau) {
+        
         tailleBateau = _tailleBateau;
         touche = new boolean[tailleBateau];
         for (int i = 0; i < tailleBateau; i++) {
@@ -25,6 +30,110 @@ public abstract class Bateau {
 
         initPosition(lstBateau);
     }
+
+    /////////////////////////////// ACCESSEURS: ////////////////////////////////////////////////
+
+    /**
+     * Accesseur de l'attribut "xCaseArriere" de la classe Bateau.
+     * @return Renvoie un entier.
+     */
+    public int getXCaseArriere() {
+        return this.xCaseArriere;
+    }
+
+    /**
+     * Accesseur de l'attribut "yCaseArriere" de la classe Bateau.
+     * @return Renvoie un entier.
+     */
+    public int getYCaseArriere() {
+        return this.yCaseArriere;
+    }
+
+    /**
+     * Accesseur de l'attribut "tailleBateau" de la classe Bateau.
+     * @return Renvoie un entier.
+     */
+    public int getTailleBateau() {
+        return this.tailleBateau;
+    }
+    
+    /**
+     * Accesseur de la ième case de l'attribut "touche" de la classe Bateau.
+     * @param i Numéro de la case de l'attribut "touche" à laquelle on veut accéder.
+     * @return Renvoie un booléen.
+     */
+    public boolean getIemeTouche(int i) {
+        return this.touche[i];
+    }
+
+    /**
+     * Accesseur de l'attribut "deltaX" de la classe Bateau.
+     * @return Renvoie un entier.
+     */
+    public int getDeltaX() {
+        return this.deltaX;
+    }
+
+    /**
+     * Accesseur de l'attribut "deltaY" de la classe Bateau.
+     * @return Renvoie un entier.
+     */
+    public int getDeltaY() {
+        return this.deltaY;
+    }
+
+    ///////////////////////// MUTATEURS: /////////////////////////////////
+
+    /**
+     * Mutateur de l'attribut "xCaseArriere" de la classe Bateau.
+     * @param x Nouvelle valeur de l'attribut.
+     */
+    public void setXCaseArriere(int x) {
+        this.xCaseArriere = x;
+    }
+
+    /**
+     * Mutateur de l'attribut "yCaseArriere" de la classe Bateau.
+     * @param y Nouvelle valeur de l'attribut.
+     */
+    public void setYCaseArriere(int y) {
+        this.yCaseArriere = y;
+    }
+
+    /**
+     * Mutateur de l'attribut "tailleBateau" de la classe Bateau.
+     * @param t Nouvelle valeur de l'attribut.
+     */
+    public void setTailleBateau(int t) {
+        this.tailleBateau = t;
+    }
+
+    /**
+     * Mutateur de la ième case de l'attribut "touche" de la classe Bateau.
+     * @param i Numéro de la case de l'arribut "touche" que l'on veut modifier.
+     * @param mod Nouvelle valeur de la ième case de l'attribut "touche".
+     */
+    public void setIemeTouche(int i, boolean mod) {
+        this.touche[i] = mod;
+    }
+
+    /**
+     * Mutateur de l'attribut "deltaX" de la classe Bateau.
+     * @param dx Nouvelle valeur de l'attribut.
+     */
+    public void setDeltaX(int dx) {
+        this.deltaX = dx;
+    }
+
+    /**
+     * Mutateur de l'attribut "deltaY" de la classe Bateau.
+     * @param dy Nouvelle valeur de l'attribut.
+     */
+    public void setDeltaY(int dy) {
+        this.deltaY = dy;
+    }
+
+    //////////////////////////////////////////////////////// AUTRES METHODES: ///////////////////////////////////////////////////////////////////
 
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
@@ -119,21 +228,21 @@ public abstract class Bateau {
     }
 
     /**
-     * @brief Fonction qui calcule les coordonnées sur la grille d'une case du bateau.
+     * Fonction qui calcule les coordonnées sur la grille d'une case du bateau.
      * @param numCase Numéro de la case dont on veut calculer les coordonnées.
      * @return Renvoie un tableau de deux entiers, respectivements x et y les coordonnées de la case du bateau.
      */
-    private int[] calculeCoordCaseBat(int numCase) {
+    public int[] calculeCoordCaseBat(int numCase) {
 
         int[] coords = new int[2];
-        coords[0] = this.xCaseArriere + (numCase - 1) * this.deltaX;
-        coords[1] = this.yCaseArriere + (numCase - 1) * this.deltaY;
+        coords[0] = this.getXCaseArriere() + (numCase - 1) * this.getDeltaX();
+        coords[1] = this.getYCaseArriere() + (numCase - 1) * this.getDeltaY();
 
         return coords;
     }
 
     /**
-     * @brief Fonction qui détermine si le bateau est touché.
+     * Fonction qui détermine si le bateau est touché.
      * @param coup Un tableau de deux entiers représentant les coordonnées de l'endroit où à été tiré le coup.
      * @return Renvoie un booléen qui vaut true si le bateau est touché par le coup.
      */
@@ -143,7 +252,7 @@ public abstract class Bateau {
         int[] coords = new int[2];
         int i = 1;
 
-        while (i <= this.tailleBateau) {
+        while (i <= this.getTailleBateau()) {
             coords = this.calculeCoordCaseBat(i);
             if ((coords[0] == coup[0]) && (coords[1] == coup[1])) {
                 res = true;
@@ -156,7 +265,7 @@ public abstract class Bateau {
     }
 
     /**
-     * @brief Fonction qui détermine si un bateau est coulé.
+     * Fonction qui détermine si un bateau est coulé.
      * @return Renvoie un booléen qui vaut true si le bateau est coulé.
      */
     public boolean estCoule() {
@@ -164,14 +273,14 @@ public abstract class Bateau {
         int i = 1;
         int casesTouchees = 0;
         
-        while (i <= this.tailleBateau) {
-            if (this.touche[i] = true) {
+        while (i <= this.getTailleBateau() ) {
+            if (this.getIemeTouche(i) == true) {
                 casesTouchees++;
             }
             i++;
         }
 
-        if (casesTouchees == this.tailleBateau) {
+        if (casesTouchees == this.getTailleBateau() ) {
             return true;
         } else {
             return false;

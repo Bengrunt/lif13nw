@@ -1,3 +1,4 @@
+
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
@@ -14,7 +15,6 @@ public class Partie {
 
     }
 
-    
     // procédure de vie de la partie
     public void run() {
         System.out.println("Commencement pde la partie ...");
@@ -51,14 +51,14 @@ public class Partie {
 
                 j1.marquerEnvironnementExact(envJH.efface());
                 j2.marquerEnvironnementExact(envJIA.efface());
-                
+
 
                 System.out.println("Env. Joueur humain :");
                 System.out.print(envJH);
                 System.out.println("Env. Joueur IA :");
                 System.out.print(envJIA);
 
-                
+
                 // Acion de j2
                 coup = j2.getCoup();
                 System.out.println("Application du coup " + (coup[0] + 1) + "," + (coup[1] + 1));
@@ -83,7 +83,6 @@ public class Partie {
 
     }
 
-    
     // point d'entrée du programme
     public static void main(String[] args) {
         // création d'une partie
