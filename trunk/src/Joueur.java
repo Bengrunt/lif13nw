@@ -9,11 +9,18 @@ import java.util.Arrays;
  */
 public abstract class Joueur {
 
-    // Bateaux du joueur
-    protected BateauRadarTireur bT;
-    protected BateauBrouilleur bB;
+    //////////////////////////////////////// ATTRIBUTS /////////////////////////////////////////////////////
+    
+    protected BateauRadarTireur bT; // Bateau tireur
+    protected BateauBrouilleur bB; // Bateau brouilleur
 
+    //////////////////////////////////////// CONSTRUCTEURS ///////////////////////////////////////////////////
+
+    /**
+     * Constructeur de Joueur.
+     */
     public Joueur() {
+
         ArrayList<Bateau> lstBateau = new ArrayList();
         // création des deux bateaux du joueur
         // paramètres : taille : founit la taille des bateaux
@@ -23,13 +30,33 @@ public abstract class Joueur {
         bB = new BateauBrouilleur(3, lstBateau);
     }
 
+
+    /////////////////////////////////////////// ACCESSEURS //////////////////////////////////////////////////////
+
+    /**
+     * Accesseur de l'attribut bT de la classe "joueur".
+     * @return Renvoie un Bateau.
+     */
+    public Bateau getBateauTireur() {
+        return this.bT;
+    }
+
+    /**
+     * Accesseur de l'attribut bB de la classe "joueur".
+     * @return Renvoie le bateau brouilleur du joueur.
+     */
+    public Bateau getBateauBrouilleur() {
+        return this.bB;
+    }
+
+    ////////////////////////////////////////// AUTRES METHODES //////////////////////////////////////////////////
     /*
-     * Lorsque le bateauTireur est coulé, la partie est perdue pour le joueur
-     * */
+     * Fonction qui détermine si un joueur a perdu.
+     * @return Renvoie true si le joueur a perdu.
+     */
     public boolean aPerdu() {
 
         return bT.estCoule();
-
     }
 
     /*
@@ -37,9 +64,9 @@ public abstract class Joueur {
      * 
      */
     public void marquerEnvironnementExact(Environnement env) {
+
         bT.marquerEnvironnementExact(env);
         bB.marquerEnvironnementExact(env);
-
     }
 
     /*
@@ -48,10 +75,11 @@ public abstract class Joueur {
     public abstract int[] getCoup();  // retourne les coordonnées x et y du coup
 
     /**
-     * Procédure qui applique éxamine un coup et regarde si le joueur est concerné par le coup et applique les dégats occasionnés si c'est le cas.
+     * Procédure qui regarde si le joueur est concerné par le coup et applique les dégats occasionnés si c'est le cas.
      * @param coup Tableau de deux entiers qui décrivent les coordonnées du coup.
      */
     public void appliquerCoup(int[] coup) {
+
         int i;
         
         //On vérifie si le bateau tireur est touché.

@@ -23,9 +23,13 @@ public class JoueurIA extends Joueur {
         return retour;
     }
 
+    /**
+     * Fonction qui donne le type de joueur.
+     * @return Renvoie une chaine de caractères.
+     */
     @Override
     public String toString() {
-        return "Joueur IA";
 
+        return "Joueur IA";
     }
 }

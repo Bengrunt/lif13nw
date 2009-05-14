@@ -8,8 +8,13 @@ import java.util.ArrayList;
  */
 public class BateauRadarTireur extends Bateau {
 
+    /**
+     * Constructeur de BateauRadarTireur.
+     * @param taille La taille du bateau radar-tireur.
+     * @param lstBateau La liste de bateaux dans laquelle on crée le bateau radar-tireur.
+     */
     public BateauRadarTireur(int taille, ArrayList<Bateau> lstBateau) {
-        super(taille, lstBateau);
 
+        super(taille, lstBateau);
     }
 }
