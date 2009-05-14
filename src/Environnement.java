@@ -3,11 +3,9 @@
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
  * @version 12/05/2009
+ * Les objets environnement sont utilisés pour les représentations graphiques des environnements.
  */
-/*
- * 
- * Les objets environnement sont utilisés pour les représentations graphique des environnements 
- */
+
 public class Environnement {
 
     public static final int MAX_X = 15; // x in [1, 15]
@@ -17,22 +15,21 @@ public class Environnement {
     public Environnement() {
 
         env = new char[MAX_Y][MAX_X];
-
-
-
-
     }
 
     /*
      * Remise a zéro de l'environnement, pour pouvoir par la suite imprimer les positions mises à jour
      * */
     public Environnement efface() {
-        for (int i = 0; i < MAX_Y; i++) {
-            for (int j = 0; j < MAX_X; j++) {
-                env[i][j] = 'O';
 
+        for (int i = 0; i < MAX_Y; i++) {
+
+            for (int j = 0; j < MAX_X; j++) {
+
+                env[i][j] = 'O';
             }
         }
+
         return this;
     }
 
@@ -40,6 +37,7 @@ public class Environnement {
      * Définition d'une case de l'environnement
      * */
     public void set(int x, int y, char val) {
+
         env[y][x] = val;
     }
 
@@ -48,13 +46,16 @@ public class Environnement {
      * */
     @Override
     public String toString() {
+
         String retour = new String();
 
         for (int i = 0; i < env.length; i++) {
-            for (int j = 0; j < env[0].length; j++) {
-                retour += env[i][j];
 
+            for (int j = 0; j < env[0].length; j++) {
+
+                retour += env[i][j];
             }
+
             retour += "\n";
         }
 

@@ -8,10 +8,11 @@ import java.util.ArrayList;
  */
 public abstract class Bateau {
 
+    ///////////////////////////////// ATTRIBUTS ////////////////////////////////////////////////
     protected int xCaseArriere,  yCaseArriere; // position de l'arrière du bateau
     protected int tailleBateau; // taille du bateau
     protected boolean[] touche; // état de la coque (touche[0] correspond à la case arrière)
-    protected int deltaX, deltaY; // orientation du bateau, par rapport à sa case arrière
+    protected int deltaX,  deltaY; // orientation du bateau, par rapport à sa case arrière
 
     //////////////////////////////// CONSTRUCTEURS: ////////////////////////////////////////////
 
@@ -21,10 +22,12 @@ public abstract class Bateau {
      * @param lstBateau Liste de bateaux du joueur.
      */
     public Bateau(int _tailleBateau, ArrayList<Bateau> lstBateau) {
-        
+
         tailleBateau = _tailleBateau;
         touche = new boolean[tailleBateau];
+
         for (int i = 0; i < tailleBateau; i++) {
+
             touche[i] = false;
         }
 
@@ -32,12 +35,12 @@ public abstract class Bateau {
     }
 
     /////////////////////////////// ACCESSEURS: ////////////////////////////////////////////////
-
     /**
      * Accesseur de l'attribut "xCaseArriere" de la classe Bateau.
      * @return Renvoie un entier.
      */
     public int getXCaseArriere() {
+
         return this.xCaseArriere;
     }
 
@@ -46,6 +49,7 @@ public abstract class Bateau {
      * @return Renvoie un entier.
      */
     public int getYCaseArriere() {
+
         return this.yCaseArriere;
     }
 
@@ -54,15 +58,17 @@ public abstract class Bateau {
      * @return Renvoie un entier.
      */
     public int getTailleBateau() {
+
         return this.tailleBateau;
     }
-    
+
     /**
      * Accesseur de la ième case de l'attribut "touche" de la classe Bateau.
      * @param i Numéro de la case de l'attribut "touche" à laquelle on veut accéder.
      * @return Renvoie un booléen.
      */
     public boolean getIemeTouche(int i) {
+
         return this.touche[i];
     }
 
@@ -71,6 +77,7 @@ public abstract class Bateau {
      * @return Renvoie un entier.
      */
     public int getDeltaX() {
+
         return this.deltaX;
     }
 
@@ -79,16 +86,17 @@ public abstract class Bateau {
      * @return Renvoie un entier.
      */
     public int getDeltaY() {
+
         return this.deltaY;
     }
 
     ///////////////////////// MUTATEURS: /////////////////////////////////
-
     /**
      * Mutateur de l'attribut "xCaseArriere" de la classe Bateau.
      * @param x Nouvelle valeur de l'attribut.
      */
     public void setXCaseArriere(int x) {
+
         this.xCaseArriere = x;
     }
 
@@ -97,6 +105,7 @@ public abstract class Bateau {
      * @param y Nouvelle valeur de l'attribut.
      */
     public void setYCaseArriere(int y) {
+
         this.yCaseArriere = y;
     }
 
@@ -105,6 +114,7 @@ public abstract class Bateau {
      * @param t Nouvelle valeur de l'attribut.
      */
     public void setTailleBateau(int t) {
+
         this.tailleBateau = t;
     }
 
@@ -114,6 +124,7 @@ public abstract class Bateau {
      * @param mod Nouvelle valeur de la ième case de l'attribut "touche".
      */
     public void setIemeTouche(int i, boolean mod) {
+
         this.touche[i] = mod;
     }
 
@@ -122,6 +133,7 @@ public abstract class Bateau {
      * @param dx Nouvelle valeur de l'attribut.
      */
     public void setDeltaX(int dx) {
+
         this.deltaX = dx;
     }
 
@@ -130,11 +142,11 @@ public abstract class Bateau {
      * @param dy Nouvelle valeur de l'attribut.
      */
     public void setDeltaY(int dy) {
+
         this.deltaY = dy;
     }
 
     //////////////////////////////////////////////////////// AUTRES METHODES: ///////////////////////////////////////////////////////////////////
-
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
         /*
@@ -142,6 +154,7 @@ public abstract class Bateau {
          * 
          * */
         do {
+
             xCaseArriere = (int) (Math.random() * Environnement.MAX_X);
             yCaseArriere = (int) (Math.random() * Environnement.MAX_Y);
 
@@ -272,15 +285,15 @@ public abstract class Bateau {
 
         int i = 1;
         int casesTouchees = 0;
-        
-        while (i <= this.getTailleBateau() ) {
+
+        while (i <= this.getTailleBateau()) {
             if (this.getIemeTouche(i) == true) {
                 casesTouchees++;
             }
             i++;
         }
 
-        if (casesTouchees == this.getTailleBateau() ) {
+        if (casesTouchees == this.getTailleBateau()) {
             return true;
         } else {
             return false;
