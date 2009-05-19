@@ -72,7 +72,9 @@ public abstract class Joueur {
     /*
      * Fonction abstraite, à définir pour JoueurHumain (dans ce cas, saisie clavier du coup) et JoueurIA (dans ce cas, stratégie IA sur la base des informations perçues par le joeueur IA)
      * */
-    public abstract int[] getCoup();  // retourne les coordonnées x et y du coup
+    public int[] getCoup() { // retourne les coordonnées x et y du coup
+        return null;
+    }
 
     /**
      * Procédure qui regarde si le joueur est concerné par le coup et applique les dégats occasionnés si c'est le cas.
