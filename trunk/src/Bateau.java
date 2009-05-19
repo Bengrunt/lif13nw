@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public abstract class Bateau {
 
     ///////////////////////////////// ATTRIBUTS ////////////////////////////////////////////////
+
     protected int xCaseArriere,  yCaseArriere; // position de l'arrière du bateau
     protected int tailleBateau; // taille du bateau
     protected boolean[] touche; // état de la coque (touche[0] correspond à la case arrière)
@@ -35,6 +36,7 @@ public abstract class Bateau {
     }
 
     /////////////////////////////// ACCESSEURS: ////////////////////////////////////////////////
+
     /**
      * Accesseur de l'attribut "xCaseArriere" de la classe Bateau.
      * @return Renvoie un entier.
@@ -91,6 +93,7 @@ public abstract class Bateau {
     }
 
     ///////////////////////// MUTATEURS: /////////////////////////////////
+
     /**
      * Mutateur de l'attribut "xCaseArriere" de la classe Bateau.
      * @param x Nouvelle valeur de l'attribut.
@@ -147,12 +150,13 @@ public abstract class Bateau {
     }
 
     //////////////////////////////////////////////////////// AUTRES METHODES: ///////////////////////////////////////////////////////////////////
+
+    /**
+     * Procédure qui initialise aléatoirement la position de la case arrière et de la direction, puis calcul de validité de la position obtenue.
+     * @param lstBateau Liste de bateaux.
+     */
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
-        /*
-         * Choix aléatoire de la position de la case arrière et de la direction, puis calcul de validité de la position obtenue (à compléter ..)
-         * 
-         * */
         do {
 
             xCaseArriere = (int) (Math.random() * Environnement.MAX_X);
@@ -300,8 +304,76 @@ public abstract class Bateau {
         }
     }
 
-	public void deplaceBateau(int x, int y){
+    /**
+     * Procédure qui fait avancer le bateau d'une case selon son axe directeur.
+     */
+	public void avance() {
 		
-		this.setXCaseArriere(this.xCaseArriere + x * this.deltaX);
-		this.setXCaseArriere(this.yCaseArriere + y * this.deltaY);
+		this.setXCaseArriere(this.getXCaseArriere() + this.getDeltaX());
+		this.setXCaseArriere(this.getYCaseArriere() + this.getDeltaY());
 	}
+    
+    /**
+     * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens direct.
+     */
+    public void pivote45direct() {
+        
+        if (this.getDeltaX() == 1 && this.getDeltaY() == 0) {
+            this.setDeltaY(1);
+        }
+        else if(this.getDeltaX() == 1 && this.getDeltaY() == 1) {
+            this.setDeltaX(0);
+        }
+        else if(this.getDeltaX() == 0 && this.getDeltaY() == 1) {
+            this.setDeltaX(-1);
+        }
+        else if(this.getDeltaX() == -1 && this.getDeltaY() == 1) {
+            this.setDeltaY(0);
+        }
+        else if(this.getDeltaX() == -1 && this.getDeltaY() == 0) {
+            this.setDeltaY(-1);
+        }
+        else if(this.getDeltaX() == -1 && this.getDeltaY() == -1) {
+            this.setDeltaX(0);
+        }
+        else if(this.getDeltaX() == 0 && this.getDeltaY() == -1) {
+            this.setDeltaX(1);
+        }
+        else {
+            this.setDeltaY(0);
+        }
+    }
+    
+    /**
+     * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens indirect.
+     */
+    public void pivote45indirect() {
+        
+        if (this.getDeltaX() == 1 && this.getDeltaY() == 0) {
+            this.setDeltaY(-1);
+        }
+        else if(this.getDeltaX() == 1 && this.getDeltaY() == -1) {
+            this.setDeltaX(0);
+        }
+        else if(this.getDeltaX() == 0 && this.getDeltaY() == -1) {
+            this.setDeltaX(-1);
+        }
+        else if(this.getDeltaX() == -1 && this.getDeltaY() == -1) {
+            this.setDeltaY(0);
+        }
+        else if(this.getDeltaX() == -1 && this.getDeltaY() == 0) {
+            this.setDeltaY(1);
+        }
+        else if(this.getDeltaX() == -1 && this.getDeltaY() == 1) {
+            this.setDeltaX(0);
+        }
+        else if(this.getDeltaX() == 0 && this.getDeltaY() == 1) {
+            this.setDeltaX(1);
+        }
+        else {
+            this.setDeltaY(0);
+        }
+    }
+
+}
+
