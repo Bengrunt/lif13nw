@@ -159,11 +159,9 @@ public abstract class Bateau {
 
         do {
 
-            xCaseArriere = (int) (Math.random() * Environnement.MAX_X);
-            yCaseArriere = (int) (Math.random() * Environnement.MAX_Y);
+            this.setXCaseArriere((int) (Math.random() * Environnement.MAX_X));
+            this.setYCaseArriere((int) (Math.random() * Environnement.MAX_Y));
 
-            deltaX = 0;
-            deltaY = 0;
 
             switch ((int) (Math.random() * 4) + 1) {
                 case 1:
@@ -176,8 +174,8 @@ public abstract class Bateau {
                     break;
 
                 case 3:
-                    deltaY = tailleBateau;
                     deltaX = 0;
+                    deltaY = tailleBateau;
                     break;
 
                 case 4:
@@ -191,12 +189,33 @@ public abstract class Bateau {
     }
 
     /*
-     * 
-     * test : x et y sont bien dans l'environnement ?
+     * Fonction qui teste si des coordonnées sont bien dans l'environnement.
+     * @param coords Coordonnées (x,y) à tester.
+     * @return Renvoie true si les coordonnées sont bien dans l'environnement.
      */
-    private boolean coordonneesPossibles(int x, int y) {
-        return ((x >= 0) && (x < Environnement.MAX_X) && (y >= 0) && (y < Environnement.MAX_Y));
+    private boolean coordonneesPossibles(int[] coords) {
+        
+        return ((coords[0] >= 0) && (coords[0] < Environnement.MAX_X) && (coords[1] >= 0) && (coords[1] < Environnement.MAX_Y));
+    }
 
+    /**
+     * Fonction qui teste si des coordonnées sont disponibles (i.e. teste si il n y a pas chevauchement avec un bateau existant).
+     * @param coords Coordonnées (x,y) à tester.
+     * @param lstBateau Liste des bateaux avec lesquels les coordonnées sont comparées.
+     * @return Renvoie true si les coordonnées sont disponibles.
+     */
+    public boolean testChevauchement(int[] coords, ArrayList<Bateau> lstBateau) {
+        boolean res = false;
+
+        for(int i = 0 ; i < lstBateau.size() ; i++) {
+
+            for(int j = 0 ; j < lstBateau.get(i).getTailleBateau() ; j++) {
+
+                res = !coordonneesPossibles(lstBateau.get(i).calculeCoordCaseBat(j));
+            }
+        }
+
+        return res;
     }
 
     /*
