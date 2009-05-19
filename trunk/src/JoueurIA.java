@@ -32,4 +32,18 @@ public class JoueurIA extends Joueur {
 
         return "Joueur IA";
     }
+    
+    public int[] getCoupSuivant(){
+    	
+    	
+    	int[] retour1 = new int[2];
+    	int[] retour2 = new int[2];
+    	
+    	retour2.clone()[0] = this.getCoup()[0];
+    	retour2.clone()[1] = this.getCoup()[1];
+    	
+    	this.getCoup();
+    	
+    	return retour1;
+    }
 }
