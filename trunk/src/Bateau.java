@@ -303,5 +303,5 @@ public abstract class Bateau {
 	public void deplaceBateau(int x, int y){
 		
 		this.setXCaseArriere(this.xCaseArriere + x * this.deltaX);
-		this.setXCaseArriere(this.yCaseArriere + x * this.deltaY);
+		this.setXCaseArriere(this.yCaseArriere + y * this.deltaY);
 	}
