@@ -299,4 +299,9 @@ public abstract class Bateau {
             return false;
         }
     }
-}
+
+	public void deplaceBateau(int x, int y){
+		
+		this.setXCaseArriere(this.xCaseArriere + x * this.deltaX);
+		this.setXCaseArriere(this.yCaseArriere + x * this.deltaY);
+	}
