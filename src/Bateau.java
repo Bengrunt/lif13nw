@@ -239,13 +239,12 @@ public abstract class Bateau {
     	    			
     	    			chevauche = false;
     	    		}
+    	    		k++;
     			}
-    			k++;
-    			
+    			j++;
     		}
-    		j++;
+    		i++;
     	}
-    	i++;
     	return chevauche;
     }
 
