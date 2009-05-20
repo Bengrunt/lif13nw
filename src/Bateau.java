@@ -218,7 +218,7 @@ public abstract class Bateau {
     	boolean chevauche = true;
     	while((i < lstBateau.size()) && chevauche){
     		
-    		while((j <= lstBateau.get(j).getTailleBateau()) && chevauche){
+    		while((j <= lstBateau.get(i).getTailleBateau()) && chevauche){
     			
     			int[] test = new int[2];
     			test = this.calculeCoordCaseBat(j);
