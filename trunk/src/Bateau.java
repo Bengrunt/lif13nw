@@ -157,38 +157,38 @@ public abstract class Bateau {
      */
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
-    	int[] retour = new int [2];
+    	int[] michel = new int [2];
     	
         do {
 
             this.setXCaseArriere((int) (Math.random() * Environnement.MAX_X));
             this.setYCaseArriere((int) (Math.random() * Environnement.MAX_Y));
             
-            retour[0] = this.getXCaseArriere();
-            retour[1] = this.getYCaseArriere();
+            michel[0] = this.getXCaseArriere();
+            michel[1] = this.getYCaseArriere();
             
             switch ((int) (Math.random() * 4) + 1) {
                 case 1:
-                    deltaX = tailleBateau;
-                    deltaY = 0;
+                    this.setDeltaX(this.getTailleBateau()); 
+                    this.setDeltaY(0); 
                     break;
                 case 2:
-                    deltaX = -tailleBateau;
-                    deltaY = 0;
+                    this.setDeltaX(-this.getTailleBateau());
+                    this.setDeltaY(0); 
                     break;
 
                 case 3:
-                    deltaX = 0;
-                    deltaY = tailleBateau;
+                	this.setDeltaX(0);
+                	this.setDeltaY(this.getTailleBateau());
                     break;
 
                 case 4:
-                    deltaY = -tailleBateau;
-                    deltaX = 0;
+                	this.setDeltaX(0);
+                    this.setDeltaY(-this.getTailleBateau());
                     break;
             }
 
-        } while (!this.testChevauchement(retour, lstBateau));
+        } while (!this.testChevauchement(michel, this.getDeltaX(), this.getDeltaY(), lstBateau));
         	
         	
         	; // TODO ajouter test de chevauchement, en utilisant lstBatea
