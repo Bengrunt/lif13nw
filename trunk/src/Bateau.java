@@ -227,7 +227,7 @@ public abstract class Bateau {
     				chevauche = false;
     			}
     			
-    			while((k < lstBateau.size()) && chevauche){
+    			while((k < j) && chevauche){
     				
     				int xtest; 
     	    		int ytest;
