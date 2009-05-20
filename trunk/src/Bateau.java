@@ -208,42 +208,49 @@ public abstract class Bateau {
      * @param lstBateau Liste des bateaux avec lesquels les coordonnées sont comparées.
      * @return Renvoie true si les coordonnées sont disponibles.
      */
-    public boolean testChevauchement(int[] coords, ArrayList<Bateau> lstBateau) {
-        boolean res = false;
-
-        for(int i = 0 ; i < lstBateau.size() ; i++) {
-
-            for(int j = 0 ; j < lstBateau.get(i).getTailleBateau() ; j++) {
-
-                res = !coordonneesPossibles(lstBateau.get(i).calculeCoordCaseBat(j));
-            }
-        }
-
-        return res;
-    }
     
     private boolean testChevauchement(int[] coords, ArrayList<Bateau> lstBateau){
     	
     	int i = 0;
     	int j = 0;
-    	boolean b = true;
-    	while((i < lstBateau.size()) && b){
+    	int k = 0;
+    	boolean chevauche = true;
+    	while((i < lstBateau.size()) && chevauche){
     		
-    		while((j <= lstBateau.get(j).tailleBateau) && b){
+    		
+    		
+    		
+    		
+    		while((j <= lstBateau.get(j).getTailleBateau()) && chevauche){
     			
     			int[] test = new int[2];
     			test = this.calculeCoordCaseBat(j);
     			
     			if(!this.coordonneesPossibles(test)){
     				
-    				b = false;
+    				chevauche = false;
     			}
+    			
+    			while((k < lstBateau.size()) && chevauche){
+    				
+    				int xtest; 
+    	    		int ytest;
+    				
+    				xtest = lstBateau.get(k).getXCaseArriere();
+    	    		ytest = lstBateau.get(k).getYCaseArriere();
+    	    		
+    	    		if((xtest == test[0]) && (ytest == test[1])){
+    	    			
+    	    			chevauche = false;
+    	    		}
+    			}
+    			k++;
     			
     		}
     		j++;
     	}
     	i++;
-    	return b;
+    	return chevauche;
     }
 
     /*
