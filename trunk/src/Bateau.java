@@ -157,12 +157,16 @@ public abstract class Bateau {
      */
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
+    	int[] retour = new int [2];
+    	
         do {
 
             this.setXCaseArriere((int) (Math.random() * Environnement.MAX_X));
             this.setYCaseArriere((int) (Math.random() * Environnement.MAX_Y));
-
-
+            
+            retour[0] = this.getXCaseArriere();
+            retour[1] = this.getYCaseArriere();
+            
             switch ((int) (Math.random() * 4) + 1) {
                 case 1:
                     deltaX = tailleBateau;
@@ -184,7 +188,7 @@ public abstract class Bateau {
                     break;
             }
 
-        } while (!coordonneesPossibles(xCaseArriere + deltaX, yCaseArriere + deltaY));
+        } while (!this.testChevauchement(retour, lstBateau));
         	
         	
         	; // TODO ajouter test de chevauchement, en utilisant lstBatea
