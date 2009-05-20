@@ -213,34 +213,34 @@ public abstract class Bateau {
      * @return Renvoie true si les coordonnées sont disponibles.
      */
     
-    private boolean testChevauchement(int[] coords, int deltaX, int deltaY, ArrayList<Bateau> lstBateau){
+    private boolean testChevauchement(int[] coords, int deltaX, int deltaY, ArrayList<Bateau> lstBateau) {
     	
     	boolean chevauche = false;
     	int i = 0;
     	int j = 0;
     	int k = 0;
     	
-    	while((i < this.getTailleBateau()) && !chevauche){
+    	while((i < this.getTailleBateau()) && !chevauche) {
     		
     		int[] test = new int [2];
     		test[0] = coords[0] + i * deltaX;
-    		test[1] = coords[1] + i * deltaY;
+            test[1] = coords[1] + i * deltaY;
     		
-    		if(!this.coordonneesPossibles(test)){
+    		if(!this.coordonneesPossibles(test)) {
     			
     			chevauche = true;
     			break;
     		}
     		
-    		while((j < lstBateau.size()) && !chevauche){
+    		while((j < lstBateau.size()) && !chevauche) {
     			
-    			while((k < lstBateau.get(j).getTailleBateau()) && !chevauche){
+    			while((k < lstBateau.get(j).getTailleBateau())) {
     				
     				int[] test2 = new int [2];
-    				test2[0] = lstBateau.get(j).getXCaseArriere() + k * lstBateau.get(j).getDeltaX();
-    				test2[1] = lstBateau.get(j).getYCaseArriere() + k * lstBateau.get(j).getDeltaY();
+    				test2[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
+    				test2[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
     				
-    				if((test[0] == test2[0]) && (test[1] == test2[1])){
+    				if((test[0] == test2[0]) && (test[1] == test2[1])) {
     					
     					chevauche = true;
     					break;
@@ -304,14 +304,14 @@ public abstract class Bateau {
 
     /**
      * Fonction qui calcule les coordonnées sur la grille d'une case du bateau.
-     * @param numCase Numéro de la case dont on veut calculer les coordonnées.
+     * @param index Indice de la case dont on veut calculer les coordonnées (l'indiciation commence à 0).
      * @return Renvoie un tableau de deux entiers, respectivements x et y les coordonnées de la case du bateau.
      */
-    public int[] calculeCoordCaseBat(int numCase) {
+    public int[] calculeCoordCaseBat(int index) {
 
         int[] coords = new int[2];
-        coords[0] = this.getXCaseArriere() + (numCase - 1) * this.getDeltaX();
-        coords[1] = this.getYCaseArriere() + (numCase - 1) * this.getDeltaY();
+        coords[0] = this.getXCaseArriere() + index * this.getDeltaX();
+        coords[1] = this.getYCaseArriere() + index * this.getDeltaY();
 
         return coords;
     }
@@ -325,9 +325,9 @@ public abstract class Bateau {
 
         boolean res = false;
         int[] coords = new int[2];
-        int i = 1;
+        int i = 0;
 
-        while (i <= this.getTailleBateau()) {
+        while (i < this.getTailleBateau()) {
             coords = this.calculeCoordCaseBat(i);
             if ((coords[0] == coup[0]) && (coords[1] == coup[1])) {
                 res = true;
