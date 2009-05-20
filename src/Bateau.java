@@ -240,7 +240,7 @@ public abstract class Bateau {
     					int[] test2 = new int[2];
     	    			test2 = this.calculeCoordCaseBat(l);
         	    		
-        	    		if((test[0]== test2[0]) && (test[1] == test2[1])){
+        	    		if((test2[0] == coords[0]) && (test2[1] == coords[1])){
         	    			
         	    			chevauche = true;
         	    		}
