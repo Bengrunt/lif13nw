@@ -184,7 +184,10 @@ public abstract class Bateau {
                     break;
             }
 
-        } while (!coordonneesPossibles(xCaseArriere + deltaX, yCaseArriere + deltaY)); // TODO ajouter test de chevauchement, en utilisant lstBateau
+        } while (!coordonneesPossibles(xCaseArriere + deltaX, yCaseArriere + deltaY));
+        	
+        	
+        	; // TODO ajouter test de chevauchement, en utilisant lstBatea
 
     }
 
@@ -193,6 +196,7 @@ public abstract class Bateau {
      * @param coords Coordonnées (x,y) à tester.
      * @return Renvoie true si les coordonnées sont bien dans l'environnement.
      */
+
     private boolean coordonneesPossibles(int[] coords) {
         
         return ((coords[0] >= 0) && (coords[0] < Environnement.MAX_X) && (coords[1] >= 0) && (coords[1] < Environnement.MAX_Y));
@@ -216,6 +220,30 @@ public abstract class Bateau {
         }
 
         return res;
+    }
+    
+    private boolean testChevauchement(int[] coords, ArrayList<Bateau> lstBateau){
+    	
+    	int i = 0;
+    	int j = 0;
+    	boolean b = true;
+    	while((i < lstBateau.size()) && b){
+    		
+    		while((j <= lstBateau.get(j).tailleBateau) && b){
+    			
+    			int[] test = new int[2];
+    			test = this.calculeCoordCaseBat(j);
+    			
+    			if(!this.coordonneesPossibles(test)){
+    				
+    				b = false;
+    			}
+    			
+    		}
+    		j++;
+    	}
+    	i++;
+    	return b;
     }
 
     /*
