@@ -189,9 +189,6 @@ public abstract class Bateau {
             }
 
         } while (!this.testChevauchement(michel, this.getDeltaX(), this.getDeltaY(), lstBateau));
-        	
-        	
-        	; // TODO ajouter test de chevauchement, en utilisant lstBatea
 
     }
 
