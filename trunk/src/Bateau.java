@@ -215,29 +215,30 @@ public abstract class Bateau {
     	int j = 0;
     	int k = 0;
     	int l = 0;
-    	boolean chevauche = true;
-    	while((i < lstBateau.size()) && chevauche){
+    	boolean chevauche = false;
+
+    	while((i < lstBateau.size()) && !chevauche){
     		
-    		while((j <= lstBateau.get(i).getTailleBateau()) && chevauche){
+    		while((j <= lstBateau.get(i).getTailleBateau()) && !chevauche){
     			
     			int[] test = new int[2];
     			test = this.calculeCoordCaseBat(j);
     			
     			if(!this.coordonneesPossibles(test)){
     				
-    				chevauche = false;
+    				chevauche = true;
     			}
     			
-    			while((k < j) && chevauche){
+    			while((k < j) && !chevauche){
     				
-    				while((l <= lstBateau.get(k).getTailleBateau()) && chevauche){
+    				while((l <= lstBateau.get(k).getTailleBateau()) && !chevauche){
     					
     					int[] test2 = new int[2];
     	    			test2 = this.calculeCoordCaseBat(l);
         	    		
         	    		if((test[0]== test2[0]) && (test[1] == test2[1])){
         	    			
-        	    			chevauche = false;
+        	    			chevauche = true;
         	    		}
         	    		l++;
     				}
