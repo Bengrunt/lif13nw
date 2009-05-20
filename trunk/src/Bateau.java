@@ -214,6 +214,7 @@ public abstract class Bateau {
     	int i = 0;
     	int j = 0;
     	int k = 0;
+    	int l = 0;
     	boolean chevauche = true;
     	while((i < lstBateau.size()) && chevauche){
     		
@@ -229,17 +230,18 @@ public abstract class Bateau {
     			
     			while((k < j) && chevauche){
     				
-    				int xtest; 
-    	    		int ytest;
-    				
-    				xtest = lstBateau.get(k).getXCaseArriere();
-    	    		ytest = lstBateau.get(k).getYCaseArriere();
-    	    		
-    	    		if((xtest == test[0]) && (ytest == test[1])){
-    	    			
-    	    			chevauche = false;
-    	    		}
-    	    		k++;
+    				while((l <= lstBateau.get(k).getTailleBateau()) && chevauche){
+    					
+    					int[] test2 = new int[2];
+    	    			test2 = this.calculeCoordCaseBat(l);
+        	    		
+        	    		if((test[0]== test2[0]) && (test[1] == test2[1])){
+        	    			
+        	    			chevauche = false;
+        	    		}
+        	    		l++;
+    				}
+    				k++;
     			}
     			j++;
     		}
