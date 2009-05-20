@@ -213,45 +213,47 @@ public abstract class Bateau {
      * @return Renvoie true si les coordonnées sont disponibles.
      */
     
-    private boolean testChevauchement(int[] coords, ArrayList<Bateau> lstBateau){
+    private boolean testChevauchement(int[] coords, int deltaX, int deltaY, ArrayList<Bateau> lstBateau){
     	
+    	boolean chevauche = false;
     	int i = 0;
     	int j = 0;
     	int k = 0;
-    	int l = 0;
-    	boolean chevauche = false;
-
-    	while((i < lstBateau.size()) && !chevauche){
+    	
+    	while((i < this.getTailleBateau()) && !chevauche){
     		
-    		while((j <= lstBateau.get(i).getTailleBateau()) && !chevauche){
+    		int[] test = new int [2];
+    		test[0] = coords[0] + i * deltaX;
+    		test[1] = coords[1] + i * deltaY;
+    		
+    		if(!this.coordonneesPossibles(test)){
     			
-    			int[] test = new int[2];
-    			test = this.calculeCoordCaseBat(j);
+    			chevauche = true;
+    			break;
+    		}
+    		
+    		while((j < lstBateau.size()) && !chevauche){
     			
-    			if(!this.coordonneesPossibles(test)){
+    			while((k < lstBateau.get(j).getTailleBateau()) && !chevauche){
     				
-    				chevauche = true;
-    			}
-    			
-    			while((k < j) && !chevauche){
+    				int[] test2 = new int [2];
+    				test2[0] = lstBateau.get(j).getXCaseArriere() + k * lstBateau.get(j).getDeltaX();
+    				test2[1] = lstBateau.get(j).getYCaseArriere() + k * lstBateau.get(j).getDeltaY();
     				
-    				while((l <= lstBateau.get(k).getTailleBateau()) && !chevauche){
+    				if((test[0] == test2[0]) && (test[1] == test2[1])){
     					
-    					int[] test2 = new int[2];
-    	    			test2 = this.calculeCoordCaseBat(l);
-        	    		
-        	    		if((test2[0] == coords[0]) && (test2[1] == coords[1])){
-        	    			
-        	    			chevauche = true;
-        	    		}
-        	    		l++;
+    					chevauche = true;
+    					break;
     				}
     				k++;
     			}
     			j++;
     		}
-    		i++;
+    		
+    		i++;	
     	}
+
+    	
     	return chevauche;
     }
 
