@@ -8,8 +8,8 @@
 
 public class Environnement {
 
-    public static final int MAX_X = 10; // x in [1, 15]
-    public static final int MAX_Y = 10; // y in [1, 5]
+    public static final int MAX_X = 15; // x in [1, 15]
+    public static final int MAX_Y = 5; // y in [1, 5]
     private char[][] env;
 
     ////////////////////////////////////////// CONSTRUCTEURS ///////////////////////////////////////////
@@ -100,11 +100,11 @@ public class Environnement {
         int lg_env_X = this.getEnv().length;
         int lg_env_Y = (this.getEnv())[0].length;
 
-        for (i = 0 ; i < lg_env_X ; i++) {
+        for (i = 0 ; i < lg_env_Y ; i++) {
 
-            for (j = 0 ; j < lg_env_Y ; j++) {
+            for (j = 0 ; j < lg_env_X ; j++) {
 
-                retour += this.getEnv(i, j);
+                retour += this.getEnv(j, i);
             }
 
             retour += "\n";
