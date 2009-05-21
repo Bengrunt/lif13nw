@@ -6,54 +6,64 @@
  */
 public class Partie {
 
-    protected Joueur j1,  j2;
-    
+    protected Joueur j1,j2;
+
+    //////////////////////////////////////////////// CONSTRUCTEURS //////////////////////////////////////////////
+
     /**
-     *Mutateur de ji dans Partie 
-     * @param J1 
+     * Constructeur de Partie.
      */
-    public void setJ1(Joueur J1){
-    	
-    	this.j1 = J1;
-    }
-    
-    /**
-     *Mutateur de j2 dans Partie 
-     * @param J1
-     */
-    public void setJ2(Joueur J2){
-    	
-    	this.j2 = J2;
-    }
-    
-    /**
-     * Accesseur de j1 dans Partie
-     * @return Joueur 1
-     */
-    public Joueur getJ1(){
-    	
-    	return this.j1;
-    }
-    
-    /**
-     * Accesseur de j2 dans Partie
-     * @return Joueur 2
-     */
-    public Joueur getJ2(){
-    	
-    	return this.j2;
-    }
-    
     public Partie() {
-    	
-        Joueur J1 = new JoueurHumain();
-        Joueur J2 = new JoueurIA();
-        
-        this.setJ1(J1);
-        this.setJ2(J2);
+
+        this.j1 = new JoueurHumain();
+        this.j2 = new JoueurIA();
     }
 
-    // procédure de vie de la partie
+    ///////////////////////////////////////////////// ACCESSEURS ///////////////////////////////////////////////////
+
+    /**
+     * Accesseur de l'attribut "j1" de la classe Partie.
+     * @return Renvoie un Joueur.
+     */
+    public Joueur getJ1(){
+
+    	return this.j1;
+    }
+
+    /**
+    * Accesseur de l'attribut "j2" de la classe Partie.
+     * @return Renvoie un Joueur.
+     */
+    public Joueur getJ2(){
+
+    	return this.j2;
+    }
+
+    ///////////////////////////////////////////////// MUTATEURS ////////////////////////////////////////////////////
+
+    /**
+     * Mutateur de l'attribut "j1" de la classe Partie.
+     * @param j Joueur que l'on veut copier dans j1.
+     */
+    public void setJ1(Joueur j){
+    	
+    	this.j1 = j;
+    }
+    
+    /**
+     * Mutateur de l'attribut "j2" de la classe Partie.
+     * @param j Joueur que l'on veut copier dans j2.
+     */
+    public void setJ2(Joueur j){
+    	
+    	this.j2 = j;
+    }
+
+    ///////////////////////////////////////////////////////////// AUTRES METHODES /////////////////////////////////////////////////
+
+    /**
+     * Procédure de vie de la partie.
+     */
     public void run() {
         System.out.println("Commencement de la partie ...");
         boolean partieTerminee = false;
@@ -117,11 +127,12 @@ public class Partie {
         } else {
             System.out.println(this.getJ1() + " a gagné la partie !!");
         }
-
-
     }
 
-    // point d'entrée du programme
+    /**
+     * Fonction principale du programme.
+     * @param args Arguments du programme.
+     */
     public static void main(String[] args) {
         // création d'une partie
         Partie p = new Partie();
