@@ -7,22 +7,38 @@
 public class Partie {
 
     protected Joueur j1,  j2;
-
+    
+    /**
+     *Mutateur de ji dans Partie 
+     * @param J1
+     */
     public void setJ1(Joueur J1){
     	
     	this.j1 = J1;
     }
     
+    /**
+     *Mutateur de j2 dans Partie 
+     * @param J1
+     */
     public void setJ2(Joueur J2){
     	
     	this.j2 = J2;
     }
     
+    /**
+     * Accesseur de j1 dans Partie
+     * @return
+     */
     public Joueur getJ1(){
     	
     	return this.j1;
     }
     
+    /**
+     * Accesseur de j2 dans Partie
+     * @return
+     */
     public Joueur getJ2(){
     	
     	return this.j2;
