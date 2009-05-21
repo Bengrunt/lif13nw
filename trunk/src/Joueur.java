@@ -27,7 +27,8 @@ public abstract class Joueur {
         //              lstBateau : liste des bateaux présents, afin de tester le chevauchement lors du placement initial    
         bT = new BateauRadarTireur(3, lstBateau);
         lstBateau.add(bT);
-        //bB = new BateauBrouilleur(3, lstBateau);
+        bB = new BateauBrouilleur(3, lstBateau);
+        lstBateau.add(bB);
     }
 
 
@@ -66,7 +67,7 @@ public abstract class Joueur {
     public void marquerEnvironnementExact(Environnement env) {
 
         bT.marquerEnvironnementExact(env);
-        //bB.marquerEnvironnementExact(env);
+        bB.marquerEnvironnementExact(env);
     }
 
     /*
