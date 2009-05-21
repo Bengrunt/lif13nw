@@ -63,7 +63,7 @@ public class Environnement {
      */
     public void set(int x, int y, char val) {
 
-        env[y][x] = val;
+        env[x][y] = val;
     }
 
     //////////////////////////////////////// AUTRES METHODES ///////////////////////////////////////////
@@ -77,9 +77,9 @@ public class Environnement {
         int i;
         int j;
 
-        for (i = 0 ; i < MAX_Y ; i++) {
+        for (i = 0 ; i < MAX_X ; i++) {
 
-            for (j = 0 ; j < MAX_X ; j++) {
+            for (j = 0 ; j < MAX_Y ; j++) {
 
                 this.set(i, j, 'O');
             }
