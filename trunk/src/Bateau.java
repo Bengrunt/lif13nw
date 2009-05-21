@@ -67,7 +67,7 @@ public abstract class Bateau {
 
     /**
      * Accesseur de la ième case de l'attribut "touche" de la classe Bateau.
-     * @param i Numéro de la case de l'attribut "touche" à laquelle on veut accéder.
+     * @param i Indice de la case de l'attribut "touche" à laquelle on veut accéder.
      * @return Renvoie un booléen.
      */
     public boolean getIemeTouche(int i) {
@@ -168,7 +168,7 @@ public abstract class Bateau {
             michel[0] = this.getXCaseArriere();
             michel[1] = this.getYCaseArriere();
             
-            switch ((int) (Math.random() * 4) + 1) {
+            switch ((int) (Math.random() * 8) + 1) {
                 case 1:
                     this.setDeltaX(1); 
                     this.setDeltaY(0); 
@@ -186,6 +186,26 @@ public abstract class Bateau {
                 case 4:
                 	this.setDeltaX(0);
                     this.setDeltaY(-1);
+                    break;
+
+                case 5:
+                	this.setDeltaX(1);
+                    this.setDeltaY(-1);
+                    break;
+
+                case 6:
+                	this.setDeltaX(-1);
+                    this.setDeltaY(-1);
+                    break;
+
+                case 7:
+                	this.setDeltaX(1);
+                    this.setDeltaY(1);
+                    break;
+
+                case 8:
+                	this.setDeltaX(-1);
+                    this.setDeltaY(1);
                     break;
             }
 
