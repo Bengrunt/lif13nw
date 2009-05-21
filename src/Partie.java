@@ -28,7 +28,7 @@ public class Partie {
     
     /**
      * Accesseur de j1 dans Partie
-     * @return
+     * @return Joueur 1
      */
     public Joueur getJ1(){
     	
@@ -37,7 +37,7 @@ public class Partie {
     
     /**
      * Accesseur de j2 dans Partie
-     * @return
+     * @return Joueur 2
      */
     public Joueur getJ2(){
     	
