@@ -83,11 +83,16 @@ public abstract class Joueur {
     public void appliquerCoup(int[] coup) {
 
         int i;
+        int tailleBb = this.bB.getTailleBateau();
+        int tailleBt = this.bT.getTailleBateau();
         
         //On vérifie si le bateau tireur est touché.
-        if( this.bT.estTouche(coup) ) {
-            for( i = 1 ; i <= this.bT.getTailleBateau() ; i++ )  {
-                if( Arrays.equals(this.bT.calculeCoordCaseBat(i), coup) ) {
+        if(this.bT.estTouche(coup)) {
+
+            for(i = 0 ; i < tailleBt ; i++) {
+
+                if(Arrays.equals(this.bT.calculeCoordCaseBat(i), coup)) {
+
                     this.bT.setIemeTouche(i, true);
                     break;
                 }
@@ -97,9 +102,12 @@ public abstract class Joueur {
         }
 
         //On vérifie si le bateau brouilleur est touché.
-        if( this.bB.estTouche(coup) ) {
-            for( i = 1 ; i <= this.bB.getTailleBateau() ; i++ ) {
-                if(Arrays.equals(this.bB.calculeCoordCaseBat(i), coup) ) {
+        if(this.bB.estTouche(coup)) {
+
+            for(i = 0 ; i < tailleBb ; i++) {
+
+                if(Arrays.equals(this.bB.calculeCoordCaseBat(i), coup)) {
+
                     this.bB.setIemeTouche(i, true);
                     break;
                 }
