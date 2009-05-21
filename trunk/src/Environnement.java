@@ -38,7 +38,7 @@ public class Environnement {
      * */
     public void set(int x, int y, char val) {
 
-        env[y][x] = val;
+        env[x][y] = val;
     }
 
     /*
