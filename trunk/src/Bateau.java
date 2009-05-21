@@ -254,49 +254,29 @@ public abstract class Bateau {
     	return chevauche;
     }
 
-    /*
-     * Marque l'environnement env d'un 'X' pour chaque case associée au bateau
-     * 
+    /**
+     * Marque l'environnement env d'un 'X' pour chaque case associée au bateau, et d'un 'I' si la case est touchée.
+     * @param env L'environnement où se trouve le bateau à afficher.
      */
     public void marquerEnvironnementExact(Environnement env) {
+        
+        int tailleBat = this.getTailleBateau();
+        int[] coords = new int[2];
+        
+        for (int i = 0 ; i < tailleBat ; i++) {
 
-        if (deltaY != 0) {
+            coords = this.calculeCoordCaseBat(i);
 
+            if (this.getIemeTouche(i)) {
 
-
-
-            for (int i = 0; i < tailleBateau; i++) {
-
-                char info = 'X';
-                if (touche[i]) {
-
-                    info = 'I';
-                }
-
-
-                env.set(xCaseArriere, yCaseArriere + i * Integer.signum(deltaY), 'X');
-
+                env.set(coords[0], coords[1], 'I');
             }
 
-        } else {
+            else {
 
-
-
-            for (int i = 0; i < tailleBateau; i++) {
-
-                char info = 'X';
-                if (touche[i]) {
-
-                    info = 'I';
-                }
-
-                env.set(xCaseArriere + i * Integer.signum(deltaX), yCaseArriere, 'X');
-
+                env.set(coords[0], coords[1], 'X');
             }
-
-
         }
-
     }
 
     /**
