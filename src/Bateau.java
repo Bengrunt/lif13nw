@@ -263,9 +263,11 @@ public abstract class Bateau {
         int tailleBat = this.getTailleBateau();
         int[] coords = new int[2];
         
-        for (int i = 0 ; i < tailleBat ; i++) {
+        for (int i = 0 ; i < tailleBat - 1 ; i++) {
 
             coords = this.calculeCoordCaseBat(i);
+            /*System.out.println("coord 0 : " + coords[0]);
+            System.out.println("coord 1 : " + coords[1]);*/
 
             if (this.getIemeTouche(i)) {
 
