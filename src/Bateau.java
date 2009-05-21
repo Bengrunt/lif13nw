@@ -302,8 +302,9 @@ public abstract class Bateau {
         boolean res = false;
         int[] coords = new int[2];
         int i = 0;
+        int tailleBat = this.getTailleBateau();
 
-        while (i < this.getTailleBateau()) {
+        while (i < tailleBat) {
             coords = this.calculeCoordCaseBat(i);
             if ((coords[0] == coup[0]) && (coords[1] == coup[1])) {
                 res = true;
@@ -323,15 +324,16 @@ public abstract class Bateau {
 
         int i = 1;
         int casesTouchees = 0;
+        int tailleBat = this.getTailleBateau();
 
-        while (i <= this.getTailleBateau()) {
+        while (i <= tailleBat) {
             if (this.getIemeTouche(i) == true) {
                 casesTouchees++;
             }
             i++;
         }
 
-        if (casesTouchees == this.getTailleBateau()) {
+        if (casesTouchees == tailleBat) {
             return true;
         } else {
             return false;
