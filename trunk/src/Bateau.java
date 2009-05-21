@@ -248,12 +248,9 @@ public abstract class Bateau {
     			}
     			j++;
     		}
-    		
     		i++;	
     	}
-
-    	
-    	return chevauche;
+        return chevauche;
     }
 
     /**
