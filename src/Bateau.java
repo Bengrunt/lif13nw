@@ -24,10 +24,11 @@ public abstract class Bateau {
      */
     public Bateau(int _tailleBateau, ArrayList<Bateau> lstBateau) {
 
-        tailleBateau = _tailleBateau;
-        touche = new boolean[tailleBateau];
+        this.setTailleBateau(_tailleBateau);
+        int tailleBat = this.getTailleBateau();
+        touche = new boolean[tailleBat];
 
-        for (int i = 0; i < tailleBateau; i++) {
+        for (int i = 0; i < tailleBat; i++) {
 
             touche[i] = false;
         }
