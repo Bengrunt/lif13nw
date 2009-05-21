@@ -216,10 +216,13 @@ public abstract class Bateau {
     	int i = 0;
     	int j = 0;
     	int k = 0;
+    	int tailleBat = this.getTailleBateau();
+    	int[] test = new int [2];
+    	int[] test2 = new int [2];
+    	int tailleList = lstBateau.size();
     	
-    	while((i < this.getTailleBateau()) && !chevauche) {
+    	while((i < tailleBat ) && !chevauche) {
     		
-    		int[] test = new int [2];
     		test[0] = coords[0] + i * deltaX;
             test[1] = coords[1] + i * deltaY;
     		
@@ -229,11 +232,10 @@ public abstract class Bateau {
     			break;
     		}
     		
-    		while((j < lstBateau.size()) && !chevauche) {
+    		while((j < tailleList) && !chevauche) {
     			
     			while((k < lstBateau.get(j).getTailleBateau())) {
     				
-    				int[] test2 = new int [2];
     				test2[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
     				test2[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
     				
