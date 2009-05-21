@@ -349,11 +349,11 @@ public abstract class Bateau {
      */
     public boolean estCoule() {
 
-        int i = 1;
+        int i = 0;
         int casesTouchees = 0;
         int tailleBat = this.getTailleBateau();
 
-        while (i <= tailleBat) {
+        while (i < tailleBat) {
             if (this.getIemeTouche(i) == true) {
                 casesTouchees++;
             }
