@@ -66,7 +66,7 @@ public abstract class Joueur {
     public void marquerEnvironnementExact(Environnement env) {
 
         bT.marquerEnvironnementExact(env);
-        bB.marquerEnvironnementExact(env);
+        //bB.marquerEnvironnementExact(env);
     }
 
     /*
