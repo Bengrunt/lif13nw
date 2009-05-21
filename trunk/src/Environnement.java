@@ -100,7 +100,7 @@ public class Environnement {
         int lg_env_X = this.getEnv().length;
         int lg_env_Y = (this.getEnv())[0].length;
 
-        for (i = 0 ; i < lg_env_Y ; i++) {
+        for (i = lg_env_Y-1 ; i >= 0 ; i--) {
 
             for (j = 0 ; j < lg_env_X ; j++) {
 
