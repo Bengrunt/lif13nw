@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 12/05/2009
+ * @version 21/05/2009
  */
 public abstract class Joueur {
 
