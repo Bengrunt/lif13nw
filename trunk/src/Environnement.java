@@ -19,7 +19,7 @@ public class Environnement {
      */
     public Environnement() {
 
-        env = new char[MAX_Y][MAX_X];
+        env = new char[MAX_X][MAX_Y];
     }
 
     /**
