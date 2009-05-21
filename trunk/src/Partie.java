@@ -55,7 +55,7 @@ public class Partie {
 
     // procédure de vie de la partie
     public void run() {
-        System.out.println("Commencement pde la partie ...");
+        System.out.println("Commencement de la partie ...");
         boolean partieTerminee = false;
 
         // Création des environnements : objets utilisés pour représenter l'environnement des joueurs
