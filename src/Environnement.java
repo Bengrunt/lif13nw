@@ -8,8 +8,8 @@
 
 public class Environnement {
 
-    public static final int MAX_X = 15; // x in [1, 15]
-    public static final int MAX_Y = 5; // y in [1, 5]
+    public static final int MAX_X = 10; // x in [1, 15]
+    public static final int MAX_Y = 10; // y in [1, 5]
     private char[][] env;
 
     ////////////////////////////////////////// CONSTRUCTEURS ///////////////////////////////////////////
