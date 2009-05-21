@@ -10,7 +10,7 @@ public class Partie {
     
     /**
      *Mutateur de ji dans Partie 
-     * @param J1
+     * @param J1 
      */
     public void setJ1(Joueur J1){
     	
