@@ -209,7 +209,7 @@ public abstract class Bateau {
                     break;
             }
 
-        } while (!this.testChevauchement(michel, this.getDeltaX(), this.getDeltaY(), lstBateau));
+        } while (this.testChevauchement(michel, this.getDeltaX(), this.getDeltaY(), lstBateau));
 
     }
 
@@ -246,6 +246,9 @@ public abstract class Bateau {
     		
     		test[0] = coords[0] + i * deltaX;
             test[1] = coords[1] + i * deltaY;
+            
+            System.out.println("test 0 : " + test[0]);
+            System.out.println("test 1 : " + test[1]);
     		
     		if(!this.coordonneesPossibles(test)) {
     			
@@ -271,6 +274,7 @@ public abstract class Bateau {
     		}
     		i++;	
     	}
+    	System.out.println("chevauche : " + chevauche);
         return chevauche;
     }
 
@@ -286,8 +290,8 @@ public abstract class Bateau {
         for (int i = 0 ; i < tailleBat - 1 ; i++) {
 
             coords = this.calculeCoordCaseBat(i);
-            System.out.println("coord 0 : " + coords[0]);
-            System.out.println("coord 1 : " + coords[1]);
+            /*System.out.println("coord 0 : " + coords[0]);
+            System.out.println("coord 1 : " + coords[1]);*/
 
             if (this.getIemeTouche(i)) {
 
