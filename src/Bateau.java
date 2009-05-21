@@ -170,22 +170,22 @@ public abstract class Bateau {
             
             switch ((int) (Math.random() * 4) + 1) {
                 case 1:
-                    this.setDeltaX(this.getTailleBateau()); 
+                    this.setDeltaX(1); 
                     this.setDeltaY(0); 
                     break;
                 case 2:
-                    this.setDeltaX(-this.getTailleBateau());
+                    this.setDeltaX(-1);
                     this.setDeltaY(0); 
                     break;
 
                 case 3:
                 	this.setDeltaX(0);
-                	this.setDeltaY(this.getTailleBateau());
+                	this.setDeltaY(1);
                     break;
 
                 case 4:
                 	this.setDeltaX(0);
-                    this.setDeltaY(-this.getTailleBateau());
+                    this.setDeltaY(-1);
                     break;
             }
 
@@ -266,8 +266,8 @@ public abstract class Bateau {
         for (int i = 0 ; i < tailleBat - 1 ; i++) {
 
             coords = this.calculeCoordCaseBat(i);
-            /*System.out.println("coord 0 : " + coords[0]);
-            System.out.println("coord 1 : " + coords[1]);*/
+            System.out.println("coord 0 : " + coords[0]);
+            System.out.println("coord 1 : " + coords[1]);
 
             if (this.getIemeTouche(i)) {
 
