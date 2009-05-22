@@ -18,8 +18,8 @@ public class JoueurIA extends Joueur {
         
         int[] retour = new int[2];
 
-        retour[0] = (int) ( Math.random() * (double)Environnement.MAX_X );
-        retour[1] = (int) ( Math.random() * (double)Environnement.MAX_Y );
+        retour[0] = (int) ( Math.random() * Environnement.MAX_X );
+        retour[1] = (int) ( Math.random() * Environnement.MAX_Y );
 
         System.out.println("Votre adversaire tire en [" + retour[0] + "," + retour[1] + "]." );
         
@@ -31,10 +31,22 @@ public class JoueurIA extends Joueur {
      * @return Renvoie un StringTokenizer contenant les actions que fait le joueur IA.
      */
     @Override
-    public StringTokenizer getDeplacement() {
+    public String getDeplacement() {
 
-        String str = new String();
-        StringTokenizer dep = new StringTokenizer(str);
+        String dep = new String();
+        int rnd = (int) Math.random() * 2;
+
+        switch(rnd) {
+
+            case 0 : dep = "a";
+            break;
+
+            case 1 : dep = "g";
+            break;
+
+            case 2 : dep = "d";
+            break;
+        }
 
         return dep;
     }
