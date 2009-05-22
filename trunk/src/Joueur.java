@@ -80,10 +80,13 @@ public abstract class Joueur {
         return null;
     }
 
-    public StringTokenizer getDeplacement() {
+    /**
+     * Fonction abstraite, pour récupérer le déplacement.
+     * @return Renvoie une chaine de caractère représentant le déplacement.
+     */
+    public String getDeplacement() {
 
-        String str = new String();
-        StringTokenizer dep = new StringTokenizer(str);
+        String dep = new String();
 
         return dep;
     }

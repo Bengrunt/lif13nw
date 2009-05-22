@@ -72,10 +72,38 @@ public class JoueurHumain extends Joueur {
      * @return Renvoie un StringTokenizer.
      */
     @Override
-    public StringTokenizer getDeplacement() {
+    public String getDeplacement() {
 
-        String str = new String();
-        StringTokenizer dep = new StringTokenizer(str);
+        String dep = new String();
+        boolean saisieOK = false;
+
+        BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
+
+        while (!saisieOK) {
+
+            saisieOK = true;
+            System.out.println("Veuillez entrer votre série de déplacements séparés par des espaces.(a : avancer ; g : piv à gauche ; d : piv à droite \n");
+
+            try {
+
+                dep = entree.readLine();
+            } catch (IOException ex) {
+
+                Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+            if (dep.length() == 1) { // Un seul caractère
+
+                saisieOK = false;
+            }
+
+            if (!(dep.equalsIgnoreCase("a") || dep.equalsIgnoreCase("g") || dep.equalsIgnoreCase("d"))) { // test validité : { A ; a ; D ; d ; G ; g }
+
+                saisieOK = false;
+            }
+        }
 
         return dep;
     }
