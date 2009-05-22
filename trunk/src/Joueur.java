@@ -5,13 +5,14 @@ import java.util.Arrays;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 21/05/2009
+ * @version 22/05/2009
  */
 public abstract class Joueur {
 
     //////////////////////////////////////// ATTRIBUTS /////////////////////////////////////////////////////
-    
-    protected BateauRadarTireur bT; // Bateau tireur
+
+    protected ArrayList<Bateau> lstBateau; // Liste des bateaux du joueur.
+    protected BateauRadarTireur bT; // Bateau radar-tireur
     protected BateauBrouilleur bB; // Bateau brouilleur
 
     //////////////////////////////////////// CONSTRUCTEURS ///////////////////////////////////////////////////
@@ -21,7 +22,7 @@ public abstract class Joueur {
      */
     public Joueur() {
 
-        ArrayList<Bateau> lstBateau = new ArrayList();
+        lstBateau = new ArrayList(); //Liste des bateaux du joueur.
         // création des deux bateaux du joueur
         // paramètres : taille : founit la taille des bateaux
         //              lstBateau : liste des bateaux présents, afin de tester le chevauchement lors du placement initial    

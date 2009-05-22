@@ -9,14 +9,15 @@ import java.util.logging.Logger;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 21/05/2009
+ * @version 22/05/2009
  */
 public class JoueurHumain extends Joueur {
 
+    //////////////////////////////////////////////////// AUTRES METHODES /////////////////////////////////////////////////////////
+
     /*
-     * Saisie un coup au clavier pour le joueur humain
-     *
-     * */
+     * Saisie d'un coup au clavier pour le joueur humain.
+     */
     @Override
     public int[] getCoup() {
 
@@ -63,6 +64,13 @@ public class JoueurHumain extends Joueur {
         }
 
         return retour;
+    }
+
+    /**
+     *
+     */
+    public void getDeplacement() {
+
     }
 
     /**
