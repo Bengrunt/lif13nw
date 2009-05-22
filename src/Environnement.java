@@ -2,15 +2,17 @@
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 21/05/2009
+ * @version 22/05/2009
  * Les objets environnement sont utilisés pour les représentations graphiques des environnements.
  */
 
 public class Environnement {
 
-    public static final int MAX_X = 15; // x in [1, 15]
-    public static final int MAX_Y = 5; // y in [1, 5]
-    private char[][] env;
+    /////////////////////////////////////////// ATTRIBUTS //////////////////////////////////////////////
+
+    public static final int MAX_X = 15; // x in [1, 15].
+    public static final int MAX_Y = 5; // y in [1, 5].
+    private char[][] env; //Tableau de caractères représentant l'environnement.
 
     ////////////////////////////////////////// CONSTRUCTEURS ///////////////////////////////////////////
 

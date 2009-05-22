@@ -2,7 +2,7 @@
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 21/05/2009
+ * @version 22/05/2009
  */
 public class JoueurIA extends Joueur {
 
