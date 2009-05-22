@@ -1,6 +1,15 @@
 
+<<<<<<< .mine
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.String;
+=======
+>>>>>>> .r58
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
@@ -101,6 +110,103 @@ public abstract class Joueur {
      * Procédure qui regarde si le joueur est concerné par le coup et applique les dégats occasionnés si c'est le cas.
      * @param coup Tableau de deux entiers qui décrivent les coordonnées du coup.
      */
+    
+    public void getAction(Bateau bat){
+    	
+    	int cptTir = 0;
+    	int cptDep = 0;
+    	int tirRest;
+    	int depRest;
+    	
+    	String act = "";
+    	String bato = "";
+    	char cher;
+    	
+    	Bateau ship;
+    	
+    	boolean saisieOK = false;
+    	BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
+    	
+    	while (!saisieOK) {
+
+            saisieOK = true;
+            System.out.println("Avec quel Bateau voulez-vous interagir ? (t : Bateau Tireur ou b : Bateau Brouilleur :");
+            
+            try {
+
+                bato = entree.readLine();
+            } catch (IOException ex) {
+
+                Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+            if (bato.length() == 1) { // Un seul caractère
+
+                saisieOK = false;
+            }
+
+            if (!(bato.equalsIgnoreCase("t") || bato.equalsIgnoreCase("b"))){
+
+                saisieOK = false;
+            }
+        }
+    	
+    	if(bato.equalsIgnoreCase("t")){
+    		
+    		ship = this.getBateauTireur();
+    		tirRest = BateauRadarTireur.MAX_TIR - cptTir;
+    		depRest = BateauRadarTireur.MAX_DEP - cptDep;
+    	}
+    	else {
+    		
+    		ship = this.getBateauBrouilleur();
+    		tirRest = BateauBrouilleur.MAX_TIR - cptTir;
+    		depRest = BateauBrouilleur.MAX_DEP - cptDep;
+    	}
+    	
+    	while (!saisieOK) {
+
+            saisieOK = true;
+            System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement :");
+            
+            try {
+
+                act = entree.readLine();
+            } catch (IOException ex) {
+
+                Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+            if (act.length() == 1) { // Un seul caractère
+
+                saisieOK = false;
+            }
+
+            if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d"))){
+
+                saisieOK = false;
+            }
+        }
+    	
+    	if(act.equalsIgnoreCase("t")) && cptTir != {
+    		
+    		this.getCoup();
+    		cptTir++;
+    	}
+    	else if (act.equalsIgnoreCase("d")){
+    		
+    		this.getDeplacement();
+    		cptDep++;
+    	}
+    	
+    	
+    	
+    }
+    
     public void appliquerCoup(int[] coup) {
 
         int i;
