@@ -1,6 +1,8 @@
 
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
@@ -76,6 +78,14 @@ public abstract class Joueur {
      * */
     public int[] getCoup() { // retourne les coordonnées x et y du coup
         return null;
+    }
+
+    public StringTokenizer getDeplacement() {
+
+        String str = new String();
+        StringTokenizer dep = new StringTokenizer(str);
+
+        return dep;
     }
 
     /**
