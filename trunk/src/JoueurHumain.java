@@ -17,6 +17,7 @@ public class JoueurHumain extends Joueur {
 
     /*
      * Saisie d'un coup au clavier pour le joueur humain.
+     * @return Renvoie un tableau d'entiers.
      */
     @Override
     public int[] getCoup() {
@@ -67,10 +68,16 @@ public class JoueurHumain extends Joueur {
     }
 
     /**
-     *
+     * Fonction de saisie de déplacement clavier pour le joueur humain.
+     * @return Renvoie un StringTokenizer.
      */
-    public void getDeplacement() {
+    @Override
+    public StringTokenizer getDeplacement() {
 
+        String str = new String();
+        StringTokenizer dep = new StringTokenizer(str);
+
+        return dep;
     }
 
     /**

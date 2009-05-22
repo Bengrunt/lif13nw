@@ -1,4 +1,7 @@
 
+import java.util.StringTokenizer;
+
+
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
@@ -21,6 +24,19 @@ public class JoueurIA extends Joueur {
         System.out.println("Votre adversaire tire en [" + retour[0] + "," + retour[1] + "]." );
         
         return retour;
+    }
+
+    /**
+     * Fonction de calcul de déplacement pour le joueur IA.
+     * @return Renvoie un StringTokenizer contenant les actions que fait le joueur IA.
+     */
+    @Override
+    public StringTokenizer getDeplacement() {
+
+        String str = new String();
+        StringTokenizer dep = new StringTokenizer(str);
+
+        return dep;
     }
 
     /**
