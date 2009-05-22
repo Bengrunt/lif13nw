@@ -10,7 +10,7 @@ public class BateauRadarTireur extends Bateau {
 
     /////////////////////////////////////////// ATTRIBUTS //////////////////////////////////////////
 
-    public static final int MAX_ACT = 1; // nombre d'actions de déplacements par tour.
+    public static final int MAX_DEP = 1; // nombre d'actions de déplacements par tour.
     public static final int MAX_TIR = 2; // nombre d'actions de tir par tour.
 
     ///////////////////////////////////////// CONSTRUCTEURS ////////////////////////////////////////

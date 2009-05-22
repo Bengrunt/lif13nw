@@ -1,8 +1,6 @@
 
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.StringTokenizer;
 
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
@@ -30,7 +28,7 @@ public abstract class Joueur {
         //              lstBateau : liste des bateaux présents, afin de tester le chevauchement lors du placement initial    
         bT = new BateauRadarTireur(3, lstBateau);
         lstBateau.add(bT);
-        bB = new BateauBrouilleur(3, lstBateau);
+        bB = new BateauBrouilleur(2, lstBateau);
         lstBateau.add(bB);
     }
 
@@ -51,6 +49,14 @@ public abstract class Joueur {
      */
     public Bateau getBateauBrouilleur() {
         return this.bB;
+    }
+
+    /**
+     * Accesseur de l'attribut lstBateau de la classe "joueur".
+     * @return Renvoie un ArrayList<Bateau>.
+     */
+    public ArrayList<Bateau> getLstBateau() {
+        return this.lstBateau;
     }
 
     ////////////////////////////////////////// AUTRES METHODES //////////////////////////////////////////////////
@@ -130,6 +136,38 @@ public abstract class Joueur {
 
             System.out.println("Le bateau brouilleur du " + this.toString() + " a été touché sur sa " + i + "ième case");
         }
+    }
+
+    /**
+     * Procédure qui teste si le déplacement est faisable et l'applique le cas échéant.
+     * @param dep Chaine de caractère représentant le déplacement à effectuer.
+     * @param bat Le Bateau qui se déplace.
+     * @return Renvoie true si le déplacement a été effectué, false sinon.
+     */
+    public boolean appliquerDeplacement(String dep, Bateau bat) {
+
+        boolean res = false;
+        int taille = bat.getTailleBateau();
+        int dx = bat.getDeltaX();
+        int dy = bat.getDeltaY();
+        ArrayList<Bateau> lst = this.getLstBateau();
+
+        if(bat.getClass() == BateauBrouilleur.class) { //C'est un bateau brouilleur
+
+            BateauBrouilleur batSimu = new BateauBrouilleur(taille, lst);
+
+
+        }
+        else { //C'est un bateau radar-tireur
+
+
+
+        }
+
+
+
+
+        return res;
     }
 }
 

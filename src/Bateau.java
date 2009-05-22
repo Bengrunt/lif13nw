@@ -247,9 +247,6 @@ public abstract class Bateau {
     		test[0] = coords[0] + i * deltaX;
             test[1] = coords[1] + i * deltaY;
             
-            System.out.println("test 0 : " + test[0]);
-            System.out.println("test 1 : " + test[1]);
-    		
     		if(!this.coordonneesPossibles(test)) {
     			
     			chevauche = true;
@@ -264,6 +261,11 @@ public abstract class Bateau {
     				test2[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
     				
     				if((test[0] == test2[0]) && (test[1] == test2[1])) {
+
+                        if(k == 0 && test[0] == this.getXCaseArriere() && test[1] == this.getYCaseArriere()) {
+                            chevauche = false;
+                            break;
+                        }
     					
     					chevauche = true;
     					break;
@@ -274,7 +276,7 @@ public abstract class Bateau {
     		}
     		i++;	
     	}
-    	System.out.println("chevauche : " + chevauche);
+
         return chevauche;
     }
 
