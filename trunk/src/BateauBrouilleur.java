@@ -10,7 +10,7 @@ public class BateauBrouilleur extends Bateau {
 
     //////////////////////////////////////////// ATTRIBUTS /////////////////////////////////////////
 
-    public static final int MAX_ACT = 2; // nombre d'actions de déplacements par tour.
+    public static final int MAX_DEP = 2; // nombre d'actions de déplacements par tour.
     public static final int MAX_TIR = 0; // nombre d'actions de tir par tour.
 
     //////////////////////////////////////// CONSTRUCTEURS /////////////////////////////////////////
