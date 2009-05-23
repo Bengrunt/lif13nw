@@ -2,6 +2,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.String;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +48,7 @@ public class JoueurHumain extends Joueur {
 
                 try {
 
-                    retour[0] = Integer.parseInt(st.nextToken()) - 1; // coordonnées manipulées à partir de 0
+                    retour[0] = convAlpha((((st.nextToken()).trim()).toCharArray())[0]); // coordonnées manipulées à partir de 0
                     retour[1] = Integer.parseInt(st.nextToken()) - 1;
                 } catch (NumberFormatException e) {
 
@@ -116,5 +117,59 @@ public class JoueurHumain extends Joueur {
     public String toString() {
 
         return "Joueur Humain";
+    }
+
+    private int convAlpha(char ch) {
+        int res = 0;
+
+        switch(ch) {
+
+            case 'a' : res = 1;
+            break;
+
+            case 'b' : res = 2;
+            break;
+
+            case 'c' : res = 3;
+            break;
+
+            case 'd' : res = 4;
+            break;
+
+            case 'e' : res = 5;
+            break;
+
+            case 'f' : res = 6;
+            break;
+
+            case 'g' : res = 7;
+            break;
+
+            case 'h' : res = 8;
+            break;
+
+            case 'i' : res = 9;
+            break;
+
+            case 'j' : res = 10;
+            break;
+
+            case 'k' : res = 11;
+            break;
+
+            case 'l' : res = 12;
+            break;
+
+            case 'm' : res = 13;
+            break;
+
+            case 'n' : res = 14;
+            break;
+
+            case 'o' : res = 15;
+            break;
+        }
+
+        return res;
     }
 }
