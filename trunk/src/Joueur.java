@@ -118,6 +118,8 @@ public abstract class Joueur {
     	int depRest;
     	int MaxTir = 0;
     	int MaxDep = 0;
+    	int actionNb = 0;
+    	int [] nbCharAct = new int[100];
     	
     	String act = "";
     	String listeAction = "";
@@ -175,7 +177,9 @@ public abstract class Joueur {
     				if(tirRest > 0){
     					
     					int [] coup = this.getCoup();
-    					listeAction += "t" + coup[0] + coup[1] + ";";
+    					listeAction += "t" + ";" + coup[0] + ";" + coup[1] + ";";
+    					nbCharAct[actionNb] = 4;
+    					actionNb++;
         				cptTir++;
     				}
     				else{
@@ -188,7 +192,9 @@ public abstract class Joueur {
     				if(depRest > 0){
     					
     					String dep = this.getDeplacement();
-    					listeAction += "d" + dep;
+    					listeAction += "d" + ";" + dep + ";";
+    					nbCharAct[actionNb] = 3;
+    					actionNb++;
     					cptDep++;
     				}
     				else{
@@ -202,8 +208,22 @@ public abstract class Joueur {
     			}
     			else if (act.equalsIgnoreCase("s")){
     	    		
-    				StringTokenizer stk = new StringTokenizer(listeAction, ";");
-    				StringBuffer stb = new StringBuffer(listeAction);
+    				if(actionNb > 0){
+    					
+    					StringBuffer stb = new StringBuffer(listeAction);
+        				stb.trimToSize();
+        				int start = stb.length() - nbCharAct[actionNb];
+        				int end = stb.length();
+        				stb.delete(start, end);
+        				listeAction = stb.toString();
+        				actionNb++;
+    				}
+    				else{
+    					
+    					System.out.println("Il n'y a pas d'action à annuler");
+    				}
+    				
+    				
     			}
     			if((tirRest <= 0) && depRest <= 0){
     				
@@ -340,6 +360,27 @@ public abstract class Joueur {
         }
 
         return res;
+    }
+    
+    public void appliquerAction(String str, Bateau bat){
+    	
+    	StringTokenizer stk = new StringTokenizer(str, ";");
+    	
+    	while(stk.nextToken() != ""){
+    		
+    		if(stk.nextToken() == "t"){
+        		
+        		int [] coup = new int[2];
+        		coup[0] = Integer.parseInt(stk.nextToken());
+        		coup[1] = Integer.parseInt(stk.nextToken());
+        		this.appliquerCoup(coup);
+        	}
+        	else if(stk.nextToken() == "d"){
+        		
+        		String instruction = stk.nextToken();
+        		this.appliquerDeplacement(instruction, bat);
+        	}
+    	}
     }
 }
 
