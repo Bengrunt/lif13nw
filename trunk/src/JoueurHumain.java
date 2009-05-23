@@ -94,7 +94,7 @@ public class JoueurHumain extends Joueur {
 
 
 
-            if (dep.length() == 1) { // Un seul caractère
+            if (dep.length() != 1) { // Un seul caractère
 
                 saisieOK = false;
             }
@@ -148,6 +148,7 @@ public class JoueurHumain extends Joueur {
     			
     			tirRest = MaxTir - cptTir;
     			depRest = MaxDep - cptDep;
+    			saisieOK = false;
     			
     			while (!saisieOK) {
     				
