@@ -109,18 +109,17 @@ public abstract class Joueur {
      * @param coup Tableau de deux entiers qui décrivent les coordonnées du coup.
      */
     
-    public void getAction(Bateau bat){
+    public String getAction(Bateau bat){
     	
     	int cptTir = 0;
     	int cptDep = 0;
     	int tirRest;
     	int depRest;
-    	int MaxTir;
-    	int MaxDep;
-    	int i = 0;
+    	int MaxTir = 0;
+    	int MaxDep = 0;
     	
     	String act = "";
-    	String bato = "";
+    	String listeAction = "";
     	char cher;
     	
     	Bateau ship;
@@ -129,15 +128,13 @@ public abstract class Joueur {
     	boolean fin = false;
     	BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
     	
-    	while(i < this.getLstBateau().size()){
-    	
-    		if (this.getLstBateau().get(i).getClass() == BateauBrouilleur.class){
+    		if (bat.getClass() == BateauBrouilleur.class){
     		
     			MaxTir = BateauBrouilleur.MAX_TIR;
     			MaxDep = BateauBrouilleur.MAX_DEP;
     		}
     	
-    		if (this.getLstBateau().get(i).getClass() == BateauRadarTireur.class){
+    		if (bat.getClass() == BateauRadarTireur.class){
     		
     			MaxTir = BateauRadarTireur.MAX_TIR;
     			MaxDep = BateauRadarTireur.MAX_DEP;
@@ -179,7 +176,8 @@ public abstract class Joueur {
     				
     				if(tirRest > 0){
     					
-    					this.getCoup();
+    					int [] coup = this.getCoup();
+    					listeAction += "t" + coup[0] + coup[1] + ";";
         				cptTir++;
     				}
     				else{
@@ -191,7 +189,8 @@ public abstract class Joueur {
     		
     				if(depRest > 0){
     					
-    					this.getDeplacement();
+    					String dep = this.getDeplacement();
+    					listeAction += "d" + dep;
     					cptDep++;
     				}
     				else{
@@ -199,12 +198,13 @@ public abstract class Joueur {
     					System.out.println("Vous ne pouvez pas/plus déplacer ce bateau");
     				}
     			}
+    			if((tirRest <= 0) && depRest <= 0){
+    				
+    			}
     		}
-    	
-    	
     }
     
-    public void appliquerCoup(int[] coup) {
+ public void appliquerCoup(int[] coup) {
 
         int i;
         int tailleBb = this.bB.getTailleBateau();
