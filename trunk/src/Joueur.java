@@ -68,6 +68,7 @@ public abstract class Joueur {
     }
 
     ////////////////////////////////////////// AUTRES METHODES //////////////////////////////////////////////////
+
     /*
      * Fonction qui détermine si un joueur a perdu.
      * @return Renvoie true si le joueur a perdu.
@@ -109,7 +110,7 @@ public abstract class Joueur {
      * Procédure qui regarde si le joueur est concerné par le coup et applique les dégats occasionnés si c'est le cas.
      * @param coup Tableau de deux entiers qui décrivent les coordonnées du coup.
      */
-    
+
     public String getAction(Bateau bat){
     	
     	int cptTir = 0;
@@ -147,7 +148,6 @@ public abstract class Joueur {
     			
     			while (!saisieOK) {
     				
-
     				saisieOK = true;
     				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement ou s : supprimer l'action précédente ou f : finir les action sur ce bateau) :");
             
@@ -230,9 +230,11 @@ public abstract class Joueur {
     				fin = true;
     			}
     		}
+
     		
     		System.out.println("Fin des Actions pour ce bateau");
     		return listeAction;
+
     }
     
  public void appliquerCoup(int[] coup) {
