@@ -120,10 +120,7 @@ public abstract class Joueur {
     	
     	String act = "";
     	String listeAction = "";
-    	char cher;
-    	
-    	Bateau ship;
-    	
+
     	boolean saisieOK = false;
     	boolean fin = false;
     	BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
@@ -140,7 +137,7 @@ public abstract class Joueur {
     			MaxDep = BateauRadarTireur.MAX_DEP;
     		}
     	
-    		while(fin){
+    		while(!fin){
     			
     			tirRest = MaxTir - cptTir;
     			depRest = MaxDep - cptDep;
@@ -149,7 +146,7 @@ public abstract class Joueur {
     				
 
     				saisieOK = true;
-    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement :");
+    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement s : supprimer l'action précédente) :");
             
     				try {
 
