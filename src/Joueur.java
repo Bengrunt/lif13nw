@@ -257,9 +257,9 @@ public abstract class Joueur {
     		if(temp.equalsIgnoreCase("t")){
         		
         		int [] coup = new int[2];
-        		coup[0] = Integer.parseInt(stk.nextToken()) - 1;
-        		coup[1] = Integer.parseInt(stk.nextToken()) - 1;
-        		System.out.println("Vous tirez en [" + coup[0] + "," + coup[1] + "]." );
+        		coup[0] = Integer.parseInt(stk.nextToken());
+        		coup[1] = Integer.parseInt(stk.nextToken());
+        		System.out.println("Vous tirez en [" + (coup[0] + 1) + "," + (coup[1] + 1) + "]." );
         		this.appliquerCoup(coup);
         	}
         	else if(temp.equalsIgnoreCase("d")){
