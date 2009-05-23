@@ -82,7 +82,7 @@ public class JoueurHumain extends Joueur {
         while (!saisieOK) {
 
             saisieOK = true;
-            System.out.println("Veuillez entrer votre série de déplacements séparés par des espaces.(a : avancer ; g : piv à gauche ; d : piv à droite \n");
+            System.out.println("Veuillez entrer votre série de déplacements séparés par des espaces.(a : avancer ; g : piv à gauche ; d : piv à droite) \n");
 
             try {
 
@@ -169,8 +169,6 @@ public class JoueurHumain extends Joueur {
 
     					saisieOK = false;
     				}
-    				
-    				System.out.println(act);
     				
     				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
 
