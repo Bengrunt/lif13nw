@@ -102,13 +102,13 @@ public class Environnement {
         int lg_env_X = this.getEnv().length;
         int lg_env_Y = (this.getEnv())[0].length;
 
-        for (i = lg_env_Y - 1 ; i >= 0 ; i--) {
+        for (i = lg_env_Y ; i > 0 ; i--) {
 
             retour += i + "|";
 
             for (j = 0 ; j < lg_env_X ; j++) {
 
-                retour += this.getEnv(j, i) + " ";
+                retour += this.getEnv(j, i - 1) + " ";
             }
 
             retour += "\n";
@@ -122,7 +122,7 @@ public class Environnement {
 
         retour += "\n ";
 
-        for (i = 0 ; i < lg_env_X ; i++) {
+        for (i = 1 ; i <= lg_env_X ; i++) {
             retour += " " + i;
         }
 
