@@ -116,8 +116,11 @@ public abstract class Joueur {
         int tailleBb = this.bB.getTailleBateau();
         int tailleBt = this.bT.getTailleBateau();
         
+        
         //On vérifie si le bateau tireur est touché.
         if(this.bT.estTouche(coup)) {
+
+            System.out.println("bateau : " + this.bT.calculeCoordCaseBat(0)[0] + ";" + this.bT.calculeCoordCaseBat(0)[1] + " coup : " + coup[0] + ";" + coup[1]);
 
             for(i = 0 ; i < tailleBt ; i++) {
 
