@@ -241,16 +241,16 @@ public abstract class Joueur {
     	
     	StringTokenizer stk = new StringTokenizer(str);
     	
-    	while(stk.nextToken() != ""){
+    	while(stk.nextToken().equalsIgnoreCase("")){
     		
-    		if(stk.nextToken() == "t"){
+    		if(stk.nextToken().equalsIgnoreCase("t")){
         		
         		int [] coup = new int[2];
         		coup[0] = Integer.parseInt(stk.nextToken());
         		coup[1] = Integer.parseInt(stk.nextToken());
         		this.appliquerCoup(coup);
         	}
-        	else if(stk.nextToken() == "d"){
+        	else if(stk.nextToken().equalsIgnoreCase("d")){
         		
         		String instruction = stk.nextToken();
         		this.appliquerDeplacement(instruction, bat);
