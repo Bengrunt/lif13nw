@@ -120,9 +120,13 @@ public class Environnement {
             retour += "¯ ";
         }
 
-        retour += "\n";
+        retour += "\n ";
 
-        retour += "  A B C D E F G H I J K L M N O\n";
+        for (i = 0 ; i < lg_env_X ; i++) {
+            retour += " " + i;
+        }
+
+        retour += " \n";
         
         return retour;
     }
