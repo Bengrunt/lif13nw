@@ -89,7 +89,9 @@ public class Partie {
             // Action de j1
             /*coup = this.getJ1().getCoup();
             System.out.println("Application du coup " + (coup[0] + 1) + "," + (coup[1] + 1));
-            this.getJ2().appliquerCoup(coup);*/
+            this.getJ2().appliquerCoup(coup);
+            */
+            
             int i = 0;
             
             while(i < this.getJ1().getLstBateau().size()){

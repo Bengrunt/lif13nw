@@ -116,12 +116,10 @@ public abstract class Joueur {
         int tailleBb = this.bB.getTailleBateau();
         int tailleBt = this.bT.getTailleBateau();
         
-        System.out.println("bateau : " + this.bT.calculeCoordCaseBat(0)[0] + ";" + this.bT.calculeCoordCaseBat(0)[1] + " coup : " + coup[0] + ";" + coup[1]);
+        System.out.println("coup : " + coup[0] + ";" + coup[1]);
 
         //On vérifie si le bateau tireur est touché.
         if(this.bT.estTouche(coup)) {
-
-            System.out.println("bateau : " + this.bT.calculeCoordCaseBat(0)[0] + ";" + this.bT.calculeCoordCaseBat(0)[1] + " coup : " + coup[0] + ";" + coup[1]);
 
             for(i = 0 ; i < tailleBt ; i++) {
 
@@ -261,8 +259,8 @@ public abstract class Joueur {
     		if(temp.equalsIgnoreCase("t")){
         		
         		int [] coup = new int[2];
-        		coup[0] = Integer.parseInt(stk.nextToken()) + 1;
-        		coup[1] = Integer.parseInt(stk.nextToken()) + 1;
+        		coup[0] = Integer.parseInt(stk.nextToken());
+        		coup[1] = Integer.parseInt(stk.nextToken());
         		System.out.println("Vous tirez en [" + coup[0] + "," + coup[1] + "]." );
         		this.appliquerCoup(coup);
         	}
