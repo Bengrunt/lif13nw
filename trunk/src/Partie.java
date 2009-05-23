@@ -87,9 +87,19 @@ public class Partie {
             System.out.print(envJIA);
 
             // Action de j1
-            coup = this.getJ1().getCoup();
+            /*coup = this.getJ1().getCoup();
             System.out.println("Application du coup " + (coup[0] + 1) + "," + (coup[1] + 1));
-            this.getJ2().appliquerCoup(coup);
+            this.getJ2().appliquerCoup(coup);*/
+            int i = 0;
+            
+            while(i <= this.getJ1().getLstBateau().size()){
+            
+            	String listeAction;
+            	listeAction = this.getJ1().getAction(this.getJ1().getLstBateau().get(i));
+            	this.getJ1().appliquerAction(listeAction, this.getJ1().getLstBateau().get(i));
+            	i++;
+            }
+            
 
             if (this.getJ2().aPerdu()) {
                 System.out.println(this.getJ1() + " a gagné la partie !!");
