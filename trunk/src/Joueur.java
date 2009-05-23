@@ -178,7 +178,7 @@ public abstract class Joueur {
     					
     					int [] coup = this.getCoup();
     					listeAction += "t" + ";" + coup[0] + ";" + coup[1] + ";";
-    					nbCharAct[actionNb] = 4;
+    					nbCharAct[actionNb] = 5;
     					actionNb++;
         				cptTir++;
     				}
@@ -193,7 +193,7 @@ public abstract class Joueur {
     					
     					String dep = this.getDeplacement();
     					listeAction += "d" + ";" + dep + ";";
-    					nbCharAct[actionNb] = 3;
+    					nbCharAct[actionNb] = 4;
     					actionNb++;
     					cptDep++;
     				}
