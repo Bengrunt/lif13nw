@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -146,7 +147,7 @@ public abstract class Joueur {
     				
 
     				saisieOK = true;
-    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement s : supprimer l'action précédente) :");
+    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement ou s : supprimer l'action précédente ou f : finir les action sur ce bateau) :");
             
     				try {
 
@@ -163,7 +164,7 @@ public abstract class Joueur {
     					saisieOK = false;
     				}
 
-    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d"))){
+    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
 
     					saisieOK = false;
     				}
@@ -195,10 +196,23 @@ public abstract class Joueur {
     					System.out.println("Vous ne pouvez pas/plus déplacer ce bateau");
     				}
     			}
+    			else if (act.equalsIgnoreCase("f")){
+    	    		
+    				fin = true;
+    			}
+    			else if (act.equalsIgnoreCase("s")){
+    	    		
+    				StringTokenizer stk = new StringTokenizer(listeAction, ";");
+    				StringBuffer stb = new StringBuffer(listeAction);
+    			}
     			if((tirRest <= 0) && depRest <= 0){
     				
+    				fin = true;
     			}
     		}
+    		
+    		System.out.println("Fin des Actions pour ce bateau");
+    		return listeAction;
     }
     
  public void appliquerCoup(int[] coup) {
