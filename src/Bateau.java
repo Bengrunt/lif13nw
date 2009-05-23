@@ -304,7 +304,22 @@ public abstract class Bateau {
 
             else {
 
-                env.set(coords[0], coords[1], 'X');
+                if(i == 0) { // C'est le moteur
+
+                    env.set(coords[0], coords[1], 'M');
+                } else if(i == tailleBat - 1) { // C'est l'équipement spécial.
+
+                    if(this.getClass() == BateauRadarTireur.class) { // Si c'est un bateau radar-tireur
+
+                        env.set(coords[0], coords[1], 'R');
+                    } else { // Si c'est un brouilleur
+
+                        env.set(coords[0], coords[1], 'B');
+                    }
+                } else {
+
+                    env.set(coords[0], coords[1], 'X');
+                }
             }
         }
     }
