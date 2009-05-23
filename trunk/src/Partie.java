@@ -123,7 +123,7 @@ public class Partie {
 
                 // Acion de j2
                 coup = this.getJ2().getCoup();
-                System.out.println("Application du coup " + (coup[0] + 1) + "," + (coup[1] + 1));
+                System.out.println("Application du coup " + (coup[0]) + "," + (coup[1]));
                 this.getJ1().appliquerCoup(coup);
 
                 if (this.getJ1().aPerdu()) {
