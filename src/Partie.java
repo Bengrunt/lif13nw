@@ -96,7 +96,8 @@ public class Partie {
             
             	String listeAction;
             	Bateau bat = this.getJ1().getLstBateau().get(i);
-            	
+
+                System.out.println("Vous controlez actuellement votre " + bat.toString());
             	listeAction = this.getJ1().getAction(bat);
             	this.getJ1().appliquerAction(listeAction, bat);
             	i++;
