@@ -125,31 +125,7 @@ public abstract class Joueur {
     	boolean saisieOK = false;
     	BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
     	
-    	while (!saisieOK) {
-
-            saisieOK = true;
-            System.out.println("Avec quel Bateau voulez-vous interagir ? (t : Bateau Tireur ou b : Bateau Brouilleur :");
-            
-            try {
-
-                bato = entree.readLine();
-            } catch (IOException ex) {
-
-                Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-
-
-            if (bato.length() == 1) { // Un seul caractère
-
-                saisieOK = false;
-            }
-
-            if (!(bato.equalsIgnoreCase("t") || bato.equalsIgnoreCase("b"))){
-
-                saisieOK = false;
-            }
-        }
+    	//if (this.getLstBateau()== BateauBrouilleur.class);
     	
     	if(bato.equalsIgnoreCase("t")){
     		
@@ -190,7 +166,7 @@ public abstract class Joueur {
             }
         }
     	
-    	if(act.equalsIgnoreCase("t")) && cptTir != {
+    	if(act.equalsIgnoreCase("t") && cptTir != 0) {
     		
     		this.getCoup();
     		cptTir++;
