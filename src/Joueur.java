@@ -257,7 +257,7 @@ public abstract class Joueur {
     		if(temp.equalsIgnoreCase("t")){
         		
         		int [] coup = new int[2];
-        		coup[0] = Integer.parseInt(temp);
+        		coup[0] = Integer.parseInt(stk.nextToken());
         		coup[1] = Integer.parseInt(stk.nextToken());
         		this.appliquerCoup(coup);
         	}
