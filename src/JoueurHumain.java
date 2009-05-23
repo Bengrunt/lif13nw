@@ -164,12 +164,14 @@ public class JoueurHumain extends Joueur {
 
 
 
-    				if (act.length() == 1) { // Un seul caractère
+    				if (act.length() != 1) { // Un seul caractère
 
     					saisieOK = false;
     				}
-
-    				if ((act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
+    				
+    				System.out.println(act);
+    				
+    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
 
     					saisieOK = false;
     				}
@@ -179,6 +181,7 @@ public class JoueurHumain extends Joueur {
     				
     				if(tirRest > 0){
     					
+    					System.out.println("Il vous reste " + tirRest + " tirs");
     					int [] coup = this.getCoup();
     					listeAction += "t" + " " + coup[0] + " " + coup[1] + " ";
     					nbCharAct[actionNb] = 5;
@@ -194,6 +197,7 @@ public class JoueurHumain extends Joueur {
     		
     				if(depRest > 0){
     					
+    					System.out.println("Il vous reste " + depRest + " déplacements");
     					String dep = this.getDeplacement();
     					listeAction += "d" + " " + dep + " ";
     					nbCharAct[actionNb] = 4;
