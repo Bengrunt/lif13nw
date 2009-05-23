@@ -169,7 +169,7 @@ public class JoueurHumain extends Joueur {
     					saisieOK = false;
     				}
 
-    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
+    				if ((act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
 
     					saisieOK = false;
     				}
