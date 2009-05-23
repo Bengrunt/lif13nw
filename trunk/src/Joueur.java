@@ -95,6 +95,10 @@ public abstract class Joueur {
         return null;
     }
 
+    public String getAction(Bateau bat){
+    	
+    	return "";
+    }
     /**
      * Fonction abstraite, pour récupérer le déplacement.
      * @return Renvoie une chaine de caractère représentant le déplacement.
@@ -111,131 +115,7 @@ public abstract class Joueur {
      * @param coup Tableau de deux entiers qui décrivent les coordonnées du coup.
      */
 
-    public String getAction(Bateau bat){
-    	
-    	int cptTir = 0;
-    	int cptDep = 0;
-    	int tirRest;
-    	int depRest;
-    	int MaxTir = 0;
-    	int MaxDep = 0;
-    	int actionNb = 0;
-    	int [] nbCharAct = new int[100];
-    	
-    	String act = "";
-    	String listeAction = "";
 
-    	boolean saisieOK = false;
-    	boolean fin = false;
-    	BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
-    	
-    		if (bat.getClass() == BateauBrouilleur.class){
-    		
-    			MaxTir = BateauBrouilleur.MAX_TIR;
-    			MaxDep = BateauBrouilleur.MAX_DEP;
-    		}
-    	
-    		if (bat.getClass() == BateauRadarTireur.class){
-    		
-    			MaxTir = BateauRadarTireur.MAX_TIR;
-    			MaxDep = BateauRadarTireur.MAX_DEP;
-    		}
-    	
-    		while(!fin){
-    			
-    			tirRest = MaxTir - cptTir;
-    			depRest = MaxDep - cptDep;
-    			
-    			while (!saisieOK) {
-    				
-    				saisieOK = true;
-    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement ou s : supprimer l'action précédente ou f : finir les action sur ce bateau) :");
-            
-    				try {
-
-    					act = entree.readLine();
-    				} catch (IOException ex) {
-
-    					Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
-    				}
-
-
-
-    				if (act.length() == 1) { // Un seul caractère
-
-    					saisieOK = false;
-    				}
-
-    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
-
-    					saisieOK = false;
-    				}
-    			}
-    	
-    			if(act.equalsIgnoreCase("t")) {
-    				
-    				if(tirRest > 0){
-    					
-    					int [] coup = this.getCoup();
-    					listeAction += "t" + " " + coup[0] + " " + coup[1] + " ";
-    					nbCharAct[actionNb] = 5;
-    					actionNb++;
-        				cptTir++;
-    				}
-    				else{
-    					
-    					System.out.println("Vous ne pouvez pas/plus tirer avec ce bateau");
-    				}
-    			}
-    			else if (act.equalsIgnoreCase("d")){
-    		
-    				if(depRest > 0){
-    					
-    					String dep = this.getDeplacement();
-    					listeAction += "d" + " " + dep + " ";
-    					nbCharAct[actionNb] = 4;
-    					actionNb++;
-    					cptDep++;
-    				}
-    				else{
-    					
-    					System.out.println("Vous ne pouvez pas/plus déplacer ce bateau");
-    				}
-    			}
-    			else if (act.equalsIgnoreCase("f")){
-    	    		
-    				fin = true;
-    			}
-    			else if (act.equalsIgnoreCase("s")){
-    	    		
-    				if(actionNb > 0){
-    					
-    					StringBuffer stb = new StringBuffer(listeAction);
-        				stb.trimToSize();
-        				int start = stb.length() - nbCharAct[actionNb];
-        				int end = stb.length();
-        				stb.delete(start, end);
-        				listeAction = stb.toString();
-        				actionNb++;
-    				}
-    				else{
-    					
-    					System.out.println("Il n'y a pas d'action à annuler");
-    				}
-    				
-    				
-    			}
-    			if((tirRest <= 0) && depRest <= 0){
-    				
-    				fin = true;
-    			}
-    		}
-
-    		
-    		System.out.println("Fin des Actions pour ce bateau");
-    		return listeAction;
-
-    }
     
  public void appliquerCoup(int[] coup) {
 
