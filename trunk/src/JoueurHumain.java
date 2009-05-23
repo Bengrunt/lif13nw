@@ -110,14 +110,10 @@ public class JoueurHumain extends Joueur {
     }
 
     /**
-     * Fonction qui donne le type de joueur.
-     * @return Renvoie une chaine de caractères.
+     * Fonction qui récupere les actions du joueur pour un bateau donné.
+     * @param bat Le bateau utilisé.
+     * @return Renvoie une chaine de caractères codant les différentes actions entreprises par le joueur.
      */
-    @Override
-    public String toString() {
-
-        return "Joueur Humain";
-    }
     public String getAction(Bateau bat){
     	
     	int cptTir = 0;
@@ -242,5 +238,15 @@ public class JoueurHumain extends Joueur {
     		System.out.println("Fin des Actions pour ce bateau");
     		return listeAction;
 
+    }
+
+    /**
+     * Fonction qui donne le type de joueur.
+     * @return Renvoie une chaine de caractères.
+     */
+    @Override
+    public String toString() {
+
+        return "Joueur Humain";
     }
 }

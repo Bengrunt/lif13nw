@@ -95,10 +95,6 @@ public abstract class Joueur {
         return null;
     }
 
-    public String getAction(Bateau bat){
-    	
-    	return "";
-    }
     /**
      * Fonction abstraite, pour récupérer le déplacement.
      * @return Renvoie une chaine de caractère représentant le déplacement.
@@ -111,13 +107,16 @@ public abstract class Joueur {
     }
 
     /**
-     * Procédure qui regarde si le joueur est concerné par le coup et applique les dégats occasionnés si c'est le cas.
-     * @param coup Tableau de deux entiers qui décrivent les coordonnées du coup.
+     * Fonction abstraite qui récupere les actions du joueur pour un bateau donné.
+     * @param bat Le bateau utilisé.
+     * @return Renvoie une chaine de caractères codant les différentes actions entreprises par le joueur.
      */
+    public String getAction(Bateau bat){
 
+    	return null;
+    }
 
-    
- public void appliquerCoup(int[] coup) {
+    public void appliquerCoup(int[] coup) {
 
         int i;
         int tailleBb = this.bB.getTailleBateau();
