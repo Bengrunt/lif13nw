@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 22/05/2009
+ * @version 23/05/2009
  */
 public abstract class Joueur {
 
@@ -230,22 +230,66 @@ public abstract class Joueur {
         int taille = bat.getTailleBateau();
         int dx = bat.getDeltaX();
         int dy = bat.getDeltaY();
+        int xca = bat.getXCaseArriere();
+        int yca = bat.getYCaseArriere();
         ArrayList<Bateau> lst = this.getLstBateau();
 
         if(bat.getClass() == BateauBrouilleur.class) { //C'est un bateau brouilleur
 
+            //Création d'un bateau virtuel pour calculer la possibilité du déplacement
             BateauBrouilleur batSimu = new BateauBrouilleur(taille, lst);
+
+            batSimu.setTailleBateau(taille);
+            batSimu.setXCaseArriere(xca);
+            batSimu.setYCaseArriere(yca);
+            batSimu.setDeltaX(dx);
+            batSimu.setDeltaY(dy);
+
+            if(dep.equalsIgnoreCase("a")) {
+
+                batSimu.avance();
+            } else if(dep.equalsIgnoreCase("g")) {
+
+                batSimu.pivote45direct();
+            } else {
+
+                batSimu.pivote45indirect();
+            }
+
+
+            int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
+
+            res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
 
 
         }
         else { //C'est un bateau radar-tireur
 
+            //Création d'un bateau virtuel pour calculer la possibilité du déplacement
+            BateauRadarTireur batSimu = new BateauRadarTireur(taille, lst);
+
+            batSimu.setTailleBateau(taille);
+            batSimu.setXCaseArriere(xca);
+            batSimu.setYCaseArriere(yca);
+            batSimu.setDeltaX(dx);
+            batSimu.setDeltaY(dy);
+
+            if(dep.equalsIgnoreCase("a")) {
+
+                batSimu.avance();
+            } else if(dep.equalsIgnoreCase("g")) {
+
+                batSimu.pivote45direct();
+            } else {
+
+                batSimu.pivote45indirect();
+            }
 
 
+            int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
+
+            res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
         }
-
-
-
 
         return res;
     }
