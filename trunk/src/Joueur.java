@@ -291,6 +291,20 @@ public abstract class Joueur {
             res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
         }
 
+        if(res) { //Le déplacement est faisable on l'applique réellement.
+
+            if(dep.equalsIgnoreCase("a")) {
+
+                bat.avance();
+            } else if(dep.equalsIgnoreCase("g")) {
+
+                bat.pivote45direct();
+            } else {
+
+                bat.pivote45indirect();
+            }
+        }
+
         return res;
     }
 }
