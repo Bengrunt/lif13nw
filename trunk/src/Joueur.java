@@ -240,7 +240,16 @@ public abstract class Joueur {
     public void appliquerAction(String str, Bateau bat){
     	
     	StringTokenizer stk = new StringTokenizer(str);
-        String temp = stk.nextToken();
+    	
+    	String temp = "";
+    	
+    	try{
+    	
+    		temp = stk.nextToken();
+    	}catch (Exception e){
+    		
+    		System.out.println("La liste d'action est vide");
+    	}
         
     	while(!(temp.equalsIgnoreCase(""))){
 
@@ -258,7 +267,14 @@ public abstract class Joueur {
         		this.appliquerDeplacement(instruction, bat);
         	}
 
-            temp = stk.nextToken();
+            try{
+    		
+            	temp = stk.nextToken();
+            } catch (Exception e){
+            	
+            	System.out.println("Fin de la liste d'action");
+            	break;
+            }
     	}
     }
 }
