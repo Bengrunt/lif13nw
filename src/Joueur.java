@@ -257,6 +257,8 @@ public abstract class Joueur {
         		String instruction = stk.nextToken();
         		this.appliquerDeplacement(instruction, bat);
         	}
+
+            temp = stk.nextToken();
     	}
     }
 }
