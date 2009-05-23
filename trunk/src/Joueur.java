@@ -245,14 +245,14 @@ public abstract class Joueur {
     	while(!(temp.equalsIgnoreCase(""))){
 
     		
-    		if(!(temp.equalsIgnoreCase("t"))){
+    		if(temp.equalsIgnoreCase("t")){
         		
         		int [] coup = new int[2];
         		coup[0] = Integer.parseInt(temp);
         		coup[1] = Integer.parseInt(stk.nextToken());
         		this.appliquerCoup(coup);
         	}
-        	else if(!(temp.equalsIgnoreCase("d"))){
+        	else if(temp.equalsIgnoreCase("d")){
         		
         		String instruction = stk.nextToken();
         		this.appliquerDeplacement(instruction, bat);
