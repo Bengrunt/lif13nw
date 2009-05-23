@@ -95,8 +95,10 @@ public class Partie {
             while(i <= this.getJ1().getLstBateau().size()){
             
             	String listeAction;
-            	listeAction = this.getJ1().getAction(this.getJ1().getLstBateau().get(i));
-            	this.getJ1().appliquerAction(listeAction, this.getJ1().getLstBateau().get(i));
+            	Bateau bat = this.getJ1().getLstBateau().get(i);
+            	
+            	listeAction = this.getJ1().getAction(bat);
+            	this.getJ1().appliquerAction(listeAction, bat);
             	i++;
             }
             
