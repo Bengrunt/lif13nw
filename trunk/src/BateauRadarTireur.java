@@ -24,4 +24,14 @@ public class BateauRadarTireur extends Bateau {
 
         super(taille, lstBateau);
     }
+
+    /**
+     * Fonction qui donne la classe du bateau.
+     * @return Renvoie une chaine de caractères.
+     */
+    @Override
+    public String toString() {
+
+        return "Bateau Radar-Tireur";
+    }
 }
