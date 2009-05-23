@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 22/05/2009
+ * @version 23/05/2009
  */
 public abstract class Bateau {
 
@@ -226,12 +226,14 @@ public abstract class Bateau {
 
     /**
      * Fonction qui teste si des coordonnées sont disponibles (i.e. teste si il n y a pas chevauchement avec un bateau existant).
-     * @param coords Coordonnées (x,y) à tester.
+     * @param caseArr Coordonnées de la case arriere du bateau à tester.
+     * @param deltaX Orientation du bateau à tester.
+     * @param deltaY Orientation du bateau à tester.
      * @param lstBateau Liste des bateaux avec lesquels les coordonnées sont comparées.
      * @return Renvoie true si les coordonnées sont disponibles.
      */
     
-    private boolean testChevauchement(int[] coords, int deltaX, int deltaY, ArrayList<Bateau> lstBateau) {
+    protected boolean testChevauchement(int[] caseArr, int deltaX, int deltaY, ArrayList<Bateau> lstBateau) {
     	
     	boolean chevauche = false;
     	int i = 0;
@@ -244,8 +246,8 @@ public abstract class Bateau {
     	
     	while((i < tailleBat ) && !chevauche) {
     		
-    		test[0] = coords[0] + i * deltaX;
-            test[1] = coords[1] + i * deltaY;
+    		test[0] = caseArr[0] + i * deltaX;
+            test[1] = caseArr[1] + i * deltaY;
             
     		if(!this.coordonneesPossibles(test)) {
     			
