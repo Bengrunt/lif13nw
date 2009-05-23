@@ -241,7 +241,7 @@ public abstract class Joueur {
     	
     	StringTokenizer stk = new StringTokenizer(str);
     	
-    	while(stk.nextToken().equalsIgnoreCase("")){
+    	while(!(stk.nextToken().equalsIgnoreCase(""))){
     		
     		if(stk.nextToken().equalsIgnoreCase("t")){
         		
