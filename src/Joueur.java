@@ -115,6 +115,9 @@ public abstract class Joueur {
     	int cptDep = 0;
     	int tirRest;
     	int depRest;
+    	int MaxTir;
+    	int MaxDep;
+    	int i = 0;
     	
     	String act = "";
     	String bato = "";
@@ -123,60 +126,80 @@ public abstract class Joueur {
     	Bateau ship;
     	
     	boolean saisieOK = false;
+    	boolean fin = false;
     	BufferedReader entree = new BufferedReader(new InputStreamReader(System.in));
     	
-    	//if (this.getLstBateau()== BateauBrouilleur.class);
+    	while(i < this.getLstBateau().size()){
     	
-    	if(bato.equalsIgnoreCase("t")){
+    		if (this.getLstBateau().get(i).getClass() == BateauBrouilleur.class){
     		
-    		ship = this.getBateauTireur();
-    		tirRest = BateauRadarTireur.MAX_TIR - cptTir;
-    		depRest = BateauRadarTireur.MAX_DEP - cptDep;
-    	}
-    	else {
-    		
-    		ship = this.getBateauBrouilleur();
-    		tirRest = BateauBrouilleur.MAX_TIR - cptTir;
-    		depRest = BateauBrouilleur.MAX_DEP - cptDep;
-    	}
+    			MaxTir = BateauBrouilleur.MAX_TIR;
+    			MaxDep = BateauBrouilleur.MAX_DEP;
+    		}
     	
-    	while (!saisieOK) {
+    		if (this.getLstBateau().get(i).getClass() == BateauRadarTireur.class){
+    		
+    			MaxTir = BateauRadarTireur.MAX_TIR;
+    			MaxDep = BateauRadarTireur.MAX_DEP;
+    		}
+    	
+    		while(fin){
+    			
+    			tirRest = MaxTir - cptTir;
+    			depRest = MaxDep - cptDep;
+    			
+    			while (!saisieOK) {
+    				
 
-            saisieOK = true;
-            System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement :");
+    				saisieOK = true;
+    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement :");
             
-            try {
+    				try {
 
-                act = entree.readLine();
-            } catch (IOException ex) {
+    					act = entree.readLine();
+    				} catch (IOException ex) {
 
-                Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    					Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
+    				}
 
 
 
-            if (act.length() == 1) { // Un seul caractère
+    				if (act.length() == 1) { // Un seul caractère
 
-                saisieOK = false;
-            }
+    					saisieOK = false;
+    				}
 
-            if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d"))){
+    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d"))){
 
-                saisieOK = false;
-            }
-        }
+    					saisieOK = false;
+    				}
+    			}
     	
-    	if(act.equalsIgnoreCase("t") && cptTir != 0) {
+    			if(act.equalsIgnoreCase("t")) {
+    				
+    				if(tirRest > 0){
+    					
+    					this.getCoup();
+        				cptTir++;
+    				}
+    				else{
+    					
+    					System.out.println("Vous ne pouvez pas/plus tirer avec ce bateau");
+    				}
+    			}
+    			else if (act.equalsIgnoreCase("d")){
     		
-    		this.getCoup();
-    		cptTir++;
-    	}
-    	else if (act.equalsIgnoreCase("d")){
-    		
-    		this.getDeplacement();
-    		cptDep++;
-    	}
-    	
+    				if(depRest > 0){
+    					
+    					this.getDeplacement();
+    					cptDep++;
+    				}
+    				else{
+    					
+    					System.out.println("Vous ne pouvez pas/plus déplacer ce bateau");
+    				}
+    			}
+    		}
     	
     	
     }
