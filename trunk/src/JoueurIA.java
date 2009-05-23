@@ -20,7 +20,7 @@ public class JoueurIA extends Joueur {
         retour[0] = (int) ( Math.random() * Environnement.MAX_X );
         retour[1] = (int) ( Math.random() * Environnement.MAX_Y );
 
-        System.out.println("Votre adversaire tire en [" + retour[0] + "," + retour[1] + "]." );
+        System.out.println("Votre adversaire tire en [" + (retour[0] + 1) + "," + (retour[1] +1) + "]." );
         
         return retour;
     }
