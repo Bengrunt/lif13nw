@@ -177,7 +177,7 @@ public abstract class Joueur {
     				if(tirRest > 0){
     					
     					int [] coup = this.getCoup();
-    					listeAction += "t" + ";" + coup[0] + ";" + coup[1] + ";";
+    					listeAction += "t" + " " + coup[0] + " " + coup[1] + " ";
     					nbCharAct[actionNb] = 5;
     					actionNb++;
         				cptTir++;
@@ -192,7 +192,7 @@ public abstract class Joueur {
     				if(depRest > 0){
     					
     					String dep = this.getDeplacement();
-    					listeAction += "d" + ";" + dep + ";";
+    					listeAction += "d" + " " + dep + " ";
     					nbCharAct[actionNb] = 4;
     					actionNb++;
     					cptDep++;
@@ -364,7 +364,7 @@ public abstract class Joueur {
     
     public void appliquerAction(String str, Bateau bat){
     	
-    	StringTokenizer stk = new StringTokenizer(str, ";");
+    	StringTokenizer stk = new StringTokenizer(str);
     	
     	while(stk.nextToken() != ""){
     		
