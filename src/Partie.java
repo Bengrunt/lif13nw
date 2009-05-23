@@ -92,7 +92,7 @@ public class Partie {
             this.getJ2().appliquerCoup(coup);*/
             int i = 0;
             
-            while(i <= this.getJ1().getLstBateau().size()){
+            while(i < this.getJ1().getLstBateau().size()){
             
             	String listeAction;
             	Bateau bat = this.getJ1().getLstBateau().get(i);
