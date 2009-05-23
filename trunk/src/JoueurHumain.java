@@ -2,7 +2,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.String;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -114,6 +113,7 @@ public class JoueurHumain extends Joueur {
      * @param bat Le bateau utilisé.
      * @return Renvoie une chaine de caractères codant les différentes actions entreprises par le joueur.
      */
+    @Override
     public String getAction(Bateau bat){
     	
     	int cptTir = 0;
