@@ -240,17 +240,19 @@ public abstract class Joueur {
     public void appliquerAction(String str, Bateau bat){
     	
     	StringTokenizer stk = new StringTokenizer(str);
-    	
-    	while(!(stk.nextToken().equalsIgnoreCase(""))){
+        String temp = stk.nextToken();
+        
+    	while(!(temp.equalsIgnoreCase(""))){
+
     		
-    		if(stk.nextToken().equalsIgnoreCase("t")){
+    		if(!(temp.equalsIgnoreCase("t"))){
         		
         		int [] coup = new int[2];
         		coup[0] = Integer.parseInt(stk.nextToken());
         		coup[1] = Integer.parseInt(stk.nextToken());
         		this.appliquerCoup(coup);
         	}
-        	else if(stk.nextToken().equalsIgnoreCase("d")){
+        	else if(!(temp.equalsIgnoreCase("d"))){
         		
         		String instruction = stk.nextToken();
         		this.appliquerDeplacement(instruction, bat);
