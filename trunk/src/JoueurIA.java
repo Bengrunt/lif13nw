@@ -137,7 +137,7 @@ public class JoueurIA extends Joueur {
     		break;
     		
     	case 1 :
-    		listeAction += this.getDeplacement(bat) + " " ; 
+    		listeAction += "d " + this.getDeplacement(bat) + " " ; 
     		break;
     	}
     	
