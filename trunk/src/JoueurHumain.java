@@ -146,9 +146,6 @@ public class JoueurHumain extends Joueur {
                     System.out.println("Déplacement impossible, veuillez en choisir un autre:");
                     continue;
                 }
-                System.out.println("SaisieOK : " + saisieOK);
-
-
             }
             else { //C'est un bateau radar-tireur
 
@@ -175,8 +172,11 @@ public class JoueurHumain extends Joueur {
 
                 int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
 
-                saisieOK = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
-                System.out.println("SaisieOK : " + saisieOK);
+                saisieOK = !(batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst));
+                if(!saisieOK) {
+                    System.out.println("Déplacement impossible, veuillez en choisir un autre:");
+                    continue;
+                }
             }
         }
 
