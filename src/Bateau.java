@@ -158,15 +158,15 @@ public abstract class Bateau {
      */
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
-    	int[] michel = new int [2];
+    	int[] coords = new int [2];
     	
         do {
 
             this.setXCaseArriere((int) (Math.random() * Environnement.MAX_X));
             this.setYCaseArriere((int) (Math.random() * Environnement.MAX_Y));
             
-            michel[0] = this.getXCaseArriere();
-            michel[1] = this.getYCaseArriere();
+            coords[0] = this.getXCaseArriere();
+            coords[1] = this.getYCaseArriere();
             
             switch ((int) (Math.random() * 4) + 1) {
                 case 1:
@@ -189,7 +189,7 @@ public abstract class Bateau {
                     break;
             }
 
-        } while (this.testChevauchement(michel, this.getDeltaX(), this.getDeltaY(), lstBateau));
+        } while (this.testChevauchement(coords, this.getDeltaX(), this.getDeltaY(), lstBateau));
 
     }
 
@@ -215,9 +215,7 @@ public abstract class Bateau {
     protected boolean testChevauchement(int[] caseArr, int deltaX, int deltaY, ArrayList<Bateau> lstBateau) {
     	
     	boolean chevauche = false;
-    	int i = 0;
-    	int j = 0;
-    	int k = 0;
+    	int i = 0, j = 0, k = 0;
     	int tailleBat = this.getTailleBateau();
     	int[] test = new int [2];
     	int[] test2 = new int [2];

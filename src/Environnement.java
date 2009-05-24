@@ -10,7 +10,7 @@ public class Environnement {
 
     /////////////////////////////////////////// ATTRIBUTS //////////////////////////////////////////////
 
-    public static final int MAX_X = 15; // x in [1, 15].
+    public static final int MAX_X = 10; // x in [1, 10].
     public static final int MAX_Y = 5; // y in [1, 5].
     private char[][] env; //Tableau de caractères représentant l'environnement.
 

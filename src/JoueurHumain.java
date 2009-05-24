@@ -145,6 +145,7 @@ public class JoueurHumain extends Joueur {
                 int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
 
                 saisieOK = !(batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst));
+
                 if(!saisieOK) {
                     System.out.println("Déplacement impossible, veuillez en choisir un autre:");
                     continue;
@@ -164,10 +165,10 @@ public class JoueurHumain extends Joueur {
                 if (dep.equalsIgnoreCase("a")) {
 
                     batSimu.avance();
-                } else if(dep.equalsIgnoreCase("r")) {
+                } else if (dep.equalsIgnoreCase("r")) {
 
                     batSimu.recule();
-                } else if(dep.equalsIgnoreCase("g")) {
+                } else if (dep.equalsIgnoreCase("g")) {
 
                     batSimu.pivote45direct();
                 } else {
@@ -175,10 +176,10 @@ public class JoueurHumain extends Joueur {
                     batSimu.pivote45indirect();
                 }
 
-
                 int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
 
                 saisieOK = !(batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst));
+
                 if(!saisieOK) {
                     System.out.println("Déplacement impossible, veuillez en choisir un autre:");
                     continue;
@@ -217,14 +218,12 @@ public class JoueurHumain extends Joueur {
     		
     			MaxTir = BateauBrouilleur.MAX_TIR;
     			MaxDep = BateauBrouilleur.MAX_DEP;
-    		}
-    	
-    		if (bat.getClass() == BateauRadarTireur.class){
+    		} else if (bat.getClass() == BateauRadarTireur.class){
     		
     			MaxTir = BateauRadarTireur.MAX_TIR;
     			MaxDep = BateauRadarTireur.MAX_DEP;
     		}
-    	
+
     		while(!fin){
     			
     			tirRest = MaxTir - cptTir;
@@ -244,19 +243,15 @@ public class JoueurHumain extends Joueur {
     					Logger.getLogger(Joueur.class.getName()).log(Level.SEVERE, null, ex);
     				}
 
-
-
     				if (act.length() != 1) { // Un seul caractère
 
     					saisieOK = false;
-    				}
-    				
-    				if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
+    				} else if (!(act.equalsIgnoreCase("t") || act.equalsIgnoreCase("d") || act.equalsIgnoreCase("s") || act.equalsIgnoreCase("f"))){
 
     					saisieOK = false;
     				}
     			}
-    	
+
     			if(act.equalsIgnoreCase("t")) {
     				
     				if(tirRest > 0){
@@ -287,7 +282,7 @@ public class JoueurHumain extends Joueur {
     					
     					System.out.println("Ce bateau peut encore effectuer " + depRest + " déplacements.");
     					String dep = this.getDeplacement(bat);
-    					listeAction += "d" + " " + dep + " ";
+    					listeAction = "d " + dep + " ";
     					nbCharAct[actionNb] = 4;
     					actionNb++;
     					cptDep++;
@@ -325,19 +320,16 @@ public class JoueurHumain extends Joueur {
     					
     					System.out.println("Il n'y a pas d'action à annuler pour ce bateau.");
     				}
-    				
-    				
     			}
-    			if((tirRest <= 0) && depRest <= 0){
+
+    			if(tirRest == 0 && depRest == 0){
     				
     				fin = true;
     			}
     		}
 
-    		
     		System.out.println("Fin des Actions pour ce bateau.");
     		return listeAction;
-
     }
 
     /**
