@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 23/05/2009
+ * @version 24/05/2009
  */
 public class BateauBrouilleur extends Bateau {
 
