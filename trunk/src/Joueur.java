@@ -267,6 +267,7 @@ public abstract class Joueur {
         	else if(temp.equalsIgnoreCase("d")){
         		
         		String instruction = stk.nextToken();
+        		System.out.println("Instruction de déplacement : " + instruction);
         		this.appliquerDeplacement(instruction, bat);
         	}
 
