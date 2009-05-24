@@ -247,7 +247,7 @@ public abstract class Bateau {
                         //Ignore le chevauchement pour sa propre case arriere (nécéssaire pour pivotement).
                         if(k == 0 && this == lstBateau.get(j) && test[0] == this.getXCaseArriere() && test[1] == this.getYCaseArriere()) {
                             chevauche = false;
-                            break;
+                            continue;
                         }
     					
     					chevauche = true;
