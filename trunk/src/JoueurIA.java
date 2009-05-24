@@ -120,6 +120,29 @@ public class JoueurIA extends Joueur {
 
         return dep;
     }
+    
+    public String getAction(Bateau bat){
+    	
+    	int random = 0;
+    	String listeAction = "";
+    	
+    	
+    	random = (int) ( Math.random());
+    	
+    	switch(random) {
+    		
+    	case 0 :
+    		int [] coup = this.getCoup();
+    		listeAction += "t " + coup[0] + " " + coup[1] + " ";
+    		break;
+    		
+    	case 1 :
+    		listeAction = this.getDeplacement(bat) + " " ; 
+    		break;
+    	}
+    	
+    	return null;
+    }
 
     /**
      * Fonction qui donne le type de joueur.
@@ -129,19 +152,5 @@ public class JoueurIA extends Joueur {
     public String toString() {
 
         return "Joueur IA";
-    }
-    
-    public int[] getCoupSuivant(){
-    	
-    	
-    	int[] retour1 = new int[2];
-    	int[] retour2 = new int[2];
-    	
-    	retour2.clone()[0] = this.getCoup()[0];
-    	retour2.clone()[1] = this.getCoup()[1];
-    	
-    	this.getCoup();
-    	
-    	return retour1;
     }
 }
