@@ -45,17 +45,20 @@ public class JoueurIA extends Joueur {
 
         while(! res) {
 
-            int rnd = (int) Math.random() * 3;
+            int rnd = (int) Math.random() * 4;
 
             switch(rnd) {
 
                 case 0 : dep = "a";
                 break;
 
-                case 1 : dep = "g";
+                case 1 : dep = "r";
                 break;
 
-                case 2 : dep = "d";
+                case 2 : dep = "g";
+                break;
+
+                case 3 : dep = "d";
                 break;
             }
 
@@ -74,6 +77,9 @@ public class JoueurIA extends Joueur {
                 if(dep.equalsIgnoreCase("a")) {
 
                     batSimu.avance();
+                } else if(dep.equalsIgnoreCase("r")) {
+
+                    batSimu.recule();
                 } else if(dep.equalsIgnoreCase("g")) {
 
                     batSimu.pivote45direct();
@@ -103,6 +109,9 @@ public class JoueurIA extends Joueur {
                 if(dep.equalsIgnoreCase("a")) {
 
                     batSimu.avance();
+                } else if(dep.equalsIgnoreCase("r")) {
+
+                    batSimu.recule();
                 } else if(dep.equalsIgnoreCase("g")) {
 
                     batSimu.pivote45direct();
@@ -121,13 +130,14 @@ public class JoueurIA extends Joueur {
         return dep;
     }
     
+    @Override
     public String getAction(Bateau bat){
     	
     	int random = 0;
     	String listeAction = "";
     	
     	
-    	random = (int) ( Math.random());
+    	random = (int) ( Math.random()) * 2;
     	
     	switch(random) {
     		
