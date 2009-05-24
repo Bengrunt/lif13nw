@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
@@ -171,7 +172,7 @@ public abstract class Joueur {
                 str_ieme = "ième";
             }
 
-            System.out.println("Le bateau brouilleur du " + this.toString() + " a été touché sur sa " + (i + 1) + str_ieme + " case.");
+            System.out.println("Le bateau brouilleur du " + this.toString() + " a été touché sur sa " + (i + 1) + str_ieme + " case." + str_spec + ".");
         }
     }
 

@@ -168,7 +168,7 @@ public abstract class Bateau {
             michel[0] = this.getXCaseArriere();
             michel[1] = this.getYCaseArriere();
             
-            switch ((int) (Math.random() * 8) + 1) {
+            switch ((int) (Math.random() * 4) + 1) {
                 case 1:
                     this.setDeltaX(1); 
                     this.setDeltaY(0); 
@@ -384,26 +384,14 @@ public abstract class Bateau {
         if (this.getDeltaX() == 1 && this.getDeltaY() == 0) {
             this.setDeltaY(1);
         }
-        else if(this.getDeltaX() == 1 && this.getDeltaY() == 1) {
-            this.setDeltaX(0);
-        }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == 1) {
             this.setDeltaX(-1);
-        }
-        else if(this.getDeltaX() == -1 && this.getDeltaY() == 1) {
-            this.setDeltaY(0);
         }
         else if(this.getDeltaX() == -1 && this.getDeltaY() == 0) {
             this.setDeltaY(-1);
         }
-        else if(this.getDeltaX() == -1 && this.getDeltaY() == -1) {
-            this.setDeltaX(0);
-        }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == -1) {
             this.setDeltaX(1);
-        }
-        else {
-            this.setDeltaY(0);
         }
     }
     
@@ -415,30 +403,15 @@ public abstract class Bateau {
         if (this.getDeltaX() == 1 && this.getDeltaY() == 0) {
             this.setDeltaY(-1);
         }
-        else if(this.getDeltaX() == 1 && this.getDeltaY() == -1) {
-            this.setDeltaX(0);
-        }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == -1) {
             this.setDeltaX(-1);
-        }
-        else if(this.getDeltaX() == -1 && this.getDeltaY() == -1) {
-            this.setDeltaY(0);
         }
         else if(this.getDeltaX() == -1 && this.getDeltaY() == 0) {
             this.setDeltaY(1);
         }
-        else if(this.getDeltaX() == -1 && this.getDeltaY() == 1) {
-            this.setDeltaX(0);
-        }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == 1) {
             this.setDeltaX(1);
         }
-        else {
-            this.setDeltaY(0);
-        }
     }
-
-
-
 }
 
