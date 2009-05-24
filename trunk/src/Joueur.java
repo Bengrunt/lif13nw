@@ -29,7 +29,7 @@ public abstract class Joueur {
         //              lstBateau : liste des bateaux présents, afin de tester le chevauchement lors du placement initial    
         bT = new BateauRadarTireur(3, lstBateau);
         lstBateau.add(bT);
-        bB = new BateauBrouilleur(2, lstBateau);
+        bB = new BateauBrouilleur(3, lstBateau);
         lstBateau.add(bB);
     }
 

@@ -83,7 +83,7 @@ public class JoueurHumain extends Joueur {
         while (!saisieOK) {
 
             saisieOK = true;
-            System.out.println("Saisissez le déplacement pour ce bateau. (\"a\": avancer, \"g\": piv vers la gauche, \"d\": piv vers la droite):");
+            System.out.println("Saisissez le déplacement pour ce bateau. (\"a\": avancer, \"r\": reculer, \"g\": piv vers la gauche, \"d\": piv vers la droite):");
 
             try {
 
@@ -102,7 +102,7 @@ public class JoueurHumain extends Joueur {
                 continue;
             }
 
-            if (!(dep.equalsIgnoreCase("a") || dep.equalsIgnoreCase("g") || dep.equalsIgnoreCase("d"))) { // test validité : { A ; a ; D ; d ; G ; g }
+            if (!(dep.equalsIgnoreCase("a") || dep.equalsIgnoreCase("r") || dep.equalsIgnoreCase("g") || dep.equalsIgnoreCase("d"))) { // test validité : { A ; a ; R ; r ; D ; d ; G ; g }
 
                 saisieOK = false;
                 System.out.println("Mauvaise saisie, recommencez:");
@@ -127,9 +127,12 @@ public class JoueurHumain extends Joueur {
                 batSimu.setDeltaX(dx);
                 batSimu.setDeltaY(dy);
 
-                if(dep.equalsIgnoreCase("a")) {
+                if (dep.equalsIgnoreCase("a")) {
 
                     batSimu.avance();
+                } else if(dep.equalsIgnoreCase("r")) {
+
+                    batSimu.recule();
                 } else if(dep.equalsIgnoreCase("g")) {
 
                     batSimu.pivote45direct();
@@ -158,9 +161,12 @@ public class JoueurHumain extends Joueur {
                 batSimu.setDeltaX(dx);
                 batSimu.setDeltaY(dy);
 
-                if(dep.equalsIgnoreCase("a")) {
+                if (dep.equalsIgnoreCase("a")) {
 
                     batSimu.avance();
+                } else if(dep.equalsIgnoreCase("r")) {
+
+                    batSimu.recule();
                 } else if(dep.equalsIgnoreCase("g")) {
 
                     batSimu.pivote45direct();
