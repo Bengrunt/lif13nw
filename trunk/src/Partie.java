@@ -101,7 +101,7 @@ public class Partie {
 
                 System.out.println("Vous controlez actuellement votre " + bat.toString());
             	listeAction = this.getJ1().getAction(bat);
-            	this.getJ1().appliquerAction(listeAction, bat);
+            	this.getJ2().appliquerAction(listeAction, bat); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
             	i++;
             }
             
