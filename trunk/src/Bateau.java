@@ -382,16 +382,20 @@ public abstract class Bateau {
     public void pivote45direct() {
         
         if (this.getDeltaX() == 1 && this.getDeltaY() == 0) {
+            this.setDeltaX(0);
             this.setDeltaY(1);
         }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == 1) {
             this.setDeltaX(-1);
+            this.setDeltaY(0);
         }
         else if(this.getDeltaX() == -1 && this.getDeltaY() == 0) {
+            this.setDeltaX(0);
             this.setDeltaY(-1);
         }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == -1) {
             this.setDeltaX(1);
+            this.setDeltaY(0);
         }
     }
     
@@ -401,16 +405,20 @@ public abstract class Bateau {
     public void pivote45indirect() {
         
         if (this.getDeltaX() == 1 && this.getDeltaY() == 0) {
+            this.setDeltaX(0);
             this.setDeltaY(-1);
         }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == -1) {
             this.setDeltaX(-1);
+            this.setDeltaY(0);
         }
         else if(this.getDeltaX() == -1 && this.getDeltaY() == 0) {
+            this.setDeltaX(0);
             this.setDeltaY(1);
         }
         else if(this.getDeltaX() == 0 && this.getDeltaY() == 1) {
             this.setDeltaX(1);
+            this.setDeltaY(0);
         }
     }
 }

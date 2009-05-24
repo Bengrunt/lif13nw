@@ -225,9 +225,7 @@ public abstract class Joueur {
         		
         		String instruction = stk.nextToken();
         		System.out.println("Instruction de déplacement : " + instruction);
-        		this.appliquerDeplacement(instruction, bat);
-
-
+                this.appliquerDeplacement(instruction, bat);
         	}
 
             try{
