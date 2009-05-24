@@ -82,7 +82,7 @@ public class JoueurHumain extends Joueur {
         while (!saisieOK) {
 
             saisieOK = true;
-            System.out.println("Veuillez entrer votre série de déplacements séparés par des espaces.(a : avancer ; g : piv à gauche ; d : piv à droite) \n");
+            System.out.println("Veuillez entrer votre série de déplacements séparés par des espaces.(a : avancer ; g : piv à gauche ; d : piv à droite) ");
 
             try {
 
