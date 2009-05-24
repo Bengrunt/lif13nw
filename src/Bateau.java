@@ -373,7 +373,7 @@ public abstract class Bateau {
 	public void avance() {
 		
 		this.setXCaseArriere(this.getXCaseArriere() + this.getDeltaX());
-		this.setXCaseArriere(this.getYCaseArriere() + this.getDeltaY());
+		this.setYCaseArriere(this.getYCaseArriere() + this.getDeltaY());
 	}
     
     /**
