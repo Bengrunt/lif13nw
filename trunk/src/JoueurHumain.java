@@ -138,6 +138,7 @@ public class JoueurHumain extends Joueur {
                 int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
 
                 saisieOK = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
+                System.out.println("SaisieOK : " + saisieOK);
 
 
             }
@@ -167,6 +168,7 @@ public class JoueurHumain extends Joueur {
                 int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
 
                 saisieOK = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
+                System.out.println("SaisieOK : " + saisieOK);
             }
         }
 
