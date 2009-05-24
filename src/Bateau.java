@@ -198,7 +198,6 @@ public abstract class Bateau {
      * @param coords Coordonnées (x,y) à tester.
      * @return Renvoie true si les coordonnées sont bien dans l'environnement.
      */
-
     private boolean coordonneesPossibles(int[] coords) {
         
         return ((coords[0] >= 0) && (coords[0] < Environnement.MAX_X) && (coords[1] >= 0) && (coords[1] < Environnement.MAX_Y));
