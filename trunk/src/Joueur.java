@@ -134,10 +134,10 @@ public abstract class Joueur {
 
             if (i == 0) {
                 str_ieme = "ère";
-                str_spec = "Son Moteur est détruit!";
-            } if (i == tailleBt - 1) {
+                str_spec = " Son Moteur est détruit!";
+            } else if (i == tailleBt - 1) {
                str_ieme = "ième";
-               str_spec = "Son Radar est détruit!";
+               str_spec = " Son Radar est détruit!";
             } else {
                 str_ieme = "ième";
             }
@@ -163,10 +163,10 @@ public abstract class Joueur {
 
             if (i == 0) {
                 str_ieme = "ère";
-                str_spec = "Son Moteur est détruit!";
-            } if (i == tailleBt - 1) {
+                str_spec = " Son Moteur est détruit!";
+            } else if (i == tailleBt - 1) {
                str_ieme = "ième";
-               str_spec = "Son Brouilleur est détruit!";
+               str_spec = " Son Brouilleur est détruit!";
             } else {
                 str_ieme = "ième";
             }
