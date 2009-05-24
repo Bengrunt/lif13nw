@@ -234,7 +234,7 @@ public abstract class Bateau {
     		
     		while((j < tailleList) && !chevauche) {
     			
-    			if(!(this.getXCaseArriere() == lstBateau.get(j).getXCaseArriere() && this.getYCaseArriere() == lstBateau.get(j).getYCaseArriere())){
+    			if(this.getXCaseArriere() != lstBateau.get(j).getXCaseArriere() && this.getYCaseArriere() != lstBateau.get(j).getYCaseArriere()){
     			
     				while((k < lstBateau.get(j).getTailleBateau())) {
     				
