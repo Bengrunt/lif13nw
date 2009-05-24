@@ -116,8 +116,6 @@ public abstract class Joueur {
         int tailleBb = this.bB.getTailleBateau();
         int tailleBt = this.bT.getTailleBateau();
 
-        System.out.println("coup : " + coup[0] + ";" + coup[1]);
-
         //On vérifie si le bateau tireur est touché.
         if(this.bT.estTouche(coup)) {
 
@@ -130,7 +128,21 @@ public abstract class Joueur {
                 }
             }
 
-            System.out.println("Le bateau tireur du " + this.toString() + " a été touché sur sa " + i + "ième case");
+            //Modification de str_ieme purement cosmétique...
+            String str_ieme = "";
+            String str_spec = "";
+
+            if (i == 0) {
+                str_ieme = "ère";
+                str_spec = "Son Moteur est détruit!";
+            } if (i == tailleBt - 1) {
+               str_ieme = "ième";
+               str_spec = "Son Radar est détruit!";
+            } else {
+                str_ieme = "ième";
+            }
+
+            System.out.println("Le bateau tireur du " + this.toString() + " a été touché sur sa " + (i + 1) + str_ieme + " case." + str_spec);
         }
 
         //On vérifie si le bateau brouilleur est touché.
@@ -145,7 +157,21 @@ public abstract class Joueur {
                 }
             }
 
-            System.out.println("Le bateau brouilleur du " + this.toString() + " a été touché sur sa " + i + "ième case");
+            //Modification de str_ieme purement cosmétique...
+            String str_ieme = "";
+            String str_spec = "";
+
+            if (i == 0) {
+                str_ieme = "ère";
+                str_spec = "Son Moteur est détruit!";
+            } if (i == tailleBt - 1) {
+               str_ieme = "ième";
+               str_spec = "Son Brouilleur est détruit!";
+            } else {
+                str_ieme = "ième";
+            }
+
+            System.out.println("Le bateau brouilleur du " + this.toString() + " a été touché sur sa " + (i + 1) + str_ieme + " case.");
         }
     }
 
@@ -250,7 +276,7 @@ public abstract class Joueur {
     		temp = stk.nextToken();
     	}catch (Exception e){
     		
-    		System.out.println("La liste d'action est vide");
+    		System.out.println("La liste d'action du " + bat.getClass().toString() + " est vide.");
     	}
         
     	while(!(temp.equalsIgnoreCase(""))){
@@ -261,7 +287,7 @@ public abstract class Joueur {
         		int [] coup = new int[2];
         		coup[0] = Integer.parseInt(stk.nextToken()); //VALEURS OK
         		coup[1] = Integer.parseInt(stk.nextToken()); // AVEC LE -1 QUI VA BIEN
-        		System.out.println("Vous tirez en [" + coup[0] + "," + coup[1] + "]." );
+        		//System.out.println("Vous tirez en [" + (coup[0] + 1) + "," + (coup[1] + 1) + "]." );
         		cible.appliquerCoup(coup); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
         	}
         	else if(temp.equalsIgnoreCase("d")){
@@ -276,7 +302,7 @@ public abstract class Joueur {
             	temp = stk.nextToken();
             } catch (Exception e){
             	
-            	System.out.println("Fin de la liste d'action");
+            	System.out.println("Fin de la liste d'action du " + bat.getClass().toString() + ".");
             	break;
             }
     	}

@@ -31,7 +31,7 @@ public class JoueurHumain extends Joueur {
         while (!saisieOK) {
 
             saisieOK = true;
-            System.out.println("Veuillez entrer les coordonnées du coup (deux entiers séparés d'un espace [1, " + Environnement.MAX_X + "], [1, " + Environnement.MAX_Y + "]):");
+            System.out.println("Saisissez les coordonnées du tir (deux entiers séparés d'un espace pris dans l'intervalle [1, " + Environnement.MAX_X + "], [1, " + Environnement.MAX_Y + "]):");
 
             try {
 
@@ -82,7 +82,7 @@ public class JoueurHumain extends Joueur {
         while (!saisieOK) {
 
             saisieOK = true;
-            System.out.println("Veuillez entrer votre série de déplacements séparés par des espaces.(a : avancer ; g : piv à gauche ; d : piv à droite) ");
+            System.out.println("Saisissez le déplacement pour ce bateau. (\"a\": avancer, \"g\": piv vers la gauche, \"d\": piv vers la droite):");
 
             try {
 
@@ -153,7 +153,7 @@ public class JoueurHumain extends Joueur {
     			while (!saisieOK) {
     				
     				saisieOK = true;
-    				System.out.println("Quelle action voulez-vous effectuer sur ce bateau ? (t : tir ou d : deplacement ou s : supprimer l'action précédente ou f : finir les action sur ce bateau) :");
+    				System.out.println("Quelle action voulez-vous effectuer avec ce bateau ? (\"t\": tir, \"d\": déplacement, \"s\": supprimer l'action précédament saisie, \"f\": fin de la saisie des actions pour ce bateau):");
             
     				try {
 
@@ -180,7 +180,7 @@ public class JoueurHumain extends Joueur {
     				
     				if(tirRest > 0){
     					
-    					System.out.println("Il vous reste " + tirRest + " tirs");
+    					System.out.println("Ce bateau peut encore tirer " + tirRest + " fois.");
     					int [] coup = this.getCoup();
     					listeAction += "t" + " " + coup[0] + " " + coup[1] + " ";
     					nbCharAct[actionNb] = 5;
@@ -188,15 +188,23 @@ public class JoueurHumain extends Joueur {
         				cptTir++;
     				}
     				else{
+                        
+                        String str_neg = "";
+
+    					if (MaxTir > 0) {
+                            str_neg = "plus";
+                        } else {
+                            str_neg = "pas";
+                        }
     					
-    					System.out.println("Vous ne pouvez pas/plus tirer avec ce bateau");
+                        System.out.println("Vous ne pouvez " + str_neg + " tirer avec ce " + bat.getClass().toString() + ".");
     				}
     			}
     			else if (act.equalsIgnoreCase("d")){
     		
     				if(depRest > 0){
     					
-    					System.out.println("Il vous reste " + depRest + " déplacements");
+    					System.out.println("Ce bateau peut encore effectuer " + depRest + " déplacements.");
     					String dep = this.getDeplacement();
     					listeAction += "d" + " " + dep + " ";
     					nbCharAct[actionNb] = 4;
@@ -204,8 +212,16 @@ public class JoueurHumain extends Joueur {
     					cptDep++;
     				}
     				else{
-    					
-    					System.out.println("Vous ne pouvez pas/plus déplacer ce bateau");
+
+                        String str_neg = "";
+
+    					if (MaxDep > 0) {
+                            str_neg = "plus";
+                        } else {
+                            str_neg = "pas";
+                        }
+
+    					System.out.println("Vous ne pouvez " + str_neg + " déplacer ce " + bat.getClass().toString() + ".");
     				}
     			}
     			else if (act.equalsIgnoreCase("f")){
@@ -226,7 +242,7 @@ public class JoueurHumain extends Joueur {
     				}
     				else{
     					
-    					System.out.println("Il n'y a pas d'action à annuler");
+    					System.out.println("Il n'y a pas d'action à annuler pour ce bateau.");
     				}
     				
     				
@@ -238,7 +254,7 @@ public class JoueurHumain extends Joueur {
     		}
 
     		
-    		System.out.println("Fin des Actions pour ce bateau");
+    		System.out.println("Fin des Actions pour ce bateau.");
     		return listeAction;
 
     }

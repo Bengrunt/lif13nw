@@ -99,7 +99,7 @@ public class Partie {
             	String listeAction;
             	Bateau bat = this.getJ1().getLstBateau().get(i);
 
-                System.out.println("Vous controlez actuellement votre " + bat.toString());
+                System.out.println("Vous controlez actuellement votre " + bat.toString() + ".");
             	listeAction = this.getJ1().getAction(bat);
             	this.getJ1().appliquerAction(listeAction, bat, this.getJ2()); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
             	i++;
@@ -107,7 +107,7 @@ public class Partie {
             
 
             if (this.getJ2().aPerdu()) {
-                System.out.println(this.getJ1() + " a gagné la partie !!");
+                System.out.println("Le " + this.getJ1() + " a gagné la partie !!");
                 partieTerminee = true;
             }
 
@@ -117,19 +117,19 @@ public class Partie {
                 this.getJ2().marquerEnvironnementExact(envJIA.efface());
 
 
-                System.out.println("Env. Joueur humain :");
+                System.out.println("Env. Joueur humain:");
                 System.out.print(envJH);
-                System.out.println("Env. Joueur IA :");
+                System.out.println("Env. Joueur IA:");
                 System.out.print(envJIA);
 
 
                 // Acion de j2
                 coup = this.getJ2().getCoup();
-                System.out.println("Application du coup " + (coup[0]) + "," + (coup[1]));
+                //System.out.println("Application du coup " + (coup[0]) + "," + (coup[1]));
                 this.getJ1().appliquerCoup(coup);
 
                 if (this.getJ1().aPerdu()) {
-                    System.out.println(this.getJ2() + " a gagné la partie !!");
+                    System.out.println("Le " + this.getJ2() + " a gagné la partie !!");
                     partieTerminee = true;
                 }
 
@@ -138,10 +138,10 @@ public class Partie {
         }
 
         if (this.getJ1().aPerdu()) {
-            System.out.println(this.getJ2() + " a gagné la partie !!");
+            System.out.println("Le " + this.getJ2() + " a gagné la partie !!");
 
         } else {
-            System.out.println(this.getJ1() + " a gagné la partie !!");
+            System.out.println("Le " + this.getJ1() + " a gagné la partie !!");
         }
     }
 
