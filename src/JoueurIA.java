@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
@@ -28,24 +31,94 @@ public class JoueurIA extends Joueur {
      * @return Renvoie un StringTokenizer contenant les actions que fait le joueur IA.
      */
     @Override
-    public String getDeplacement() {
+    public String getDeplacement(Bateau bat) {
 
+        Boolean res = false;
         String dep = new String();
-        int rnd = (int) Math.random() * 2;
 
-        switch(rnd) {
+        int taille = bat.getTailleBateau();
+        int dx = bat.getDeltaX();
+        int dy = bat.getDeltaY();
+        int xca = bat.getXCaseArriere();
+        int yca = bat.getYCaseArriere();
+        ArrayList<Bateau> lst = this.getLstBateau();
 
-            case 0 : dep = "a";
-            break;
+        while(! res) {
 
-            case 1 : dep = "g";
-            break;
+            int rnd = (int) Math.random() * 3;
 
-            case 2 : dep = "d";
-            break;
-        }
+            switch(rnd) {
+
+                case 0 : dep = "a";
+                break;
+
+                case 1 : dep = "g";
+                break;
+
+                case 2 : dep = "d";
+                break;
+            }
+
+
+            if(bat.getClass() == BateauBrouilleur.class) { //C'est un bateau brouilleur
+
+                //Création d'un bateau virtuel pour calculer la possibilité du déplacement
+                BateauBrouilleur batSimu = new BateauBrouilleur(taille, lst);
+
+                batSimu.setTailleBateau(taille);
+                batSimu.setXCaseArriere(xca);
+                batSimu.setYCaseArriere(yca);
+                batSimu.setDeltaX(dx);
+                batSimu.setDeltaY(dy);
+
+                if(dep.equalsIgnoreCase("a")) {
+
+                    batSimu.avance();
+                } else if(dep.equalsIgnoreCase("g")) {
+
+                    batSimu.pivote45direct();
+                } else {
+
+                    batSimu.pivote45indirect();
+                }
+
+
+                int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
+
+                res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
+
+
+            }
+            else { //C'est un bateau radar-tireur
+
+                //Création d'un bateau virtuel pour calculer la possibilité du déplacement
+                BateauRadarTireur batSimu = new BateauRadarTireur(taille, lst);
+
+                batSimu.setTailleBateau(taille);
+                batSimu.setXCaseArriere(xca);
+                batSimu.setYCaseArriere(yca);
+                batSimu.setDeltaX(dx);
+                batSimu.setDeltaY(dy);
+
+                if(dep.equalsIgnoreCase("a")) {
+
+                    batSimu.avance();
+                } else if(dep.equalsIgnoreCase("g")) {
+
+                    batSimu.pivote45direct();
+                } else {
+
+                    batSimu.pivote45indirect();
+                }
+
+
+                int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
+
+                res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
+            }
 
         return dep;
+        }
     }
 
     /**

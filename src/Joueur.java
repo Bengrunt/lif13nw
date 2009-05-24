@@ -180,88 +180,18 @@ public abstract class Joueur {
      * @param bat Le Bateau qui se déplace.
      * @return Renvoie true si le déplacement a été effectué, false sinon.
      */
-    public boolean appliquerDeplacement(String dep, Bateau bat) {
+    public void appliquerDeplacement(String dep, Bateau bat) {
 
-        boolean res = false;
-        int taille = bat.getTailleBateau();
-        int dx = bat.getDeltaX();
-        int dy = bat.getDeltaY();
-        int xca = bat.getXCaseArriere();
-        int yca = bat.getYCaseArriere();
-        ArrayList<Bateau> lst = this.getLstBateau();
+        if(dep.equalsIgnoreCase("a")) {
 
-        if(bat.getClass() == BateauBrouilleur.class) { //C'est un bateau brouilleur
+            bat.avance();
+        } else if(dep.equalsIgnoreCase("g")) {
 
-            //Création d'un bateau virtuel pour calculer la possibilité du déplacement
-            BateauBrouilleur batSimu = new BateauBrouilleur(taille, lst);
+            bat.pivote45direct();
+        } else {
 
-            batSimu.setTailleBateau(taille);
-            batSimu.setXCaseArriere(xca);
-            batSimu.setYCaseArriere(yca);
-            batSimu.setDeltaX(dx);
-            batSimu.setDeltaY(dy);
-
-            if(dep.equalsIgnoreCase("a")) {
-
-                batSimu.avance();
-            } else if(dep.equalsIgnoreCase("g")) {
-
-                batSimu.pivote45direct();
-            } else {
-
-                batSimu.pivote45indirect();
-            }
-
-
-            int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
-
-            res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
-
-
+            bat.pivote45indirect();
         }
-        else { //C'est un bateau radar-tireur
-
-            //Création d'un bateau virtuel pour calculer la possibilité du déplacement
-            BateauRadarTireur batSimu = new BateauRadarTireur(taille, lst);
-
-            batSimu.setTailleBateau(taille);
-            batSimu.setXCaseArriere(xca);
-            batSimu.setYCaseArriere(yca);
-            batSimu.setDeltaX(dx);
-            batSimu.setDeltaY(dy);
-
-            if(dep.equalsIgnoreCase("a")) {
-
-                batSimu.avance();
-            } else if(dep.equalsIgnoreCase("g")) {
-
-                batSimu.pivote45direct();
-            } else {
-
-                batSimu.pivote45indirect();
-            }
-
-
-            int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
-
-            res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
-        }
-
-        if(res) { //Le déplacement est faisable on l'applique réellement.
-
-            if(dep.equalsIgnoreCase("a")) {
-
-                bat.avance();
-            } else if(dep.equalsIgnoreCase("g")) {
-
-                bat.pivote45direct();
-            } else {
-
-                bat.pivote45indirect();
-            }
-        }
-
-        return res;
     }
     
     public void appliquerAction(String str, Bateau bat, Joueur cible){
@@ -293,6 +223,7 @@ public abstract class Joueur {
         		
         		String instruction = stk.nextToken();
         		System.out.println("Instruction de déplacement : " + instruction);
+
                 boolean dep = false;
         		while(!dep) {
 
