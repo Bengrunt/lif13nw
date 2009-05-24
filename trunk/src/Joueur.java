@@ -92,7 +92,7 @@ public abstract class Joueur {
      * Fonction abstraite, pour récupérer le déplacement.
      * @return Renvoie une chaine de caractère représentant le déplacement.
      */
-    public String getDeplacement() {
+    public String getDeplacement(Bateau bat) {
 
         String dep = new String();
 
