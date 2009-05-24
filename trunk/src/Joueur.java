@@ -182,16 +182,18 @@ public abstract class Joueur {
      */
     public void appliquerDeplacement(String dep, Bateau bat) {
 
-        if(dep.equalsIgnoreCase("a")) {
+
+    	if(dep.equalsIgnoreCase("a")) {
 
             bat.avance();
-        } else if(dep.equalsIgnoreCase("g")) {
+
+    	} else if(dep.equalsIgnoreCase("g")) {
 
             bat.pivote45direct();
         } else {
 
-            bat.pivote45indirect();
-        }
+               bat.pivote45direct();
+           }
     }
     
     public void appliquerAction(String str, Bateau bat, Joueur cible){
@@ -223,12 +225,8 @@ public abstract class Joueur {
         		
         		String instruction = stk.nextToken();
         		System.out.println("Instruction de déplacement : " + instruction);
+        		this.appliquerDeplacement(instruction, bat);
 
-                boolean dep = false;
-        		while(!dep) {
-
-                    dep = this.appliquerDeplacement(instruction, bat);
-                }
 
         	}
 
