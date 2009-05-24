@@ -374,6 +374,15 @@ public abstract class Bateau {
 		this.setXCaseArriere(this.getXCaseArriere() + this.getDeltaX());
 		this.setYCaseArriere(this.getYCaseArriere() + this.getDeltaY());
 	}
+	
+	/**
+     * Procédure qui fait reculer le bateau d'une case selon son axe directeur.
+     */
+	public void recule() {
+		
+		this.setXCaseArriere(this.getXCaseArriere() - this.getDeltaX());
+		this.setYCaseArriere(this.getYCaseArriere() - this.getDeltaY());
+	}
     
     /**
      * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens direct.
