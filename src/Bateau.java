@@ -187,26 +187,6 @@ public abstract class Bateau {
                 	this.setDeltaX(0);
                     this.setDeltaY(-1);
                     break;
-
-                case 5:
-                	this.setDeltaX(1);
-                    this.setDeltaY(-1);
-                    break;
-
-                case 6:
-                	this.setDeltaX(-1);
-                    this.setDeltaY(-1);
-                    break;
-
-                case 7:
-                	this.setDeltaX(1);
-                    this.setDeltaY(1);
-                    break;
-
-                case 8:
-                	this.setDeltaX(-1);
-                    this.setDeltaY(1);
-                    break;
             }
 
         } while (this.testChevauchement(michel, this.getDeltaX(), this.getDeltaY(), lstBateau));
