@@ -86,12 +86,7 @@ public class Partie {
             System.out.println("Env. Joueur IA :");
             System.out.print(envJIA);
 
-            /*// Action de j1
-            coup = this.getJ1().getCoup();
-            System.out.println("Application du coup " + (coup[0] + 1) + "," + (coup[1] + 1));
-            this.getJ2().appliquerCoup(coup); */
-            
-            
+            // Actions de j1
             int i = 0;
             
             while(i < this.getJ1().getLstBateau().size()){
@@ -123,9 +118,8 @@ public class Partie {
                 System.out.print(envJIA);
 
 
-                // Acion de j2
+                // Actions de j2
                 coup = this.getJ2().getCoup();
-                //System.out.println("Application du coup " + (coup[0]) + "," + (coup[1]));
                 this.getJ1().appliquerCoup(coup);
 
                 if (this.getJ1().aPerdu()) {
