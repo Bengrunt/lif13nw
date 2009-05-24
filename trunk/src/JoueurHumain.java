@@ -98,11 +98,15 @@ public class JoueurHumain extends Joueur {
             if (dep.length() != 1) { // Un seul caractère
 
                 saisieOK = false;
+                System.out.println("Mauvaise saisie, recommencez:");
+                continue;
             }
 
             if (!(dep.equalsIgnoreCase("a") || dep.equalsIgnoreCase("g") || dep.equalsIgnoreCase("d"))) { // test validité : { A ; a ; D ; d ; G ; g }
 
                 saisieOK = false;
+                System.out.println("Mauvaise saisie, recommencez:");
+                continue;
             }
             
             int taille = bat.getTailleBateau();
@@ -137,7 +141,11 @@ public class JoueurHumain extends Joueur {
 
                 int [] caseArr = { batSimu.getXCaseArriere() , batSimu.getYCaseArriere() };
 
-                saisieOK = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
+                saisieOK = !(batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst));
+                if(!saisieOK) {
+                    System.out.println("Déplacement impossible, veuillez en choisir un autre:");
+                    continue;
+                }
                 System.out.println("SaisieOK : " + saisieOK);
 
 
