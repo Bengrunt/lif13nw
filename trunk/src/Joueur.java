@@ -187,13 +187,16 @@ public abstract class Joueur {
 
             bat.avance();
 
-    	} else if(dep.equalsIgnoreCase("g")) {
+        } else if (dep.equalsIgnoreCase("r")) {
+
+            bat.recule();
+    	} else if (dep.equalsIgnoreCase("g")) {
 
             bat.pivote45direct();
         } else {
 
-               bat.pivote45indirect();
-           }
+           bat.pivote45indirect();
+        }
     }
     
     public void appliquerAction(String str, Bateau bat, Joueur cible){
