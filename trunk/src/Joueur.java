@@ -239,7 +239,7 @@ public abstract class Joueur {
         return res;
     }
     
-    public void appliquerAction(String str, Bateau bat){
+    public void appliquerAction(String str, Bateau bat, Joueur cible){
     	
     	StringTokenizer stk = new StringTokenizer(str);
     	
@@ -262,7 +262,7 @@ public abstract class Joueur {
         		coup[0] = Integer.parseInt(stk.nextToken()); //VALEURS OK
         		coup[1] = Integer.parseInt(stk.nextToken()); // AVEC LE -1 QUI VA BIEN
         		System.out.println("Vous tirez en [" + coup[0] + "," + coup[1] + "]." );
-        		this.appliquerCoup(coup);
+        		cible.appliquerCoup(coup); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
         	}
         	else if(temp.equalsIgnoreCase("d")){
         		
