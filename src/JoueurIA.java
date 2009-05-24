@@ -116,9 +116,9 @@ public class JoueurIA extends Joueur {
 
                 res = batSimu.testChevauchement(caseArr, batSimu.getDeltaX(), batSimu.getDeltaY(), lst);
             }
+        }
 
         return dep;
-        }
     }
 
     /**
