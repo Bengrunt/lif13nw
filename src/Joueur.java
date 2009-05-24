@@ -192,7 +192,7 @@ public abstract class Joueur {
             bat.pivote45direct();
         } else {
 
-               bat.pivote45direct();
+               bat.pivote45indirect();
            }
     }
     
