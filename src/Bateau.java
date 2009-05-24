@@ -234,23 +234,20 @@ public abstract class Bateau {
     		
     		while((j < tailleList) && !chevauche) {
     			
-    			while((k < lstBateau.get(j).getTailleBateau())) {
+    			if(this != lstBateau.get(j)){
+    			
+    				while((k < lstBateau.get(j).getTailleBateau())) {
     				
-    				test2[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
-    				test2[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
+    					test2[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
+    					test2[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
     				
-    				if((test[0] == test2[0]) && (test[1] == test2[1])) {
+    					if((test[0] == test2[0]) && (test[1] == test2[1])) {
 
-                        //Ignore le chevauchement pour sa propre case arriere (nécéssaire pour pivotement).
-                        if(k == 0 && this == lstBateau.get(j) && test[0] == this.getXCaseArriere() && test[1] == this.getYCaseArriere()) {
-                            chevauche = false;
-                            continue;
-                        }
-    					
     					chevauche = true;
     					break;
+    					}
+    					k++;
     				}
-    				k++;
     			}
     			j++;
     		}
