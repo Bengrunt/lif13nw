@@ -217,16 +217,16 @@ public abstract class Bateau {
     	boolean chevauche = false;
     	int i = 0, j = 0, k = 0;
     	int tailleBat = this.getTailleBateau();
-    	int[] test = new int [2];
-    	int[] test2 = new int [2];
+    	int[] nouvCoords = new int [2];
+    	int[] listCoords = new int [2];
     	int tailleList = lstBateau.size();
     	
     	while((i < tailleBat ) && !chevauche) {
     		
-    		test[0] = caseArr[0] + i * deltaX;
-            test[1] = caseArr[1] + i * deltaY;
+    		nouvCoords[0] = caseArr[0] + i * deltaX;
+            nouvCoords[1] = caseArr[1] + i * deltaY;
             
-    		if(!this.coordonneesPossibles(test)) {
+    		if(!this.coordonneesPossibles(nouvCoords)) {
     			
     			chevauche = true;
     			break;
@@ -238,10 +238,12 @@ public abstract class Bateau {
     			
     				while((k < lstBateau.get(j).getTailleBateau())) {
     				
-    					test2[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
-    					test2[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
+                        listCoords[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
+                        listCoords[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
+
     				
-    					if((test[0] == test2[0]) && (test[1] == test2[1])) {
+    				if((nouvCoords[0] == listCoords[0]) && (nouvCoords[1] == listCoords[1])) {
+
 
     					chevauche = true;
     					break;
