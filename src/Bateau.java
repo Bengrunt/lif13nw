@@ -236,7 +236,7 @@ public abstract class Bateau {
     		while((j < tailleList) && !chevauche && tailleList > 0) {
 
     			//if(!(this.equals(lstBateau.get(j)))){ // ne fonctionne PAS, hashcode() different...
-    			if(this.getClass() != lstBateau.get(j).getClass()){ //Solution Temporaire ; teste juste les classes. Trouver une fonction de test globale
+    			if(this.getClass() != lstBateau.get(j).getClass()){ //Solution Temporaire ; teste juste les classes. Trouver une fonction de test global. Idée : multiplier les tests.
     				k = 0;
     				
     				while((k < lstBateau.get(j).getTailleBateau()) && !chevauche) {
