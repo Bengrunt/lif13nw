@@ -221,7 +221,7 @@ public abstract class Bateau {
     	int[] listCoords = new int [2];
     	int tailleList = lstBateau.size();
     	
-    	while((i < tailleBat ) && !chevauche && tailleList > 0) {
+    	while((i < tailleBat ) && !chevauche) {
     		
     		nouvCoords[0] = caseArr[0] + i * deltaX;
             nouvCoords[1] = caseArr[1] + i * deltaY;
@@ -229,15 +229,17 @@ public abstract class Bateau {
     		if(!this.coordonneesPossibles(nouvCoords)) {
     			
     			chevauche = true;
-    			break;
+    			continue;
     		}
+    		j = 0;
     		
-    		while((j < tailleList) && !chevauche) {
-    			
-    			if(this.getXCaseArriere() != lstBateau.get(j).getXCaseArriere() && this.getYCaseArriere() != lstBateau.get(j).getYCaseArriere()){ //Si on ne compare pas à soi-même.
+    		while((j < tailleList) && !chevauche && tailleList > 0) {
 
-    			
-    				while((k < lstBateau.get(j).getTailleBateau())) {
+    			//if(!(this.equals(lstBateau.get(j)))){ // ne fonctionne PAS, hashcode() different...
+    			if(this.getClass() != lstBateau.get(j).getClass()){ //Solution Temporaire ; teste juste les classes. Trouver une fonction de test globale
+    				k = 0;
+    				
+    				while((k < lstBateau.get(j).getTailleBateau()) && !chevauche) {
     				
                         listCoords[0] = (lstBateau.get(j).calculeCoordCaseBat(k))[0];
                         listCoords[1] = (lstBateau.get(j).calculeCoordCaseBat(k))[1];
@@ -253,10 +255,8 @@ public abstract class Bateau {
     				}
     			}
     			j++;
-                k = 0;
     		}
     		i++;
-            j = 0;
     	}
 
         return chevauche;
