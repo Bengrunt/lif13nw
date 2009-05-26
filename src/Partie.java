@@ -89,7 +89,7 @@ public class Partie {
 
             for(i = 0 ; i < this.getJ1().getBateauTireur().getTailleBateau() ; i++) {
                 if(!(this.getJ1().getBateauTireur().getIemeTouche(i))) {
-                    sante_radar += 1/this.getJ1().getBateauTireur().getTailleBateau();
+                    sante_radar += 1.0/this.getJ1().getBateauTireur().getTailleBateau();
                 }
             }
 
@@ -98,6 +98,11 @@ public class Partie {
             }
 
             envJH_v = envJH.brouille((1 - (sante_radar * (1/3))) * sante_brouilleur);
+
+            //Affichage de l'environnement reel humain
+            System.out.println("Env. Joueur humain :");
+            System.out.println("Votre radar est à " + sante_radar * 100 + "% de ses capacités de détection et votre brouilleur est a " + sante_brouilleur * 100 + "% de ses capacités de brouillage.");
+            System.out.print(envJH);
 
             // Brouiller l'environnement réel de JIA et créer l'environnement virtuel que verra JH
             i = 0;
@@ -115,10 +120,7 @@ public class Partie {
             }
 
             envJIA_v = envJIA.brouille((1 - (sante_radar * (1/3))) * sante_brouilleur);
-
-            // Afficher les environnements
-            System.out.println("Env. Joueur humain :");
-            System.out.print(envJH);
+            // Affichage de l'environnement virtuel IA
             System.out.println("Env. Joueur IA :");
             System.out.print(envJIA_v);
 
