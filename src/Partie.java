@@ -71,7 +71,9 @@ public class Partie {
 
         // Création des environnements : objets utilisés pour représenter l'environnement des joueurs
         Environnement envJH = new Environnement();
+        Environnement envJH_v = new Environnement();
         Environnement envJIA = new Environnement();
+        Environnement envJIA_v = new Environnement();
         int[] coup;
 
         while (!partieTerminee) {
@@ -80,6 +82,40 @@ public class Partie {
             this.getJ1().marquerEnvironnementExact(envJH.efface());
             this.getJ2().marquerEnvironnementExact(envJIA.efface());
 
+            // Brouiller l'environnement réel de JH et créer l'environnement virtuel que verra JIA
+            int i;
+            double sante_radar = 0;
+            double sante_brouilleur = 0;
+
+            for(i = 0 ; i < this.getJ1().getBateauTireur().getTailleBateau() ; i++) {
+                if(this.getJ1().getBateauTireur().getIemeTouche(i)) {
+                    sante_radar += 1/this.getJ1().getBateauTireur().getTailleBateau();
+                }
+            }
+
+            if(this.getJ2().getBateauBrouilleur().getIemeTouche(this.getJ2().getBateauBrouilleur().getTailleBateau() - 1)) {
+                sante_brouilleur += 1;
+            }
+
+            envJH_v = envJH.brouille(sante_radar * sante_brouilleur);
+
+            // Brouiller l'environnement réel de JIA et créer l'environnement virtuel que verra JH
+            i = 0;
+            sante_radar = 0;
+            sante_brouilleur = 0;
+
+            for(i = 0 ; i < this.getJ2().getBateauTireur().getTailleBateau() ; i++) {
+                if(this.getJ2().getBateauTireur().getIemeTouche(i)) {
+                    sante_radar += 1/this.getJ2().getBateauTireur().getTailleBateau();
+                }
+            }
+
+            if(this.getJ1().getBateauBrouilleur().getIemeTouche(this.getJ1().getBateauBrouilleur().getTailleBateau() - 1)) {
+                sante_brouilleur += 1;
+            }
+
+            envJIA_v = envJIA.brouille(sante_radar * sante_brouilleur);
+
             // Afficher les environnements
             System.out.println("Env. Joueur humain :");
             System.out.print(envJH);
@@ -87,7 +123,7 @@ public class Partie {
             System.out.print(envJIA);
 
             // Actions de j1
-            int i = 0;
+            i = 0;
             
             while(i < this.getJ1().getLstBateau().size()){
             
@@ -99,8 +135,8 @@ public class Partie {
             	this.getJ1().appliquerAction(listeAction, bat, this.getJ2()); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
             	i++;
             }
-            
 
+            //Test de victoire
             if (this.getJ2().aPerdu()) {
                 System.out.println("Le " + this.getJ1() + " a gagné la partie !!");
                 partieTerminee = true;
