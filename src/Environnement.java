@@ -90,6 +90,41 @@ public class Environnement {
         return this;
     }
 
+    public Environnement brouille(float coeff) {
+
+        Environnement env_virtuel = new Environnement();
+        int i;
+        int j;
+
+        for (i = 0 ; i < MAX_X ; i++) {
+
+            for (j = 0 ; j < MAX_Y ; j++) {
+
+                if(coeff > Math.random())
+                {
+                   double rnd_symbole=Math.random();
+
+                   if (rnd_symbole >= 0.98) {
+                       env_virtuel.set(i, j, 'R');
+                   } else if (rnd_symbole >= 0.96) {
+                       env_virtuel.set(i, j, 'B');
+                   } else if (rnd_symbole >= 0.92) {
+                       env_virtuel.set(i, j, 'X');
+                   } else if (rnd_symbole >= 0.88) {
+                       env_virtuel.set(i, j, 'M');
+                   } else {
+                       env_virtuel.set(i, j, 'O');
+                   }
+                } else {
+                    env_virtuel.set(i, j, this.getEnv(i, j));
+                }
+
+            }
+        }
+
+        return env_virtuel;
+    }
+
     /*
      * Fonction de transformation de l'environnement en chaîne, afin de pouvoir l'afficher en mose console
      * @return Renvoie une chaine de caractères.

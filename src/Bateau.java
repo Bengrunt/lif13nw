@@ -222,7 +222,8 @@ public abstract class Bateau {
     	int tailleList = lstBateau.size();
     	
     	while((i < tailleBat ) && !chevauche) {
-    		
+
+            j = 0;
     		nouvCoords[0] = caseArr[0] + i * deltaX;
             nouvCoords[1] = caseArr[1] + i * deltaY;
             
