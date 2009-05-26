@@ -114,9 +114,12 @@ public abstract class Joueur {
         int i;
         int tailleBb = this.bB.getTailleBateau();
         int tailleBt = this.bT.getTailleBateau();
+        boolean batTouche = false;
 
         //On vérifie si le bateau tireur est touché.
         if(this.bT.estTouche(coup)) {
+
+            batTouche = true;
 
             for(i = 0 ; i < tailleBt ; i++) {
 
@@ -147,6 +150,8 @@ public abstract class Joueur {
         //On vérifie si le bateau brouilleur est touché.
         if(this.bB.estTouche(coup)) {
 
+            batTouche = true;
+
             for(i = 0 ; i < tailleBb ; i++) {
 
                 if(Arrays.equals(this.bB.calculeCoordCaseBat(i), coup)) {
@@ -171,6 +176,10 @@ public abstract class Joueur {
             }
 
             System.out.println("Le bateau brouilleur du " + this.toString() + " a été touché sur sa " + (i + 1) + str_ieme + " case." + str_spec + ".");
+        }
+
+        if(!batTouche) {
+            System.out.println("Aucun bateau n'a été touché par le tir !");
         }
     }
 
