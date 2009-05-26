@@ -71,7 +71,7 @@ public class Partie {
 
         // Création des environnements : objets utilisés pour représenter l'environnement des joueurs
         Environnement envJH = new Environnement();
-        Environnement envJH_v = new Environnement();
+        Environnement envJH_v = new Environnement(); //Pas encore utilisé vu que l'IA tire au pif et ne prend pas en compte ce qu'elle voit.
         Environnement envJIA = new Environnement();
         Environnement envJIA_v = new Environnement();
         int[] coup;
@@ -88,16 +88,16 @@ public class Partie {
             double sante_brouilleur = 0;
 
             for(i = 0 ; i < this.getJ1().getBateauTireur().getTailleBateau() ; i++) {
-                if(this.getJ1().getBateauTireur().getIemeTouche(i)) {
+                if(!(this.getJ1().getBateauTireur().getIemeTouche(i))) {
                     sante_radar += 1/this.getJ1().getBateauTireur().getTailleBateau();
                 }
             }
 
-            if(this.getJ2().getBateauBrouilleur().getIemeTouche(this.getJ2().getBateauBrouilleur().getTailleBateau() - 1)) {
+            if(!(this.getJ2().getBateauBrouilleur().getIemeTouche(this.getJ2().getBateauBrouilleur().getTailleBateau() - 1))) {
                 sante_brouilleur += 1;
             }
 
-            envJH_v = envJH.brouille((1 - (sante_radar * (2/3))) * sante_brouilleur);
+            envJH_v = envJH.brouille((1 - (sante_radar * (1/3))) * sante_brouilleur);
 
             // Brouiller l'environnement réel de JIA et créer l'environnement virtuel que verra JH
             i = 0;
@@ -105,16 +105,16 @@ public class Partie {
             sante_brouilleur = 0;
 
             for(i = 0 ; i < this.getJ2().getBateauTireur().getTailleBateau() ; i++) {
-                if(this.getJ2().getBateauTireur().getIemeTouche(i)) {
+                if(!(this.getJ2().getBateauTireur().getIemeTouche(i))) {
                     sante_radar += 1/this.getJ2().getBateauTireur().getTailleBateau();
                 }
             }
 
-            if(this.getJ1().getBateauBrouilleur().getIemeTouche(this.getJ1().getBateauBrouilleur().getTailleBateau() - 1)) {
+            if(!(this.getJ1().getBateauBrouilleur().getIemeTouche(this.getJ1().getBateauBrouilleur().getTailleBateau() - 1))) {
                 sante_brouilleur += 1;
             }
 
-            envJIA_v = envJIA.brouille((1 - (sante_radar * (2/3))) * sante_brouilleur);
+            envJIA_v = envJIA.brouille((1 - (sante_radar * (1/3))) * sante_brouilleur);
 
             // Afficher les environnements
             System.out.println("Env. Joueur humain :");
