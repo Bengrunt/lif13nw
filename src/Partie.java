@@ -120,7 +120,7 @@ public class Partie {
             System.out.println("Env. Joueur humain :");
             System.out.print(envJH);
             System.out.println("Env. Joueur IA :");
-            System.out.print(envJIA);
+            System.out.print(envJIA_v);
 
             // Actions de j1
             i = 0;
