@@ -90,7 +90,7 @@ public class Environnement {
         return this;
     }
 
-    public Environnement brouille(float coeff) {
+    public Environnement brouille(double coeff) {
 
         Environnement env_virtuel = new Environnement();
         int i;
@@ -118,7 +118,6 @@ public class Environnement {
                 } else {
                     env_virtuel.set(i, j, this.getEnv(i, j));
                 }
-
             }
         }
 
