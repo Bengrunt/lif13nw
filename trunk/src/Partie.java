@@ -97,7 +97,7 @@ public class Partie {
                 sante_brouilleur += 1;
             }
 
-            envJH_v = envJH.brouille(sante_radar * sante_brouilleur);
+            envJH_v = envJH.brouille((1 - (sante_radar * (2/3))) * sante_brouilleur);
 
             // Brouiller l'environnement réel de JIA et créer l'environnement virtuel que verra JH
             i = 0;
@@ -114,7 +114,7 @@ public class Partie {
                 sante_brouilleur += 1;
             }
 
-            envJIA_v = envJIA.brouille(sante_radar * sante_brouilleur);
+            envJIA_v = envJIA.brouille((1 - (sante_radar * (2/3))) * sante_brouilleur);
 
             // Afficher les environnements
             System.out.println("Env. Joueur humain :");
@@ -132,7 +132,7 @@ public class Partie {
 
                 System.out.println("Vous controlez actuellement votre " + bat.toString() + ".");
             	listeAction = this.getJ1().getAction(bat);
-            	this.getJ1().appliquerAction(listeAction, bat, this.getJ2()); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
+            	this.getJ1().appliquerAction(listeAction, bat, this.getJ2());
             	i++;
             }
 
@@ -144,14 +144,14 @@ public class Partie {
 
             if (!partieTerminee) {
 
-                this.getJ1().marquerEnvironnementExact(envJH.efface());
-                this.getJ2().marquerEnvironnementExact(envJIA.efface());
-
-
-                System.out.println("Env. Joueur humain:");
-                System.out.print(envJH);
-                System.out.println("Env. Joueur IA:");
-                System.out.print(envJIA);
+//                this.getJ1().marquerEnvironnementExact(envJH.efface());
+//                this.getJ2().marquerEnvironnementExact(envJIA.efface());
+//
+//
+//                System.out.println("Env. Joueur humain:");
+//                System.out.print(envJH);
+//                System.out.println("Env. Joueur IA:");
+//                System.out.print(envJIA);
 
 
                 // Actions de j2
@@ -162,9 +162,7 @@ public class Partie {
                     System.out.println("Le " + this.getJ2() + " a gagné la partie !!");
                     partieTerminee = true;
                 }
-
             }
-
         }
 
         if (this.getJ1().aPerdu()) {
