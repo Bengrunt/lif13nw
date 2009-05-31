@@ -6,17 +6,14 @@ import java.util.StringTokenizer;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 24/05/2009
+ * @version 31/05/2009
+ * @see http://code.google.com/p/lif13nw/
  */
 public abstract class Joueur {
-
-    //////////////////////////////////////// ATTRIBUTS /////////////////////////////////////////////////////
 
     protected ArrayList<Bateau> lstBateau; // Liste des bateaux du joueur.
     protected BateauRadarTireur bT; // Bateau radar-tireur
     protected BateauBrouilleur bB; // Bateau brouilleur
-
-    //////////////////////////////////////// CONSTRUCTEURS ///////////////////////////////////////////////////
 
     /**
      * Constructeur de Joueur.
@@ -33,12 +30,9 @@ public abstract class Joueur {
         lstBateau.add(bB);
     }
 
-
-    /////////////////////////////////////////// ACCESSEURS //////////////////////////////////////////////////////
-
     /**
      * Accesseur de l'attribut bT de la classe "joueur".
-     * @return Renvoie un Bateau.
+     * @return Renvoie le bateau radar-tireur du joueur.
      */
     public Bateau getBateauTireur() {
         return this.bT;
@@ -60,9 +54,7 @@ public abstract class Joueur {
         return this.lstBateau;
     }
 
-    ////////////////////////////////////////// AUTRES METHODES //////////////////////////////////////////////////
-
-    /*
+    /**
      * Fonction qui détermine si un joueur a perdu.
      * @return Renvoie true si le joueur a perdu.
      */
@@ -71,9 +63,8 @@ public abstract class Joueur {
         return bT.estCoule();
     }
 
-    /*
-     * Retourne l'environnement exact du joueur 
-     * 
+    /**
+     * Procédure qui marque l'environnement du joueur de la position et de l'état de ses bateaux.
      */
     public void marquerEnvironnementExact(Environnement env) {
 
@@ -81,22 +72,23 @@ public abstract class Joueur {
         bB.marquerEnvironnementExact(env);
     }
 
-    /*
-     * Fonction abstraite, à définir pour JoueurHumain (dans ce cas, saisie clavier du coup) et JoueurIA (dans ce cas, stratégie IA sur la base des informations perçues par le joeueur IA)
-     * */
-    public int[] getCoup() { // retourne les coordonnées x et y du coup
+    /**
+     * Fonction abstraite, pour récuperer l'action de tir d'un joueur.
+     * @return Renvoie les coordonnées de l'endroit ou le joueur tire.
+     */
+    public int[] getCoup() {
+
         return null;
     }
 
     /**
-     * Fonction abstraite, pour récupérer le déplacement.
+     * Fonction abstraite, pour récupérer l'action de déplacement d'un joueur pour un bateau donné.
+     * @param bat Le bateau à déplacer.
      * @return Renvoie une chaine de caractère représentant le déplacement.
      */
     public String getDeplacement(Bateau bat) {
 
-        String dep = new String();
-
-        return dep;
+        return null;
     }
 
     /**
@@ -109,6 +101,10 @@ public abstract class Joueur {
     	return null;
     }
 
+    /**
+     * Procédure qui calcule et génère les effets d'un tir sur les bateaux du joueur.
+     * @param coup Les coordonnées de l'endroit où l'adversaire a tiré.
+     */
     public void appliquerCoup(int[] coup) {
 
         int i;
@@ -185,9 +181,9 @@ public abstract class Joueur {
 
     /**
      * Procédure qui teste si le déplacement est faisable et l'applique le cas échéant.
-     * @param dep Chaine de caractère représentant le déplacement à effectuer.
+     * @param dep Chaine de caractère représentant le déplacement à éffectuer.
      * @param bat Le Bateau qui se déplace.
-     * @return Renvoie true si le déplacement a été effectué, false sinon.
+     * @return Renvoie true si le déplacement a été effectué.
      */
     public void appliquerDeplacement(String dep, Bateau bat) {
 
@@ -207,7 +203,13 @@ public abstract class Joueur {
            bat.pivote45indirect();
         }
     }
-    
+
+    /**
+     * Procédure qui calcule et génère les effets des actions du joueur.
+     * @param str Chaine de caractères réprésentant la liste d'actions du joueur.
+     * @param bat Bateau sur lequel le joueur agit.
+     * @param cible Joueur adverse sur lequel le joueur tire.
+     */
     public void appliquerAction(String str, Bateau bat, Joueur cible){
     	
     	StringTokenizer stk = new StringTokenizer(str);
@@ -219,19 +221,17 @@ public abstract class Joueur {
     		temp = stk.nextToken();
     	}catch (Exception e){
     		
-    		System.out.println("La liste d'action du " + bat.getClass().toString() + " est vide.");
+    		System.out.println("La liste d'action du " + bat.toString() + " est vide.");
     	}
         
     	while(!(temp.equalsIgnoreCase(""))){
 
-    		
     		if(temp.equalsIgnoreCase("t")){
         		
         		int [] coup = new int[2];
-        		coup[0] = Integer.parseInt(stk.nextToken()); //VALEURS OK
-        		coup[1] = Integer.parseInt(stk.nextToken()); // AVEC LE -1 QUI VA BIEN
-        		//System.out.println("Vous tirez en [" + (coup[0] + 1) + "," + (coup[1] + 1) + "]." );
-        		cible.appliquerCoup(coup); /// <========= IL FAUT APPLIQUER LE COUP SUR L'AUTRE JOUEUR ! :)
+        		coup[0] = Integer.parseInt(stk.nextToken());
+        		coup[1] = Integer.parseInt(stk.nextToken());
+        		cible.appliquerCoup(coup); // On applique le coup donné sur les navires de l'adversaire.
         	}
         	else if(temp.equalsIgnoreCase("d")){
         		
@@ -245,12 +245,9 @@ public abstract class Joueur {
             	temp = stk.nextToken();
             } catch (Exception e){
             	
-            	System.out.println("Fin de la liste d'action du " + bat.getClass().toString() + ".");
+            	System.out.println("Fin de la liste d'action du " + bat.toString() + ".");
             	break;
             }
     	}
     }
 }
-
-
-

@@ -2,13 +2,12 @@
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 24/05/2009
+ * @version 31/05/2009
+ * @see http://code.google.com/p/lif13nw/
  */
 public class Partie {
 
-    protected Joueur j1,j2;
-
-    //////////////////////////////////////////////// CONSTRUCTEURS //////////////////////////////////////////////
+    protected Joueur j1,j2; // Les deux joueurs de la partie.
 
     /**
      * Constructeur de Partie.
@@ -18,8 +17,6 @@ public class Partie {
         this.j1 = new JoueurHumain();
         this.j2 = new JoueurIA();
     }
-
-    ///////////////////////////////////////////////// ACCESSEURS ///////////////////////////////////////////////////
 
     /**
      * Accesseur de l'attribut "j1" de la classe Partie.
@@ -39,8 +36,6 @@ public class Partie {
     	return this.j2;
     }
 
-    ///////////////////////////////////////////////// MUTATEURS ////////////////////////////////////////////////////
-
     /**
      * Mutateur de l'attribut "j1" de la classe Partie.
      * @param j Joueur que l'on veut copier dans j1.
@@ -58,8 +53,6 @@ public class Partie {
     	
     	this.j2 = j;
     }
-
-    ///////////////////////////////////////////////////////////// AUTRES METHODES /////////////////////////////////////////////////
 
     /**
      * Procédure de vie de la partie.
@@ -146,6 +139,7 @@ public class Partie {
 
             if (!partieTerminee) {
 
+// AFFICHAGE SUPERFLU
 //                this.getJ1().marquerEnvironnementExact(envJH.efface());
 //                this.getJ2().marquerEnvironnementExact(envJIA.efface());
 //
@@ -180,10 +174,11 @@ public class Partie {
      * @param args Arguments du programme.
      */
     public static void main(String[] args) {
+
         // création d'une partie
         Partie p = new Partie();
+
         // execution de la partie
         p.run();
-
     }
 }
