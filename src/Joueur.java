@@ -12,8 +12,6 @@ import java.util.StringTokenizer;
 public abstract class Joueur {
 
     protected ArrayList<Bateau> lstBateau; // Liste des bateaux du joueur.
-    protected BateauRadarTireur bT; // Bateau radar-tireur
-    protected BateauBrouilleur bB; // Bateau brouilleur
 
     /**
      * Constructeur de Joueur.
@@ -21,12 +19,11 @@ public abstract class Joueur {
     public Joueur() {
 
         lstBateau = new ArrayList(); //Liste des bateaux du joueur.
+
         // création des deux bateaux du joueur
-        // paramètres : taille : founit la taille des bateaux
-        //              lstBateau : liste des bateaux présents, afin de tester le chevauchement lors du placement initial    
-        bT = new BateauRadarTireur(3, lstBateau);
+        BateauRadarTireur bT = new BateauRadarTireur(3, lstBateau);
         lstBateau.add(bT);
-        bB = new BateauBrouilleur(3, lstBateau);
+        BateauBrouilleur bB = new BateauBrouilleur(3, lstBateau);
         lstBateau.add(bB);
     }
 
@@ -35,7 +32,7 @@ public abstract class Joueur {
      * @return Renvoie le bateau radar-tireur du joueur.
      */
     public Bateau getBateauTireur() {
-        return this.bT;
+        return this.lstBateau.get(0);
     }
 
     /**
@@ -43,7 +40,7 @@ public abstract class Joueur {
      * @return Renvoie le bateau brouilleur du joueur.
      */
     public Bateau getBateauBrouilleur() {
-        return this.bB;
+        return this.lstBateau.get(1);
     }
 
     /**
@@ -60,7 +57,7 @@ public abstract class Joueur {
      */
     public boolean aPerdu() {
 
-        return bT.estCoule();
+        return this.getBateauTireur().estCoule();
     }
 
     /**
@@ -68,8 +65,8 @@ public abstract class Joueur {
      */
     public void marquerEnvironnementExact(Environnement env) {
 
-        bT.marquerEnvironnementExact(env);
-        bB.marquerEnvironnementExact(env);
+        this.getBateauTireur().marquerEnvironnementExact(env);
+        this.getBateauBrouilleur().marquerEnvironnementExact(env);
     }
 
     /**
@@ -108,20 +105,20 @@ public abstract class Joueur {
     public void appliquerCoup(int[] coup) {
 
         int i;
-        int tailleBb = this.bB.getTailleBateau();
-        int tailleBt = this.bT.getTailleBateau();
+        int tailleBt = this.getBateauTireur().getTailleBateau();
+        int tailleBb = this.getBateauBrouilleur().getTailleBateau();
         boolean batTouche = false;
 
         //On vérifie si le bateau tireur est touché.
-        if(this.bT.estTouche(coup)) {
+        if(this.getBateauTireur().estTouche(coup)) {
 
             batTouche = true;
 
             for(i = 0 ; i < tailleBt ; i++) {
 
-                if(Arrays.equals(this.bT.calculeCoordCaseBat(i), coup)) {
+                if(Arrays.equals(this.getBateauTireur().calculeCoordCaseBat(i), coup)) {
 
-                    this.bT.setIemeTouche(i, true);
+                    this.getBateauTireur().setIemeTouche(i, true);
                     break;
                 }
             }
@@ -144,15 +141,15 @@ public abstract class Joueur {
         }
 
         //On vérifie si le bateau brouilleur est touché.
-        if(this.bB.estTouche(coup)) {
+        if(this.getBateauBrouilleur().estTouche(coup)) {
 
             batTouche = true;
 
             for(i = 0 ; i < tailleBb ; i++) {
 
-                if(Arrays.equals(this.bB.calculeCoordCaseBat(i), coup)) {
+                if(Arrays.equals(this.getBateauBrouilleur().calculeCoordCaseBat(i), coup)) {
 
-                    this.bB.setIemeTouche(i, true);
+                    this.getBateauBrouilleur().setIemeTouche(i, true);
                     break;
                 }
             }
