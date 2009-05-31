@@ -5,7 +5,8 @@ import java.util.ArrayList;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 24/05/2009
+ * @version 31/05/2009
+ * @see http://code.google.com/p/lif13nw/
  */
 public class JoueurIA extends Joueur {
 

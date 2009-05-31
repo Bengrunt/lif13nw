@@ -4,18 +4,15 @@ import java.util.ArrayList;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 24/05/2009
+ * @version 31/05/2009
+ * @see http://code.google.com/p/lif13nw/
  */
 public abstract class Bateau {
 
-    ///////////////////////////////// ATTRIBUTS ////////////////////////////////////////////////
-
     protected int xCaseArriere,  yCaseArriere; // position de l'arrière du bateau
-    protected int tailleBateau; // taille du bateau
+    protected int tailleBateau; // taille du bateau (en nombre de cases)
     protected boolean[] touche; // état de la coque (touche[0] correspond à la case arrière)
     protected int deltaX,  deltaY; // orientation du bateau, par rapport à sa case arrière
-
-    //////////////////////////////// CONSTRUCTEURS: ////////////////////////////////////////////
 
     /*
      * Constructeur de Bateau : crée un bateau placé aléatoirement dans l'environnement.
@@ -33,14 +30,12 @@ public abstract class Bateau {
             touche[i] = false;
         }
 
-        initPosition(lstBateau);
+        initPosition(lstBateau); //Initialise la position du bateau.
     }
-
-    /////////////////////////////// ACCESSEURS: ////////////////////////////////////////////////
 
     /**
      * Accesseur de l'attribut "xCaseArriere" de la classe Bateau.
-     * @return Renvoie un entier.
+     * @return Renvoie un entier représentant la valeur en abscisse de la case arrière du bateau.
      */
     public int getXCaseArriere() {
 
@@ -49,7 +44,7 @@ public abstract class Bateau {
 
     /**
      * Accesseur de l'attribut "yCaseArriere" de la classe Bateau.
-     * @return Renvoie un entier.
+     * @return Renvoie un entier représentant la valeur en ordonnée de la case arrière du bateau.
      */
     public int getYCaseArriere() {
 
@@ -58,7 +53,7 @@ public abstract class Bateau {
 
     /**
      * Accesseur de l'attribut "tailleBateau" de la classe Bateau.
-     * @return Renvoie un entier.
+     * @return Renvoie un entier représentant le nombre de cases occupées par le bateau.
      */
     public int getTailleBateau() {
 
@@ -68,7 +63,7 @@ public abstract class Bateau {
     /**
      * Accesseur de la ième case de l'attribut "touche" de la classe Bateau.
      * @param i Indice de la case de l'attribut "touche" à laquelle on veut accéder.
-     * @return Renvoie un booléen.
+     * @return Renvoie true si la ième case du bateau a été touchée.
      */
     public boolean getIemeTouche(int i) {
 
@@ -77,7 +72,7 @@ public abstract class Bateau {
 
     /**
      * Accesseur de l'attribut "deltaX" de la classe Bateau.
-     * @return Renvoie un entier.
+     * @return Renvoie un entier représentant l'orientation selon l'axe X du bateau.
      */
     public int getDeltaX() {
 
@@ -86,18 +81,16 @@ public abstract class Bateau {
 
     /**
      * Accesseur de l'attribut "deltaY" de la classe Bateau.
-     * @return Renvoie un entier.
+     * @return Renvoie un entier représentant l'orientation selon l'axe Y du bateau.
      */
     public int getDeltaY() {
 
         return this.deltaY;
     }
 
-    ///////////////////////// MUTATEURS: /////////////////////////////////
-
     /**
      * Mutateur de l'attribut "xCaseArriere" de la classe Bateau.
-     * @param x Nouvelle valeur de l'attribut.
+     * @param x Nouvelle valeur en abscisse de la case arrière du bateau.
      */
     public void setXCaseArriere(int x) {
 
@@ -106,7 +99,7 @@ public abstract class Bateau {
 
     /**
      * Mutateur de l'attribut "yCaseArriere" de la classe Bateau.
-     * @param y Nouvelle valeur de l'attribut.
+     * @param y Nouvelle valeur en ordonnée de la case arrière du bateau.
      */
     public void setYCaseArriere(int y) {
 
@@ -115,7 +108,7 @@ public abstract class Bateau {
 
     /**
      * Mutateur de l'attribut "tailleBateau" de la classe Bateau.
-     * @param t Nouvelle valeur de l'attribut.
+     * @param t Nouvelle taille du bateau.
      */
     public void setTailleBateau(int t) {
 
@@ -134,7 +127,7 @@ public abstract class Bateau {
 
     /**
      * Mutateur de l'attribut "deltaX" de la classe Bateau.
-     * @param dx Nouvelle valeur de l'attribut.
+     * @param dx Nouvelle orientation selon l'axe X du bateau.
      */
     public void setDeltaX(int dx) {
 
@@ -143,18 +136,16 @@ public abstract class Bateau {
 
     /**
      * Mutateur de l'attribut "deltaY" de la classe Bateau.
-     * @param dy Nouvelle valeur de l'attribut.
+     * @param dy Nouvelle orientation selon l'axe Y du bateau.
      */
     public void setDeltaY(int dy) {
 
         this.deltaY = dy;
     }
 
-    //////////////////////////////////////////////////////// AUTRES METHODES: ///////////////////////////////////////////////////////////////////
-
     /**
-     * Procédure qui initialise aléatoirement la position de la case arrière et de la direction, puis calcul de validité de la position obtenue.
-     * @param lstBateau Liste de bateaux.
+     * Procédure qui initialise aléatoirement la position de la case arrière et de la direction, puis calcule la validité de la position obtenue (avec notamment un test de chevauchement).
+     * @param lstBateau Liste de bateaux du joueur.
      */
     private void initPosition(ArrayList<Bateau> lstBateau) {
 
@@ -190,11 +181,10 @@ public abstract class Bateau {
             }
 
         } while (this.testChevauchement(coords, this.getDeltaX(), this.getDeltaY(), lstBateau));
-
     }
 
     /*
-     * Fonction qui teste si des coordonnées sont bien dans l'environnement.
+     * Fonction qui teste si des coordonnées sont bien dans le domaine de l'environnement de jeu.
      * @param coords Coordonnées (x,y) à tester.
      * @return Renvoie true si les coordonnées sont bien dans l'environnement.
      */
@@ -206,8 +196,8 @@ public abstract class Bateau {
     /**
      * Fonction qui teste si des coordonnées sont disponibles (i.e. teste si il n y a pas chevauchement avec un bateau existant).
      * @param caseArr Coordonnées de la case arriere du bateau à tester.
-     * @param deltaX Orientation du bateau à tester.
-     * @param deltaY Orientation du bateau à tester.
+     * @param deltaX Orientation selon l'axe X du bateau à tester.
+     * @param deltaY Orientation selon l'axe Y du bateau à tester.
      * @param lstBateau Liste des bateaux avec lesquels les coordonnées sont comparées.
      * @return Renvoie true si les coordonnées sont disponibles.
      */
@@ -264,7 +254,7 @@ public abstract class Bateau {
     }
 
     /**
-     * Marque l'environnement env d'un 'X' pour chaque case associée au bateau, et d'un 'I' si la case est touchée.
+     * Marque l'environnement env pour chaque case associée au bateau: un 'X' pour une case normal, un 'M' pour le moteur, un 'B' pour le brouilleur, un 'R' pour le radar et d'un 'I' si la case est touchée.
      * @param env L'environnement où se trouve le bateau à afficher.
      */
     public void marquerEnvironnementExact(Environnement env) {
@@ -275,9 +265,7 @@ public abstract class Bateau {
         for (int i = 0 ; i < tailleBat; i++) {
 
             coords = this.calculeCoordCaseBat(i);
-            /*System.out.println("coord 0 : " + coords[0]);
-            System.out.println("coord 1 : " + coords[1]);*/
-
+            
             if (this.getIemeTouche(i)) {
 
                 env.set(coords[0], coords[1], 'I');
@@ -306,7 +294,7 @@ public abstract class Bateau {
     }
 
     /**
-     * Fonction qui calcule les coordonnées sur la grille d'une case du bateau.
+     * Fonction qui calcule les coordonnées d'une case du bateau.
      * @param index Indice de la case dont on veut calculer les coordonnées (l'indiciation commence à 0).
      * @return Renvoie un tableau de deux entiers, respectivements x et y les coordonnées de la case du bateau.
      */
@@ -320,9 +308,9 @@ public abstract class Bateau {
     }
 
     /**
-     * Fonction qui détermine si le bateau est touché.
+     * Fonction qui détermine si le bateau est touché par un tir.
      * @param coup Un tableau de deux entiers représentant les coordonnées de l'endroit où à été tiré le coup.
-     * @return Renvoie un booléen qui vaut true si le bateau est touché par le coup.
+     * @return Renvoie true si le bateau est touché par le coup.
      */
     public boolean estTouche(int[] coup) {
 
@@ -332,7 +320,9 @@ public abstract class Bateau {
         int tailleBat = this.getTailleBateau();
 
         while (i < tailleBat) {
+
             coords = this.calculeCoordCaseBat(i);
+
             if ((coords[0] == coup[0]) && (coords[1] == coup[1])) {
                 res = true;
                 break;
@@ -344,7 +334,7 @@ public abstract class Bateau {
     }
 
     /**
-     * Fonction qui détermine si un bateau est coulé.
+     * Fonction qui détermine si un bateau est coulé après de multiples coups au but.
      * @return Renvoie un booléen qui vaut true si le bateau est coulé.
      */
     public boolean estCoule() {
@@ -386,7 +376,7 @@ public abstract class Bateau {
 	}
     
     /**
-     * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens direct.
+     * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens direct (vers babord).
      */
     public void pivote45direct() {
         
@@ -409,7 +399,7 @@ public abstract class Bateau {
     }
     
     /**
-     * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens indirect.
+     * Procédure qui fait pivoter le bateau sur lui-même de 45° dans le sens indirect (vers tribord).
      */
     public void pivote45indirect() {
         

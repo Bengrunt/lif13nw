@@ -10,15 +10,14 @@ import java.util.logging.Logger;
 /**
  * @author Benjamin Guillon, Mamy Raminosoa
  * @since 5/05/2009
- * @version 24/05/2009
+ * @version 31/05/2009
+ * @see http://code.google.com/p/lif13nw/
  */
 public class JoueurHumain extends Joueur {
 
-    //////////////////////////////////////////////////// AUTRES METHODES /////////////////////////////////////////////////////////
-
-    /*
+    /**
      * Saisie d'un coup au clavier pour le joueur humain.
-     * @return Renvoie un tableau d'entiers.
+     * @return Renvoie un tableau d'entiers contenant les coordonnées du coup.
      */
     @Override
     public int[] getCoup() {
@@ -273,7 +272,7 @@ public class JoueurHumain extends Joueur {
                             str_neg = "pas";
                         }
     					
-                        System.out.println("Vous ne pouvez " + str_neg + " tirer avec ce " + bat.getClass().toString() + ".");
+                        System.out.println("Vous ne pouvez " + str_neg + " tirer avec ce " + bat.toString() + ".");
     				}
     			}
     			else if (act.equalsIgnoreCase("d")){
@@ -297,7 +296,7 @@ public class JoueurHumain extends Joueur {
                             str_neg = "pas";
                         }
 
-    					System.out.println("Vous ne pouvez " + str_neg + " déplacer ce " + bat.getClass().toString() + ".");
+    					System.out.println("Vous ne pouvez " + str_neg + " déplacer ce " + bat.toString() + ".");
     				}
     			}
     			else if (act.equalsIgnoreCase("f")){
